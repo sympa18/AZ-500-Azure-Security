@@ -1,12 +1,28 @@
-# Module 1: Lab 7: Azure Policy
+---
+lab:
+    title: '02 - Azure Policy'
+    module: 'Module 01 - Manage Identity and access'
+---
+
+# Lab 02 - Azure Policy
+
+# Student lab manual
+
+## Lab scenario
+
+# Module 1: Lab 02: Azure Policy 
 
 In this lab, you will learn to use Azure Policy to do some of the more common tasks related to creating, assigning, and managing policies across your organization, such as:
 
-> - Assign a policy to enforce a condition for resources you create in the future
+
+### Objectives
+In this exercise, you will learn the basics of using Azure Policy. You will use a built-in policy to restrict which Azure regions can be used. You will then verify that the policy is working.
+
+- Create an Azure Policy Assignment
+- Verify the Azure Policy Assignment
 
 ## Exercise 1: Using Azure Policy
 
-In this exercise, you will learn the basics of using Azure Policy. You will use a built-in policy to restrict which Azure regions can be used. You will then verify that the policy is working.
 
 ### Task 1: Create an Azure Policy Assignment
 
@@ -33,7 +49,7 @@ In this task, you will first browse the built-in policy definitions using the Az
     **Note:** This policy only restricts resource locations, not resource group locations. There is a separate policy for 'Allowed locations for resource groups'.
 
 
-5.  Click on the **Allowed locations** policy definition to open the definition details view. 
+1.  Click on the **Allowed locations** policy definition to open the definition details view. 
 
     **Note**: Policy definitions take an array of locations as parameters. A policy rule is an ‘if-then’ statement. The ‘if’ clause checks to see if the resource location is included in the parameterized list, and if not the ‘then’ clause denies the resource creation.
 
@@ -41,10 +57,10 @@ In this task, you will first browse the built-in policy definitions using the Az
 1.  Click **Assign**.
 
  
-2.  Undr **Scope** Click the Elipsis (...) button and assign the policy to **your Subscription** and then **myResourceGroup** resource group then click **Select**.
+1.  Undr **Scope** Click the Elipsis (...) button and assign the policy to **your Subscription** and then **myResourceGroup** resource group then click **Select**.
 
  
-3.  Complete the remainder of the policy assignment **Basics** tab with the following settings:
+1.  Complete the remainder of the policy assignment **Basics** tab with the following settings:
 
     -   Exclusions: **Leave blank**
     -   Assignment name: **Allow UK South for myResourceGroup**

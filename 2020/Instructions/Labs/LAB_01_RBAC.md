@@ -8,12 +8,9 @@ lab:
 
 # Student lab manual
 
-## Lab scenario
-
 # Module 1: Lab 01: Role Based Access Control 
 
-
-**Scenario**
+## Lab scenario
 
 In this module, you'll learn about Role-Based Access Control as the foundation to organizing and managing an organization's administrative access based on the principle of least privilege. You will also review Azure Active Directory concepts, as well as gain insight into the threat landscape and security risks that are exposed to IT organizations through breach of privileged access. Lessons include:
 
