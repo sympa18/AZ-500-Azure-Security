@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Azure AD Identity Protection'
-    module: 'Module 10 - Securing Identities'
+    title: 'MFA, Conditional Acccess and AAD Identity Protection'
+    module: 'Module 01 - Manage Identity and access'
 ---
 
-# Lab: Azure AD Identity Protection
+# Lab: MFA, Conditional Acccess and AAD Identity Protection
 
 All tasks in this lab are performed from the Azure portal, except for steps in Exercise 2 performed within a Remote Desktop session to an Azure VM.
 
@@ -27,6 +27,8 @@ After completing this lab, you will be able to:
 
  -  Implement Azure MFA
 
+ - Implement a  Conditional Access Policy 
+
  -  Implement Azure AD Identity Protection
 
 
@@ -42,15 +44,17 @@ The main tasks for this exercise are as follows:
 
 1. From the lab virtual machine, start Microsoft Edge, browse to the Azure portal at [**http://portal.azure.com**](http://portal.azure.com) and sign in by using a Microsoft account that has the Owner role in the Azure subscription you intend to use in this lab.
 
-1. In the Azure portal, navigate to the **New** blade.
+1. In the Azure portal select **Create a resource**.
 
-1. From the **New** blade, search Azure Marketplace for **Template deployment**.
+1. From the **New** blade, search Azure Marketplace for **Template deployment (deploy using custom templates)**.
 
-1. Use the list of search results to navigate to the **Custom deployment** blade.
+1. Use the list of search results to navigate to the **Template deployment (deploy using custom templates)** blade. 
+
+1. Click **Create**
 
 1. On the **Custom deployment** blade, select the **Build your own template in the editor**.
 
-1. From the **Edit template** blade, load the template file **Labfiles\\Module_10\\Azure_AD_Identity_Protection\\az-101-04b_azuredeploy.json**.
+1. From the **Edit template** blade, load the template file **2020\\Allfiles\\Labs\\LAB_04\\az-500-04_azuredeploy.json**.
 
      > **Note**: Review the content of the template and note that it defines deployment of an Azure VM hosting Windows Server 2016 Datacenter.
 
@@ -58,7 +62,7 @@ The main tasks for this exercise are as follows:
 
 1. From the **Custom deployment** blade, navigate to the **Edit parameters** blade.
 
-1. From the **Edit parameters** blade, load the parameters file **Labfiles\\Module_10\\Azure_AD_Identity_Protection\\az-101-04b_azuredeploy.parameters.json**.
+1. From the **Edit parameters** blade, load the parameters file **2020\\Allfiles\\Labs\\LAB_04\\az-500-04_azuredeploy.parameters.json**.
 
 1. Save the parameters and return to the **Custom deployment** blade.
 
@@ -66,26 +70,26 @@ The main tasks for this exercise are as follows:
 
     - Subscription: the name of the subscription you are using in this lab
 
-    - Resource group: the name of a new resource group **az1010401b-RG**
+    - Resource group: the name of a new resource group **az500l04-RG**
 
     - Location: the name of the Azure region which is closest to the lab location and where you can provision Azure VMs
 
     - Vm Size: **Standard_DS1_v2**
 
-    - Vm Name: **az1010401b-vm1**
+    - Vm Name: **az500l04-vm1**
 
     - Admin Username: **Student**
 
     - Admin Password: **Pa55w.rd1234**
 
-    - Virtual Network Name: **az1010401b-vnet1**
+    - Virtual Network Name: **az500l04-vnet1**
 
      > **Note**: To identify Azure regions where you can provision Azure VMs, refer to [**https://azure.microsoft.com/en-us/regions/offers/**](https://azure.microsoft.com/en-us/regions/offers/)
 
 > **Note**: Do not wait for the deployment to complete but proceed to the next exercise. You will use the virtual machine included in this deployment in the last exercise of this lab.
 
 
-> **Result**: After you completed this exercise, you have initiated a template deployment of an Azure VM **az1010401b-vm1** that you will use in the next exercise of this lab.
+> **Result**: After you completed this exercise, you have initiated a template deployment of an Azure VM **az500l04-vm1** that you will use in the next exercise of this lab.
 
 
 
@@ -386,9 +390,9 @@ The main tasks for this exercise are as follows:
 
 1. In the Azure portal, set the **Directory + subscription** filter to the **Default Directory** (the original Azure AD tenant.)
 
-1. In the Azure portal, navigate to the **az1010401b-vm1** blade.
+1. In the Azure portal, navigate to the **az500l04-vm1** blade.
 
-1. From the **az1010401b-vm1** blade, connect to the Azure VM via Remote Desktop session and, when prompted to sign in, provide the following credentials:
+1. From the **az500l04-vm1** blade, connect to the Azure VM via Remote Desktop session and, when prompted to sign in, provide the following credentials:
 
     - Admin Username: **Student**
 
