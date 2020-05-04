@@ -1,4 +1,4 @@
-# Module 1 - Lab 2: Key Vault (Implementing Secure Data by setting up Always Encrypted)
+# Module 3 - Lab 01: Key Vault (Implementing Secure Data by setting up Always Encrypted)
 
 
 **Scenario**

@@ -1,4 +1,4 @@
-# Module 2: Lab 12 - Azure Firewall
+# Module 2: Lab 08 - Azure Firewall
 
 
 **Scenario**
@@ -121,7 +121,7 @@ For the **Workload-SN** subnet, configure the outbound default route to go throu
 ### Task 4: Configure an application rule
 
 
-In this task you will create an application rule that allows outbound access to `msn.com`.
+In this task you will create an application rule that allows outbound access to `www.bing.com`.
 
 
 1.  Open the **Test-FW-RG** resource group and click the **Test-FW01** firewall.
@@ -135,7 +135,7 @@ In this task you will create an application rule that allows outbound access to 
 8.  Under **Rules**, **Target FQDNs**, for **Name**, type **AllowGH**.
 9.  For **Source Addresses**, type **10.0.2.0/24**.
 10.  For **Protocol:port**, type **http, https**.
-11.  For **Target FQDNS**, type **msn.com**
+11.  For **Target FQDNS**, type **www.bing.com**
 12.  Click **Add**.
 
  Azure Firewall includes a built-in rule collection for infrastructure FQDNs that are allowed by default. These FQDNs are specific for the platform and can't be used for other purposes. 
@@ -194,13 +194,13 @@ In this task you will test the firewall to confirm that it works as expected.
     -	**Username**: localadmin
     -	**Password**: Pa55w.rd1234
 
-3.  Open Internet Explorer and browse to **`https://www.msn.com`**
+3.  Open Internet Explorer and browse to **`https://www.bing.com`**
 
 4.  Click **OK** > **Close** on the security alerts.
 
-   You should see the MSN home page.
+   You should see the bing home page.
 
-5.  Browse to **`https://msn.com`**
+5.  Browse to **`https://www.bing.com`**
 
        - You should be blocked by the firewall.
        - So now you've verified that the firewall rules are working:
