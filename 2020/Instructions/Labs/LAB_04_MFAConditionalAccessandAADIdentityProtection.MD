@@ -497,11 +497,4 @@ To avoid isues with the next lab lets remove the Identity protection policies an
 1. Under **Protect** select **Sign-in risk policy**
 
 1. Set **Enforce policy** to **off** > Click **Save**
-Remove lab resources
 
-
-1. Close the **Cloud Shell** prompt at the bottom of the portal.
-
-> **Note**: To remove the Azure AD tenant you created in this lab, follow https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/directory-delete-howto
-
-> **Result**: In this exercise, you removed the resources used in this lab.

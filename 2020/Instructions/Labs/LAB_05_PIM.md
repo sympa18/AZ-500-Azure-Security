@@ -344,3 +344,20 @@ Follow these steps to view the audit history for Azure AD roles.
 
 
 ### Add Lab Cleanup
+
+### Remove lab resources
+
+1. Switch back to your default directory.
+
+1. Open Cloud Shell in Powershell
+
+1.  Remove the resource group by running the following command (When prompted to confirm press Y and press enter):
+    ```powershell
+    Remove-AzResourceGroup -Name "az500-04-RG"
+    ```
+
+1. Close the **Cloud Shell** prompt at the bottom of the portal.
+
+> **Note**: To remove the Azure AD tenant you created in this lab, follow https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/directory-delete-howto
+
+> **Result**: In this exercise, you removed the resources used in this lab.
