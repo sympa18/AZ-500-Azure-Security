@@ -70,26 +70,26 @@ The main tasks for this exercise are as follows:
 
     - Subscription: the name of the subscription you are using in this lab
 
-    - Resource group: the name of a new resource group **az500l04-RG**
+    - Resource group: the name of a new resource group **az500-04-RG**
 
     - Location: the name of the Azure region which is closest to the lab location and where you can provision Azure VMs
 
     - Vm Size: **Standard_DS1_v2**
 
-    - Vm Name: **az500l04-vm1**
+    - Vm Name: **az500-04-vm1**
 
     - Admin Username: **Student**
 
     - Admin Password: **Pa55w.rd1234**
 
-    - Virtual Network Name: **az500l04-vnet1**
+    - Virtual Network Name: **az500-04-vnet1**
 
      > **Note**: To identify Azure regions where you can provision Azure VMs, refer to [**https://azure.microsoft.com/en-us/regions/offers/**](https://azure.microsoft.com/en-us/regions/offers/)
 
 > **Note**: Do not wait for the deployment to complete but proceed to the next exercise. You will use the virtual machine included in this deployment in the last exercise of this lab.
 
 
-> **Result**: After you completed this exercise, you have initiated a template deployment of an Azure VM **az500l04-vm1** that you will use in the next exercise of this lab.
+> **Result**: After you completed this exercise, you have initiated a template deployment of an Azure VM **az500-04-vm1** that you will use in the next exercise of this lab.
 
 
 
@@ -390,9 +390,9 @@ The main tasks for this exercise are as follows:
 
 1. In the Azure portal, set the **Directory + subscription** filter to the **Default Directory** (the original Azure AD tenant.)
 
-1. In the Azure portal, navigate to the **az500l04-vm1** blade.
+1. In the Azure portal, navigate to the **az500-04-vm1** blade.
 
-1. From the **az500l04-vm1** blade, connect to the Azure VM via Remote Desktop session and, when prompted to sign in, provide the following credentials:
+1. From the **az500-04-vm1** blade, connect to the Azure VM via Remote Desktop session and, when prompted to sign in, provide the following credentials:
 
     - Admin Username: **Student**
 
