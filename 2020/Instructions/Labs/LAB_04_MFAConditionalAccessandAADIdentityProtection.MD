@@ -4,7 +4,7 @@ lab:
     module: 'Module 01 - Manage Identity and access'
 ---
 
-# Lab: MFA, Conditional Acccess and AAD Identity Protection
+# Lab 04: MFA, Conditional Acccess and AAD Identity Protection
 
 All tasks in this lab are performed from the Azure portal, except for steps in Exercise 2 performed within a Remote Desktop session to an Azure VM.
 
@@ -481,3 +481,27 @@ Notice that we have multiple users with Risk detections from the sign in attempt
 1. From the **Azure AD Identity Protection - Risky users** blade, navigate to the **Azure AD Identity Protection - Risky sign-ins** blade and note the entry representing **aaduser3** and **aaduser1**.
 
 > **Result**: After you completed this exercise, you have enabled Azure AD Identity Protection, configured user risk policy and sign-in risk policy, as well as validated Azure AD Identity Protection configuration by simulating risk events
+
+
+
+## Exercise 3: Clean up policies 
+
+To avoid isues with the next lab lets remove the Identity protection policies and the Conditional access policies
+
+1. From the **Azure AD Identity Protection** blade
+
+1. Under **Protect** select **user risk policy**
+
+1. Set **Enforce policy** to **off** > Click **Save**
+
+1. Under **Protect** select **Sign-in risk policy**
+
+1. Set **Enforce policy** to **off** > Click **Save**
+Remove lab resources
+
+
+1. Close the **Cloud Shell** prompt at the bottom of the portal.
+
+> **Note**: To remove the Azure AD tenant you created in this lab, follow https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/directory-delete-howto
+
+> **Result**: In this exercise, you removed the resources used in this lab.
