@@ -86,6 +86,10 @@ The main tasks for this exercise are as follows:
 
      > **Note**: To identify Azure regions where you can provision Azure VMs, refer to [**https://azure.microsoft.com/en-us/regions/offers/**](https://azure.microsoft.com/en-us/regions/offers/)
 
+1. Click on **I agree to the terms and conditions stated above**
+
+1. Click **Purchase**
+
 > **Note**: Do not wait for the deployment to complete but proceed to the next exercise. You will use the virtual machine included in this deployment in the last exercise of this lab.
 
 
@@ -112,15 +116,15 @@ The main tasks for this exercise are as follows:
 
 #### Task 1: Create a new Azure AD tenant
 
-1. In the Azure portal, navigate to the **New** blade.
+1. In the Azure portal, click on **Create a resource**.
 
-1. From the **New** blade, search Azure Marketplace for **Azure Active Directory**.
+1. From the **New** blade, search Azure Marketplace for **Azure Active Directory** and select it from the drop down menu.
 
-1. Use the list of search results to navigate to the **Create directory** blade.
+1. Click **Create**
 
 1. From the **Create directory** blade, create a new Azure AD tenant with the following settings:
 
-  - Organization name: **AdatumLab101-4b**
+  - Organization name: **AdatumLab500-04**
 
   - Initial domain name: a unique name consisting of a combination of letters and digits.
 
@@ -128,33 +132,37 @@ The main tasks for this exercise are as follows:
 
      > **Note**: Take a note of the initial domain name. You will need it later in this lab.
 
+1. Click **Create**
+
 
 #### Task 2: Activate Azure AD Premium v2 trial
 
-1. In the Azure portal, set the **Directory + subscription** filter to **AdatumLab101-4b** (the newly created Azure AD tenant.)
+1. In the Azure portal, either click on the link to manage your new directory or set the **Directory + subscription** filter to **AdatumLab500-04** (the newly created Azure AD tenant.)
 
      > **Note**: The **Directory + subscription** filter is located to the right of the Cloud Shell icon in the toolbar of the Azure portal
 
-     > **Note**: You might need to refresh the browser window if the **AdatumLab101-4b** entry does not appear in the **Directory + subscription** filter list.
+     > **Note**: You might need to refresh the browser window if the **AdatumLab500-04** entry does not appear in the **Directory + subscription** filter list.
 
-1. In the Azure portal, navigate to the **AdatumLab101-4b - Overview** blade.
+1. In the Azure portal, navigate to the **AdatumLab500-04 - Overview** blade.
 
-1. From the **AdatumLab101-4b - Overview** blade, navigate to the **Licenses - Overview** blade.
+1. Select **Azure Active Directory**
 
-1. From the **Licenses - Overview** blade, navigate to the **Licenses - All products** blade.
+1. Under **Manage**, click the **Licenses** icon.
 
-1. From the **Licenses - All products** blade, click **+ Try / Buy**, click **Free Trial** under Azure AD Premium P2, and then click **Activate**.
+1. Under **Manage** select the **All products** icon.
+
+1. click **+ Try / Buy**, under Azure AD Premium P2 click **Free Trial** , and then click **Activate**.
 
 
 #### Task 3: Create Azure AD users and groups.
 
-1. In the Azure portal, navigate to the **Users - All users** blade of the AdatumLab101-4b Azure AD tenant.
+1. In the Azure portal, navigate to the **Azure Active Directory**, then click the **Users** blade of the AdatumLab500-04 Azure AD tenant.
 
 1. From the **Users - All users** blade, create a new user with the following settings:
 
-    - User name: **aaduser1@*&lt;DNS-domain-name&gt;*.onmicrosoft.com** where ***&lt;DNS-domain-name&gt;*** represents the initial domain name you specified in the first task of this exercise.
+    - User name: **aaduser1** 
 
-      > **Note**: Take a note of this user name. You will need it later in this lab.
+      > **Note**: Take a note of the full user principl name. You will need it later in this lab.
 
     - Name: **aaduser1**
     
@@ -162,13 +170,17 @@ The main tasks for this exercise are as follows:
 
     - Groups: **0 groups selected**
 
-    - Directory role: **Global administrator**
+    - Directory role: Choose and **Select** the **Global administrator** role
+
+    - Usage Location: **United States**  
+
+    1. Click **Create**
     
 1. From the **Users - All users** blade, create a new user with the following settings:
 
-    - User name: **aaduser2@*&lt;DNS-domain-name&gt;*.onmicrosoft.com** where ***&lt;DNS-domain-name&gt;*** represents the initial domain name you specified in the first task of this exercise.
+    - User name: **aaduser2**
 
-      > **Note**: Take a note of this user name. You will need it later in this lab.
+      > **Note**: Take a note of the full user principl name. You will need it later in this lab.
 
     - Name: **aaduser2**
 
@@ -178,22 +190,39 @@ The main tasks for this exercise are as follows:
 
     - Directory role: **User**
 
+     - Usage Location: **United States**  
+
+1. Click **Create**
+
+1. From the **Users - All users** blade, create a new user with the following settings:
+
+    - User name: **aaduser3**
+
+      > **Note**: Take a note of the full user principl name. You will need it later in this lab.
+
+    - Name: **aaduser3**
+
+    - Password: ensure that the option **Auto-generate password** is selected, check the checkbox **Show Password** and note the string appearing in the **Password** text box. You will need it later in this lab.
+
+    - Groups: **0 groups selected**
+
+    - Directory role: **User**
+
+     - Usage Location: **United States**  
+
+1. Click **Create**
 
 #### Task 4: Assign Azure AD Premium v2 licenses to Azure AD users
 
-   > **Note**: In order to assign Azure AD Premium v2 licenses to Azure AD users, you first have to set their location attribute.
+1. From the **aaduser1 - Profile** blade, under **Manage** click the **Licenses** icon, click **+ Assignments** and assign to the user an **Azure Active Directory Premium P2** license with all licensing options enabled. Click **Save**
 
-1. From the **Users - All users** blade, navigate to the **aaduser1 - Profile** blade and set the **Usage location** to **United States**.
+1. From the **aaduser2 - Profile** blade,  under **Manage** click the **Licenses** icon, click **+ Assignments** and assign to the user an Azure Active Directory Premium P2 license with all licensing options enabled. Click **Save**
 
-1. From the **aaduser1 - Profile** blade, navigate to the **aaduser1 - Licenses** blade and assign to the user an Azure Active Directory Premium P2 license with all licensing options enabled.
+1. From the **aaduser3 - Profile** blade,  under **Manage** click the **Licenses** icon, click **+ Assignments** and assign to the user an Azure Active Directory Premium P2 license with all licensing options enabled. Click **Save**
 
-1. Return to the **Users - All users** blade, navigate to the **aaduser2 - Profile** blade, and set the **Usage location** to **United States**.
+1. From **your user account profile**, Click **Edit** and under **Settings** change the **Usage location** to **United States** then click **Save**
 
-1. From the **aaduser2 - Profile** blade, navigate to the **aaduser2 - Licenses** blade and assign to the user an Azure Active Directory Premium P2 license with all licensing options enabled.
-
-1. Return to the **Users - All users** blade, navigate to the Profile entry of your user account and set the **Usage location** to **United States**.
-
-1. Navigate to **Licenses** blade of your user account and assign to it an Azure Active Directory Premium P2 license with all licensing options enabled.
+1. From **your user account profile**, under **Manage** click the **Licenses** icon, click **+ Assignments** and assign to the user an **Azure Active Directory Premium P2** license with all licensing options enabled. Click **Save**
 
 1. Sign out from the portal and sign back in using the same account you are using for this lab.
 
@@ -202,11 +231,15 @@ The main tasks for this exercise are as follows:
 
 #### Task 5: Configure Azure MFA settings.
 
-1. In the Azure portal, navigate to the **Users - All users** blade of the AdatumLab101-4b Azure AD tenant.
+1. In the Azure portal, navigate to the **Azure Active Directory** blade of the AdatumLab500-04 Azure AD tenant.
 
-1. From the **Users - All users** blade of the AdatumLab101-4b Azure AD tenant, use the **Multi-Factor Authentication** link to open the **multi-factor authentication** portal.
+1. Under **Manage** Click the **Security** icon
 
-1. On the **multi-factor authentication** portal, display to the **service settings** tab, review its settings, and the **verification options**, including **Text message to phone**, **Notification through mobile app**, and **Verification code from mobile app or hardware token** are enabled.
+1. Under **Manage** click **MFA**
+
+1. From the **Geting Started** blade, under **Configure** select the link **Additional cloud-based MFA settings**. This will bring up a seperate tab to configure MFA
+
+1. On the **multi-factor authentication** portal, in **service settings** tab, review its settings, and the **verification options**, note that **Text message to phone**, **Notification through mobile app**, and **Verification code from mobile app or hardware token** are enabled. Click **Close**
 
 1. On the **multi-factor authentication** portal, switch to the **users** tab, select **aaduser1** entry, and enable its multi-factor authentication status.
 
@@ -224,19 +257,21 @@ The main tasks for this exercise are as follows:
 
 1. Click **Cancel** and switch back to the Azure portal, without making any changes.
 
-1. From the **Users - All users** blade of the AdatumLab101-4b Azure AD tenant, navigate to the **AdatumLab101-4b - Overview** blade.
+1. In the Azure portal, navigate to the **Azure Active Directory** blade of the AdatumLab500-04 Azure AD tenant.
 
-1. From the **AdatumLab101-4b - Overview** blade, navigate to the Security blade, then MFA blade.
+1. Under **Manage** Click the **Security** icon
 
-     > **Note**: You might need to first click the **Security** entry in the vertical menu of the Azure Active Directory tenant blade.
+1. Under **Manage** click **MFA**
 
-1. From the Multi-Factor Authentication blade, navigate to the **Multi-Factor Authentication - Fraud alert** blade and configure the following settings:
+1. Under **Settings** click the **Fraud alert** icon and configure the following settings:
 
     - Allow users to submit fraud alerts: **On**
 
     - Automatically block users who report fraud: **On**
 
     - Code to report fraud during initial greeting: **0**
+
+1. Click **Save**
 
 
 #### Task 6: Validate MFA configuration
@@ -245,9 +280,9 @@ The main tasks for this exercise are as follows:
 
 1. In the new browser window, navigate to the Azure portal and sign in using the **aaduser1** user account. When prompted, change the password to a new value.
 
-     > **Note**: You will need to provide a fully qualified name of the **aaduser1** user account, including the Azure AD tenant DNS domain name, as noted earlier in this lab.
+     > **Note**: You will need to provide a fully qualified name of the **aaduser1** user account, including the Azure AD tenant DNS domain name, as noted earlier in this lab. e.g. aaduser1@adatumlab50004.onmicrosoft.com where you replace **adatumlab50004** with your unique domain name. 
 
-1. When prompted with the **More information required** message, continue to the **Additional security verification** page.
+1. When prompted with the **More information required** message, continue to the **Additional security verification** page by clicking **Next** .
 
 1. On the **How should we contact you?** page, note that you need to set up one of the following options:
 
@@ -257,15 +292,15 @@ The main tasks for this exercise are as follows:
 
 1. Select the **Authentication phone** option with the **Send me a code by text message** method.
 
-1. Complete the verification and note the automatically generated app password.
+1. Complete the verification and note the automatically generated app password if one is created for you.
 
-1. When prompted, change the password from the one generated when you created the **aaduser1** account.
+1. When prompted, change the password from the one generated when you created the **aaduser1** account. Take note of the new password
 
 1. Verify that you successfully signed in to the Azure portal.
 
 1. Sign out as **aaduser1** and close the InPrivate browser window.
 
-### Exercise 1: Implement Conditional Access Policy
+### Exercise 2: Implement Conditional Access Policy
 
 The main tasks for this exercise are as follows:
 
@@ -279,38 +314,40 @@ The main tasks for this exercise are as follows:
 
 In this task we will review conditional access policy settings and create a policy that requires MFA when signing in to the Portal. 
 
-**Note:** This demonstration requires a user account, AZ500User. This user requires xxx permissions. If you want to show the MFA verification, the user account must have a phone number. 
-
-**Configure the policy**
 
 1. In the **Portal** search for and select **Azure Active Directory**.
 1. Under **Manage** select **Security**.
 1. Under **Protect** select **Conditional access**.
 1. Click **New Policy**.
 	* Name: **AZ500Policy1**
-	* Users and groups > Select users and groups > Users and Groups > Select: **AZ500User1**
-	* Cloud apps or actions > Select apps > Select: **Microsoft Azure Management**
-	* Review the warning that this policy impacts Portal access.
+	* Users and groups > Select users and groups > Users and Groups > Select: **aaduser2** > Select **Done**
+	* Cloud apps or actions > Select apps > Select: **Microsoft Azure Management** 
+	* Review the warning that this policy impacts Portal access > Select **Done**
 	* Conditions > Sign-in risk > Review the risk levels
 	* Device platforms > Review the devices that can included, such as Android and iOS.
 	* Locations > Review the physical location selections.
 	* Under **Access controls** click **Grant**.
 	* Review the Grant options such as MFA. You may require one or more of the controls.
-	* Select **Require multi-factor authentication**.
-	* For **Enable policy** select **On**.
+	* Select **Require multi-factor authentication**, Click **Select**
+	* For **Enable policy** select **On**. > 
 1. Click **Create**. 
 
-**Test the policy**
+# Task 2 - Test the policy
 
-1. Sign-in to the **Portal** as the **AZ500User1**.
-1. Before you can sign in a second authentication is required.
-1. If you have a phone number associated with the user, provide and verify the text code. You should be able to successfully sign in to the Portal.
-1. If you do not have a phone number associated with the user, this demonstrates that MFA is in effect. 
-1. You may want to return to the **AZ500Policy1** and turn the policy **Off**.
 
-#### Task 1: Enable Azure AD Identity Protection
+1. Open an InPrivate Microsoft Edge window.
 
-### Exercise 2: Implement Azure AD Identity Protection:
+1. In the new browser window, navigate to the Azure portal https://portal.zure.com and sign in using the **aaduser2** user account.
+1. Click **Next**, provide a mobile number for verification and click **Next**
+1. Type in the text code sent to you to verify. Click **Done**
+1. Change the users password and take note of the new password
+1. You have now verified that your conditional access policy has enforced MFA when aaduser2 signs into the Azure portal.
+1. Sign back into the portal with your standard user account and navigate back to **Azure Active Directory**.
+1. Under **Manage** select **Security**.
+1. Under **Protect** select **Conditional access**.
+1. Click the elipsis next to AZ500Policy1 and select **Delete**
+
+### Exercise 3: Implement Azure AD Identity Protection:
 
 The main tasks for this exercise are as follows:
 
@@ -325,28 +362,27 @@ The main tasks for this exercise are as follows:
 
 #### Task 1: Enable Azure AD Identity Protection
 
-1. From the lab virtual machine, start Microsoft Edge, browse to the Azure portal at [**http://portal.azure.com**](http://portal.azure.com) and sign in by using the Microsoft account you used to create the **AdatumLab101-4b** Azure AD tenant.
+1. From the lab virtual machine, start Microsoft Edge, browse to the Azure portal at [**http://portal.azure.com**](http://portal.azure.com) and sign in by using the Microsoft account you used to create the **AdatumLab500-04** Azure AD tenant.
 
-     > **Note**: Ensure that you are signed-in to the **AdatumLab101-4b** Azure AD tenant. You can use the **Directory + subscription** filter to switch between Azure AD tenants.
+     > **Note**: Ensure that you are signed-in to the **AdatumLab500-04** Azure AD tenant. You can use the **Directory + subscription** filter to switch between Azure AD tenants.
 
-1. In the Azure portal, navigate to the **New** blade.
+1. In the Azure portal, click **All services**.
 
-1. From the **New** blade, search Azure Marketplace for **Azure AD Identity Protection**.
+1. From the **All services** blade, search for **Azure AD Identity Protection**.
 
-1. Select the **Azure AD Identity Protection** in the list of search results and proceed to create an instance of **Azure AD Identity Protection** associated with the **AdatumLab101-4b** Azure AD tenant.
-
-1. In the Azure portal, navigate to the **All services** blade and use the search filter to display the **Azure AD Identity Protection** blade.
-
+1. Select the **Azure AD Identity Protection** in the list of search results.
 
 #### Task 2: Configure user risk policy
 
-1. From the **Azure AD Identity Protection** blade, navigate to the **Azure AD Identity Protection - User risk policy** blade
+1. From the **Azure AD Identity Protection** blade
 
-1. On the **Azure AD Identity Protection - User risk policy** blade, configure the **User risk remediation policy** with the following settings:
+1. Under **Protect** select **user risk policy**
+
+1. Configure the **User risk remediation policy** with the following settings:
 
     - Assignments:
 
-        - Users: **All users** (be sure to exclude the current admin account to avoid getting locked out of the tenant)
+        - Users: **All users** (be sure to **exclude** your current admin account to avoid getting locked out of the tenant)
 
         - Conditions:
 
@@ -359,13 +395,14 @@ The main tasks for this exercise are as follows:
         - **Require password change**
 
     - Enforce Policy: **On**
+    - Click **Save**
 
 
 #### Task 3: Configure sign-in risk policy
 
-1. From the **Azure AD Identity Protection - User risk policy** blade, navigate to the **Azure AD Identity Protection - Sign-in risk policy** blade
+1. Under **Protect** select **Sign-in risk policy**
 
-1. On the **Azure AD Identity Protection - Sign-in risk policy** blade, configure the **Sign-in risk remediation policy** with the following settings:
+1. Configure the **Sign-in risk remediation policy** with the following settings:
 
     - Assignments:
 
@@ -383,6 +420,8 @@ The main tasks for this exercise are as follows:
 
     - Enforce Policy: **On**
 
+    - Click **Save**
+
 
 #### Task 4: Validate Azure AD Identity Protection configuration by simulating risk events
 
@@ -390,7 +429,7 @@ The main tasks for this exercise are as follows:
 
 1. In the Azure portal, set the **Directory + subscription** filter to the **Default Directory** (the original Azure AD tenant.)
 
-1. In the Azure portal, navigate to the **az500-04-vm1** blade.
+1. In the Azure portal, click on Virtual Machines from the portal manu then navigate to the **az500-04-vm1** blade.
 
 1. From the **az500-04-vm1** blade, connect to the Azure VM via Remote Desktop session and, when prompted to sign in, provide the following credentials:
 
@@ -408,7 +447,7 @@ The main tasks for this exercise are as follows:
 
 1. Once the installation completes, start the ToR Browser, use the **Connect** option on the initial page, and navigate to the Application Access Panel at [**https://myapps.microsoft.com**](https://myapps.microsoft.com)
 
-1. When prompted, sign in with the **aaduser2** account you created in the previous exercise.
+1. When prompted, sign in with the **aaduser3** account you created in the previous exercise.
 
 1. You will be presented with the message **Your sign-in was blocked**. This is expected, since this account is not configured with multi-factor authentiation, which is required due to increased sign-in risk associated with the use of ToR Browser.
 
@@ -420,52 +459,25 @@ The main tasks for this exercise are as follows:
 
 1. Complete the verification and ensure that you successfully signed in to the Application Access Panel.
 
-1. Sign out as **aaduser1** and close the ToR Browser window.
+1. Sign out as **aaduser1** and close the ToR Browser window. 
 
-1. Start Internet Explorer, browse to the Azure portal at [**http://portal.azure.com**](http://portal.azure.com) and sign in by using the Microsoft account you used to create the **AdatumLab101-4b** Azure AD tenant.
+1. Navigate back to the original browser session and select **Virtual Machines** then **az500-04-vm1**
 
-1. In the Azure portal, set the **Directory + subscription** filter to **AdatumLab101-4b** (the newly created Azure AD tenant.)
+1. Select **Stop** and then **OK** to Deallocate the VM.
+
+1. Start Internet Explorer, browse to the Azure portal at [**http://portal.azure.com**](http://portal.azure.com) and sign in by using the Microsoft account you used to create the **AdatumLab500-04** Azure AD tenant.
+
+1. In the Azure portal, set the **Directory + subscription** filter to **AdatumLab500-04** (the newly created Azure AD tenant.)
 
      > **Note**: The **Directory + subscription** filter is located to the right of the Cloud Shell icon in the toolbar of the Azure portal
 
 1. In the Azure portal, navigate to the **Azure AD Identity Protection - Risk Detections** blade and note that the entry representing **Sign-in from anonymous IP address**.
 
-1. From the **Azure AD Identity Protection - Risk Detections** blade, navigate to the **Azure AD Identity Protection - Risky users** blade and note the entry representing **aaduser2**.
+1. From the **Azure AD Identity Protection** Under **Report** select **Risk Detections**
+Notice that we have multiple users with Risk detections from the sign in attempts.
 
-1. From the **Azure AD Identity Protection - Risky users** blade, navigate to the **Azure AD Identity Protection - Risky sign-ins** blade and note the entry representing **aaduser2**.
+1. Under **Report** select **Risky users** and note the entry representing **aaduser3**.
+
+1. From the **Azure AD Identity Protection - Risky users** blade, navigate to the **Azure AD Identity Protection - Risky sign-ins** blade and note the entry representing **aaduser3** and **aaduser1**.
 
 > **Result**: After you completed this exercise, you have enabled Azure AD Identity Protection, configured user risk policy and sign-in risk policy, as well as validated Azure AD Identity Protection configuration by simulating risk events
-
-
-
-## Exercise 3: Remove lab resources
-
-
-#### Task 1: Open Cloud Shell
-
-1. At the top of the portal, click the **Cloud Shell** icon to open the Cloud Shell pane.
-
-1. At the Cloud Shell interface, select **Bash**.
-
-1. At the **Cloud Shell** command prompt, type in the following command and press **Enter** to list all resource groups you created in this lab:
-
-   ```sh
-   az group list --query "[?starts_with(name,'az1010')].name" --output tsv
-   ```
-
-1. Verify that the output contains only the resource groups you created in this lab. These groups will be deleted in the next task.
-
-
-#### Task 2: Delete resource groups
-
-1. At the **Cloud Shell** command prompt, type in the following command and press **Enter** to delete the resource groups you created in this lab
-
-   ```sh
-   az group list --query "[?starts_with(name,'az1010')].name" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
-   ```
-
-1. Close the **Cloud Shell** prompt at the bottom of the portal.
-
-> **Note**: To remove the Azure AD tenant you created in this lab, follow https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/directory-delete-howto
-
-> **Result**: In this exercise, you removed the resources used in this lab.
