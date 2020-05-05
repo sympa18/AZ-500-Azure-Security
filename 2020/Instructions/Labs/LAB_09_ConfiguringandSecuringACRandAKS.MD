@@ -213,10 +213,81 @@ In this lab, you will:
     ```
     kubectl get service nginxinternal
 
-1. You should see something similar to this output which shows in my case that my website will be at the private IP 10.240.0.35
+1. You should see something similar to this output which shows in my case that my website will be at the private IP 10.240.0.35. Take note of your private IP for use later in this lab.
+
+    > When you view the service details, the IP address of the internal load balancer is shown in the EXTERNAL-IP column. In this context, External is in relation to the external interface of the load balancer, not that it receives a public, external IP address.
 
     ```
     NAME            TYPE           CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
     nginxinternal   LoadBalancer   10.0.78.106   10.240.0.35   80:31834/TCP   41s
     ```
 1. To be able to access this we need to deploy a server within the same VNET. 
+
+1. Navigate to **Resource Groups** > **myResourceGroup** Select **myResourceGroup-vnet**
+
+1. Under **Settings** Select **Subnets**. Click **+ Subnet**
+
+1. For **Name** Type in **JumpBox** and leave the default address range of  **10.0.0.0/24**. 
+
+1. Click **OK**
+
+1. Once the subnet has been created navigate to **Create a resource**, under **Popular** Click  **Windows Server 2016 Datacenter**.
+
+1. Choose the following settings
+
+   |Setting  |Value  |
+   |---------|---------|
+   |Subscription     |_your subscription_|
+   |Resource group     |**Use existing**: myResourceGroup |
+   |Virtual Machine name     |AKSJumpBox|
+   |Region     |East US|
+   |Administrator account | student |
+   |Password     | Pa55w.rd1234 |
+   |Public inbound ports     |Allow selected ports: RDP(3389)|
+
+1. Click **Next: Disks**
+1. Click **Next: Networking**
+1. Choose the following settings
+
+   |Setting  |Value  |
+   |---------|---------|
+   |Virtual network     |myResourceGroup-vnet|
+   |subnet     |JumpBox (10.0.0.0/24|
+   |Virtual Machine name     |AKSJumpBox|
+1. Leave everything else as default.
+1. Click **Next: Management**
+1. Set **Boot Diagnostics** to **Off**
+1. Click **Review + Create** then **Create**
+1. Once the VM has deployed click **Resource Groups** > **myResourceGroup**.
+
+1. You will notice that the AKSJumpBox and its resources now reside in the Resource group. You will also notice that we have Network security groups that we can control network flow within the Virtual network to the AKS Cluster.
+1. Click on the VM **AKSJumpBox**
+1. Click on the **Connect** button then **RDP**
+1. Ensure **Public IP Address** is selected, then click Doanload RDP File to connect to the VM via RDP.
+1. Open the file and when prompted click **Connect** 
+
+1. When prompted put in the following.
+Username : student
+Password : Pa55w.rd1234
+
+   |Username  | student |
+   |Password  | Pa55w.rd1234 |
+
+1. Click **Yes** when prompted
+1. Start Internet Explorer and type in the private IP you noted before. 
+
+1. You should be connectd to the NGINX website through the private IP.
+
+### Remove resources.
+
+1. Open Cloud Shell in Powershell
+
+1.  Remove the resource group by running the following command (When prompted to confirm press Y and press enter):
+    ```powershell
+    Remove-AzResourceGroup -Name "myResourceGroup"
+    Remove-AzResourceGroup -Name "MC_myResourceGroup_MyKubernetesCluster_eastus"
+    ```
+
+1. Close the **Cloud Shell** prompt at the bottom of the portal.
+
+> **Result**: In this exercise, you removed the resources used in this lab.
