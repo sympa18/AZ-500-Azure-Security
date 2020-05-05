@@ -10,7 +10,7 @@ lab:
 
 ## Lab scenario
 
-blah 
+blah .
 blah 
 blah
 

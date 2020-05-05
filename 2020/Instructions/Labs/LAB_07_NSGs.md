@@ -1,4 +1,4 @@
-# Module 2: Lab 5 - NSGs
+# Module 2: Lab 07 - NSGs
 
 
 You can filter network traffic inbound to and outbound from a virtual network subnet with a network security group. Network security groups contain security rules that filter network traffic by IP address, port, and protocol. Security rules are applied to resources deployed in a subnet. In this tutorial, you learn how to:
@@ -170,12 +170,20 @@ When the portal created the VMs, it created a network interface for each VM and 
 9.  Disconnect from the *myVmMgmt* VM.
 10.  In the *Search resources, services, and docs* box at the top of the Azure portal, begin typing *myVmWeb* from your computer. When **myVmWeb** appears in the search results, select it. Note the **Public IP address** for your VM. The address shown in the following picture is 137.135.84.74, but your address is different:
 
-       ![Screenshot](../Media/Module-2/e3bbd69d-95d0-4b3b-98ce-714d30b4d1ef.png)
   
 11.  To confirm that you can access the *myVmWeb* web server from the internet, open an internet browser on your computer and browse to `http://<public-ip-address-from-previous-step>`. You see the IIS welcome screen because port 80 is allowed inbound from the internet to the *myAsgWebServers* application security group that the network interface attached to the *myVmWeb* VM is in.
 
 
-| WARNING: Prior to continuing you should remove all resources used for this lab.  To do this in the **Azure Portal** click **Resource groups**.  Select any resources groups you have created.  On the resource group blade click **Delete Resource group**, enter the Resource Group Name and click **Delete**.  Repeat the process for any additional Resource Groups you may have created. **Failure to do this may cause issues with other labs.** |
-| --- |
+### Remove lab resources
+
+1. Open Cloud Shell in Powershell
+
+1.  Remove the resource group by running the following command (When prompted to confirm press Y and press enter):
+    ```powershell
+    Remove-AzResourceGroup -Name "myResourceGroup"
+    ```
+
+1. Close the **Cloud Shell** prompt at the bottom of the portal.
+
 
 **Results**: You have now completed this lab.
