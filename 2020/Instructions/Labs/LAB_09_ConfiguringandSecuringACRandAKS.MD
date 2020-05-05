@@ -1,10 +1,10 @@
 ---
 lab:
-    title: '0x - xxx'
-    module: 'Module 0x - xxx'
+    title: '09 - Configuring and Securing ACR and AKS'
+    module: 'Module 02 - Implement platform protection'
 ---
 
-# Lab 0x - xxx
+# Lab 09 - Configuring and Securing ACR and AKS
 
 # Student lab manual
 
