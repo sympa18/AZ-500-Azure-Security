@@ -18,7 +18,7 @@ spec:
         "beta.kubernetes.io/os": linux
       containers:
       - name: nginx
-        image: myContainerRegistrysympa.azurecr.io/sample/nginx:v1
+        image: <ACRUniquename>.azurecr.io/sample/nginx:v1
         ports:
         - containerPort: 80
         resources:
