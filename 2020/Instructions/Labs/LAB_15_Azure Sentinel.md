@@ -218,7 +218,7 @@ Azure Sentinel creates connections to services and apps by connecting to the ser
 1. Open Cloud Shell in Powershell
 
 1.  Remove the resource group by running the following command (When prompted to confirm press Y and press enter):(Use the Resource Group names that werecreated in your lab)
-    ```powershell
+    ```
     Remove-AzResourceGroup -Name "AZ500LAB131415"
     ```
 

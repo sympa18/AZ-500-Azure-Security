@@ -1,20 +1,39 @@
-# Module 3 - Lab 01: Key Vault (Implementing Secure Data by setting up Always Encrypted)
+---
+lab:
+    title: '10 - Key Vault (Implementing Secure Data by setting up Always Encrypted)'
+    module: 'Module 03 - Secure data and applications'
+---
 
+# Lab 10 - Key Vault (Implementing Secure Data by setting up Always Encrypted)
 
-**Scenario**
+# Student lab manual
 
-This module includes the following tasks:
+## Lab scenario
 
- - Azure confidential computing
- - Azure Azure Key Vault
+Contoso has a new application that has a compliance requirement for the data to be encrypted at all times, at rest in transit and in use. Furthermore they also need to ensure that they keep any and all secrets, and certificates in a secure location. 
+
+In this lab, you will get started with Azure Key Vault to create a hardened container (a vault) in Azure, to store and manage cryptographic keys and secrets in Azure. First you will use Azure PowerShell. Then you will store a password as a secret that could then be used with an Azure application.
+
+## Objectives
+
+Contoso would like to create proof of concept appplication that makes use of Always encrypted in SQL. They would like to ensure that they store and secrets, certificates and keys in Azure Key Vault where possible. They would also like to combine this with some of the advantages in Azure app registration to improve the security posture of the application.
+
+In this lab, you will:
+
++ Deploy an Azure Key Vault
++ Add a secret to Azure Key Vault 
++ Enable a client application
++ Use Key Vault to Encrypt Data with Azure SQL Database 
+
+## Instructions
+
+### Exercise 1
+
+#### Task 1: xxx
 
 
 ## Exercise 1: Introduction to Azure Key Vault
 
-
-**Scenario**
-
-In this lab, you will get started with Azure Key Vault to create a hardened container (a vault) in Azure, to store and manage cryptographic keys and secrets in Azure. First you will use Azure PowerShell. Then you will store a password as a secret that could then be used with an Azure application.
 
 ### Task 1: Download SQL Server Management Studio
 
@@ -32,28 +51,28 @@ In this exercise, you will use PowerShell to create an Azure Key Vault.
 
 2.  Use the following command to authenticate to Azure using the account for your Azure subscription.
 
-    ```powershell
+    ```
     Login-AzAccount
     ```
 
 4.  Create a new Resource Group 
 
-    ```powershell
-    New-AzResourceGroup -Name 'KeyVaultPSRG' -Location 'eastus'
+    ```
+    New-AzResourceGroup -Name 'AZ500LAB10' -Location 'eastus'
     ```
 
 
 5.  Create a key vault in the resource group. **The VaultName must be unique therefore change <keyvault name> to something unique.**
 
-    ```powershell
-    New-AzKeyVault -VaultName '<keyvault name>' -ResourceGroupName 'KeyVaultPSRG' -Location 'eastus'
+    ```
+    New-AzKeyVault -VaultName '<keyvault name>' -ResourceGroupName 'AZ500LAB10' -Location 'eastus'
     ```
 
     **Note**: The output of this shows important pieces of information: Vault Name in this case that is KeyVaultPS and the Vault URI: `https://KeyVaultPS.vault.azure.net`
 
 
 
-6.  In the Azure Portal open the **KeyVaultPSRG** Resource Group.
+6.  In the Azure Portal open the **AZ500LAB10** Resource Group.
 
 7.  Click on the KeyVaultPS to examine what you have created.
 
@@ -71,7 +90,7 @@ In this exercise, you will use PowerShell to create an Azure Key Vault.
 
 2.  Add a software-protected key to the Key Vault using this command. Be sure to change the placeholder text to your vault name.
 
-    ```powershell
+    ```
     $key = Add-AZKeyVaultKey -VaultName '<YourVaultName>' -Name 'MyLabKey' -Destination 'Software'
     ```
 
@@ -88,14 +107,14 @@ In this exercise, you will use PowerShell to create an Azure Key Vault.
 
 7.  Move back to the PowerShell window. To display the current version of the key, enter the following command.
 
-    ```powershell
+    ```
     $Key.key.kid
     ```
 
 
 8.  To view the Key you just created you can use the Get-AzureKeyVaultKey cmdlet. Be sure to change the placeholder text to your vault name.
 
-    ```powershell
+    ```
     Get-AZKeyVaultKey -VaultName '<YourVaultName>'
     ```
 
@@ -104,14 +123,14 @@ In this exercise, you will use PowerShell to create an Azure Key Vault.
 
 1.  Next, you will add a secret to the **KeyVaultPS**. To do this, add a variable named **$secretvalue** using the following code.
 
-    ```powershell
+    ```
     $secretvalue = ConvertTo-SecureString 'Pa55w.rd1234' -AsPlainText -Force
     ```
 
 
 2.  Next add the secret to the Vault with this command. Be sure to change the placeholder text to your vault name.
 
-    ```powershell
+    ```
     $secret = Set-AZKeyVaultSecret -VaultName 'YourVaultName' -Name 'SQLPassword' -SecretValue $secretvalue
     ```
 
@@ -130,7 +149,7 @@ In this exercise, you will use PowerShell to create an Azure Key Vault.
 
 8.  To view the Secret, use the Get-AzureKeyVaultSecret cmdlet. Be sure to change the placeholder text to your vault name.
 
-    ```powershell
+    ```
     Get-AZKeyVaultSecret -VaultName 'YourVaultName'
     ```
 
@@ -183,7 +202,7 @@ You will enable your client application to access the Azure SQL Database service
 8.  Run the following Powershell in the **Powershell ISE** to set the sqlApp key permissions replacing the placeholder text with **your account details**
 
     
-    ```powershell
+    ```
     $subscriptionName = '[Azure_Subscription_Name]'
     $applicationId = '[Azure_AD_Application_ID]'
     $resourceGroupName = '[Resource_Group_with_KeyVault]'
@@ -191,11 +210,11 @@ You will enable your client application to access the Azure SQL Database service
     $vaultName = '[KeyVault_Name]' 
     ```
     
-    ```powershell
+    ```
     Login-AzAccount
     ```
     
-    ```powershell
+    ```
     Set-AZKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGroupName -ServicePrincipalName $applicationId -PermissionsToKeys get,wrapKey,unwrapKey,sign,verify,list
     ```
 
@@ -213,7 +232,7 @@ In this task, you will create a blank Azure SQL Database, connect to it with SQL
 
 2.  Provide the following details on the SQL Database blade and click **Create**.
 
-      - Resource Group: (create new) **SQLEncryptRG**
+      - Resource Group: (use existing) **AZ500LAB10**
       
       - Database Name: **medical**
 
@@ -273,7 +292,7 @@ In this task, you will create a blank Azure SQL Database, connect to it with SQL
 
 2.  Paste the following code into the query window and click Execute
 
-     ```sql
+     ```
      CREATE TABLE [dbo].[Patients](
     
      [PatientId] [int] IDENTITY(1,1),
@@ -341,11 +360,11 @@ In this task, you will create a blank Azure SQL Database, connect to it with SQL
 
 7.  Install the following **NuGet** packages by going to **Tools** > **NuGet Package Manager** > **Package Manager Console.**
 
-    ```powershell
+    ```
     Install-Package     Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider
     ```
 
-    ```powershell
+    ```
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
     ```
 
@@ -368,22 +387,31 @@ In this task, you will create a blank Azure SQL Database, connect to it with SQL
 
 1.  Run the following query to see the data that was loaded into the database is encrypted.
 
-    ```sql
+    ```
     SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
     ```
 
 
 1.  Now, move back to the console application where you will be asked to **Enter** a **Valid SSN**. This will query the encrypted column for the data. Notice that with the key called from the Key Vault, now the data is unencrypted and shown to the console window.
 
-    ```sql
+    ```
     999-99-0003
     ```
 
 1.  To **Exit** you press enter.
 
+### Task 11: Remove resources.
 
-| WARNING: Prior to continuing you should remove all resources used for this lab.  To do this in the **Azure Portal** click **Resource groups**.  Select any resources groups you have created.  On the resource group blade click **Delete Resource group**, enter the Resource Group Name and click **Delete**.  Repeat the process for any additional Resource Groups you may have created. **Failure to do this may cause issues with other labs.** |
-| --- |
+1. Open Cloud Shell in Powershell
+
+1.  Remove the resource group by running the following command (When prompted to confirm press Y and press enter):
+    ```
+    Remove-AzResourceGroup -Name "AZ500LAB10"
+    ```
+
+1. Close the **Cloud Shell** prompt at the bottom of the portal.
+
+> **Result**: In this exercise, you removed the resources used in this lab.
 
 **Results** : You have now completed this Lab.
 
