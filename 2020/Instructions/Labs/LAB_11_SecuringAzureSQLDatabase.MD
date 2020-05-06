@@ -1,44 +1,35 @@
 ---
 lab:
-    title: '0x - xxx'
-    module: 'Module 0x - xxx'
+    title: '11 - Securing Azure SQL Database'
+    module: 'Module 03 - Secure data and applications'
 ---
 
-# Lab 0x - xxx
+# Lab 11 - Securing Azure SQL Database
 
 # Student lab manual
 
 ## Lab scenario
 
-blah 
-blah 
-blah
+Contoso would like to take advantage of some of the security features for Azure SQL database. They are specifically intersted in: 
+Protection against attacks such as SQL Injection and Data exfiltration. 
+The security team also needs the ability to audit the SQL databases of their choosing. 
+Data classification has also been brought up as a need of the company.
 
 ## Objectives
 
 In this lab, you will:
 
-+ Task 1: xxx
-+ Task 2: xxx
-+ Task 3: xxx
-+ Task 4: xxx 
++ Task 1: Deploy an Azure SQL Database
++ Task 2: Configure Advanced Data Protection
++ Task 3: Begin Data Classification
++ Task 4: Enable auditing on your database
++ Task 5: Review audit logs on the SQL DB.
 
 ## Instructions
 
-### Exercise 1
-
-#### Task 1: xxx
-
-
-
-
-
-
-# Module 3: Classify a SQL Database 
-
 ## Exercise 1: Classify your SQL Database
 
-### Task 1: Lab Setup
+### Task 1: Deploy an Azure SQL Database
 
 1.  Click **Create a resource** and type in **template** and choose **Template deployment (deploy using custom templates)** > Click **Create**.
 
@@ -49,8 +40,6 @@ In this lab, you will:
 
 1. Select the following file **2020\Allfiles\Labs\LAB_11\azuredeploy.parameters.json** > Click **Open** > Click **Save**
 
-
-
 1.  Under **Resource group** click create new and use the default name "**AZ500LAB11**" > Location **East US** or a location near you.
 
 1.  You can use the default populated **SQL server name** with a **unique** string added to make a **globaly unique** name
@@ -58,6 +47,8 @@ In this lab, you will:
 1. Select **I agree to the terms and conditions stated above** > Click **Purchase**
 warning
 **Note**: You must wait for the SQL database with the test data to deploy
+
+### Task 2: Configure Advanced Data Protection
 
 1.  Select **Resource Groups** > **AZ500LAB11**
 
@@ -94,11 +85,12 @@ warning
 
  > If you receive an error about the storage container path. The storage account may not have completely deployed as of yet. Wait a few minutes and simply reselect the same storage account. Then click Save again.
 
+
+## Task 3: Begin Data Classification
+
 1.  **Return** to the previous **Advanced Data Security** pane
 
 1.  **Select** the **Data discovery** and **classification** card.
-
-## Exercise 2: Begin Classification
 
 1.  To begin classifying your data, select the **Classification tab** at the top of the window.
 
@@ -121,7 +113,7 @@ warning
 
 
 
-### Exercise 3 : Enable auditing on your database
+### Task 4 : Enable auditing on your database
 
 1.  Select your resource group **AZ500LAB11** 
 
@@ -147,11 +139,9 @@ warning
 
 12. Click **Save** to save the **auditing configuration**
 
-## Exercise 2: Review audit logs
+### Task 5: Review audit logs on the SQL DB.
 
-### Task 1: Review audit logs on the SQL DB.
-
-1.  To review audit logs for a database return to the resource group created in the lab setup
+1.  Navigate to **Resource groups** > **AZ500LAB11**
 
 1.  Click **AZ500LabDb (az500labserver2/AZ500LabDb)** to select your test database
 
@@ -175,7 +165,8 @@ Notice that you can select for audit logs to be written to an Azure storage acco
 
 1. Open Cloud Shell in Powershell
 
-1.  Remove the resource group by running the following command (When prompted to confirm press Y and press enter):(Use the Resource Group names that werecreated in your lab)
+1.  Remove the resource group by running the following command (When prompted to confirm press Y and press enter):
+
     ```
     Remove-AzResourceGroup -Name "AZ500LAB11"
     ```

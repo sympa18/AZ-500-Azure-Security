@@ -107,7 +107,7 @@ Azure Sentinel creates connections to services and apps by connecting to the ser
 
 1. First we need to deploy a new Login app. Select **Create a new resource** and type **template** then select **Template deployment (deploy using custom templates)** > Click **Create** > **Build your own template in the editor** 
 
-1. select **Load file** and choose **2020\Allfiles\Labs\LAB_15\azuredeploy.json** > Click **Open** > Click **Save**
+1. select **Load file** and choose **2020\Allfiles\Labs\LAB_15\changeincidentseverity.json** > Click **Open** > Click **Save**
 
      > Note you can find many PLaybook and other Azure Sentinel examples in the following Github Repository. https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks 
 
