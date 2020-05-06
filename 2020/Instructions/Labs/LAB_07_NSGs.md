@@ -1,13 +1,27 @@
-# Module 2: Lab 07 - NSGs
+---
+lab:
+    title: '07 - Network Security Groups and Application Security Groups'
+    module: 'Module 02 - Implement platform protection'
+---
 
+# Lab 07 - Network Security Groups and Application Security Groups
 
-You can filter network traffic inbound to and outbound from a virtual network subnet with a network security group. Network security groups contain security rules that filter network traffic by IP address, port, and protocol. Security rules are applied to resources deployed in a subnet. In this tutorial, you learn how to:
+# Student lab manual
+
+## Lab scenario
+
+You can filter network traffic inbound to and outbound from a virtual network subnet with a network security group. Network security groups contain security rules that filter network traffic by IP address, port, and protocol. Security rules are applied to resources deployed in a subnet. 
+
+## Objectives
+
+In this tutorial, you learn how to:
 
 - Create a network security group and security rules
 - Create a virtual network and associate a network security group to a subnet
 - Deploy virtual machines (VM) into a subnet
 - Test traffic filters
 
+## Instructions
 
 ## Exercise 1: Filter network traffic with a network security group using the Azure portal
 
@@ -22,7 +36,7 @@ You can filter network traffic inbound to and outbound from a virtual network su
     | Name                    | myVirtualNetwork                                   |
     | Address space           | 10.0.0.0/16                                        |
     | Subscription            | Select your subscription.                          |
-    | Resource group          | Select **Create new** and enter *myResourceGroup*. |
+    | Resource group          | Select **Create new** and enter *AZ500LAB07*. |
     | Location                | Select **East US**.                                |
     | Subnet- Name            | mySubnet                                           |
     | Subnet - Address range  | 10.0.0.0/24                                        |
@@ -41,7 +55,7 @@ An application security group enables you to group together servers with similar
     | ---            | ---                                                           |
     | Name           | myAsgWebServers                                               |
     | Subscription   | Select your subscription.                                     |
-    | Resource group | Select **Use existing** and then select  **myResourceGroup**. |
+    | Resource group | Select **Use existing** and then select  **AZ500LAB07**. |
     | Location       | East US                                                       |
 
 4.  Complete step 3 again, specifying the following values:
@@ -50,7 +64,7 @@ An application security group enables you to group together servers with similar
     | ---            | ---                                                           |
     | Name           | myAsgMgmtServers                                              |
     | Subscription   | Select your subscription.                                     |
-    | Resource group | Select **Use existing** and then select  **myResourceGroup**. |
+    | Resource group | Select **Use existing** and then select  **AZ500LAB07**. |
     | Location       | East US                                                       |
 
 ### Task 3:  Create a network security group
@@ -63,7 +77,7 @@ An application security group enables you to group together servers with similar
     |---|---|
     |Name|myNsg|
     |Subscription| Select your subscription.|
-    |Resource group | Select **Use existing** and then select *myResourceGroup*.|
+    |Resource group | Select **Use existing** and then select *AZ500LAB07*.|
     |Location|East US|
 
 ### Task 4:  Associate network security group to subnet
@@ -102,16 +116,16 @@ An application security group enables you to group together servers with similar
 ### Task 6:  Create virtual machines
 
 1.  Select **+ Create a resource** found on the upper left corner of the Azure portal.
-2.  Select **Compute**, and then select **Windows Server 2016 Datacenter**.
+2.  Under **Popular** select **Windows Server 2016 Datacenter**.
 3.  Enter, or select, the following information, and accept the defaults for the remaining settings:
 
     |Setting|Value|
     |---|---|
     |Subscription| Select your subscription.|
-    |Resource group| Select **Use existing** and select **myResourceGroup**.|
+    |Resource group| Select **Use existing** and select **AZ500LAB07**.|
     |Name|myVmWeb|
     |Location| Select **East US**.|
-    |User name| Enter a user name of your choosing.|
+    |User name| localadmin|
     |Password| Pa55w.rd1234 |
 
    
@@ -146,7 +160,11 @@ When the portal created the VMs, it created a network interface for each VM and 
 
 1.  Connect to the *myVmMgmt* VM. Enter *myVmMgmt* in the search box at the top of the portal. When **myVmMgmt** appears in the search results, select it. Select the **Connect** button.
 2.  Select **RDP**, then **Download RDP file**.
-3.  Open the downloaded rdp file and select **Connect**. Enter the user name and password you specified when creating the VM. You may need to select **More choices**, then **Use a different account**, to specify the credentials you entered when you created the VM.
+3.  Open the downloaded rdp file and select **Connect**. Enter the user name and password below
+    - localadmin
+    - Pa55w.rd1234
+
+1. You may need to select **More choices**, then **Use a different account**, to specify the credentials you entered when you created the VM.
 4.  Select **OK**.
 5.  You may receive a certificate warning during the sign-in process. If you receive the warning, select **Yes** or **Continue** to proceed with the connection.
 
@@ -154,7 +172,7 @@ When the portal created the VMs, it created a network interface for each VM and 
 
 6.  Connect to the *myVmWeb* VM from the *myVmMgmt* VM by entering the following command in a PowerShell session:
 
-    ```powershell
+    ```
     mstsc /v:myVmWeb
     ```
 
@@ -162,7 +180,7 @@ When the portal created the VMs, it created a network interface for each VM and 
 
 7.  To install Microsoft IIS on the *myVmWeb* VM, enter the following command from a PowerShell session on the *myVmWeb* VM:
 
-    ```powershell
+    ```
     Install-WindowsFeature -name Web-Server -IncludeManagementTools
     ```
 
@@ -179,8 +197,8 @@ When the portal created the VMs, it created a network interface for each VM and 
 1. Open Cloud Shell in Powershell
 
 1.  Remove the resource group by running the following command (When prompted to confirm press Y and press enter):
-    ```powershell
-    Remove-AzResourceGroup -Name "myResourceGroup"
+    ```
+    Remove-AzResourceGroup -Name "AZ500LAB07"
     ```
 
 1. Close the **Cloud Shell** prompt at the bottom of the portal.
