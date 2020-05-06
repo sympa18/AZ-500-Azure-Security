@@ -74,10 +74,125 @@ Azure Sentinel creates connections to services and apps by connecting to the ser
 
 1. We should now see a new Active rule.
 
-### Create a custom rule and automate the response.
+### Task x Create a new Playbook in Logic Apps.
 
-1. 
+1. First we need to deploy a new Login app. Select **Create a new resource** and type **template** then select **Template deployment (deploy using custom templates)** > Click **Create** > **Build your own template in the editor** 
+
+1. select **Load file** and choose **2020\Allfiles\Labs\LAB_15\azuredeploy.json** > Click **Open** > Click **Save**
+
+     > Note you can find many PLaybook and other Azure Sentinel examples in the following Github Repository. https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks 
+
+1. Choose the following settings 
+
+   |Setting  |Value  |
+   |---------|---------|
+   |Subscription | your subscription |
+   |Resource group | myResourceGroup |
+   |Region | East US |
+   |Playbook Name | Change-Incident-Severity|
+   |User Name | your subscriptions global admin account upn.)
+
+1. Select ***I agree ....*** > Click **Purchase**
+
+1. once the deployment is complete (in the bell icon) **click on go to resource group**
+
+1. Select the new Logic app **Change-Incident-Severity**
+
+1. Click **Edit**
+
+1. Click on the first trigger called **Connections** > Select **Add new**
+
+1. Ensure you have your default directory that has your Azure Sentinel installed. and click **Sign in**
+
+1. Sign in with your subscriptions account.
+
+1. Now repeat this process for the other actions beneath this called Connections(Inlcluding the one in the If tru statement). except you will need to simply select the new connection.
+
+1. Once all steps do not show a warning symbol click **Save**
+
+1. In this lab we wont be able to produce an incident but we can show how to connect an alert rule with a playbook(Logic App)
 
 
+### Task x Create a custom alert and configure a Playbook as an auromated response.
+
+1. navigate to **All Services** and type in **Azure Sentinel** > Select **Azure Sentinel**
+
+1. Select the **myWorkspaceDemo(yourname)**
+
+1. Under **Configuration** select **Analytics**.
+
+1. Click **Create** > **Scheduled query rule**
+
+1. Fill in the following details
+
+   |Setting  |Value  |
+   |---------|---------|
+   |Name  | Playbook Demo |
+   | Tactics | Initial Access |
+
+1. Click **Next: Set rule logic**
+
+1. in Rule query paste in the following query which will tell us when somebody makes a change to Just In Time rules.
+
+     ```
+     AzureActivity
+     | where ResourceProviderValue == "Microsoft.Security" 
+     | where Category == "Security" 
+     | where OperationNameValue == "Microsoft.Security/locations/jitNetworkAccessPolicies/write" 
+     ```
+1. Under **Query scheduling** Change **Run query every** to **5 minutes**
+
+1. Click **Next:Incident Settings**
+
+1. leave at default and click **Next:Automated response**
+
+1. Select **Change-Incident-Severity** then click **Next:Review** 
+
+1. Click **Create**
+
+1. You should now see a new Alert called **Playbook Demo**. Note that when this incident occurs it should have a medium level severity
+
+### Task x : Invoke an incident
+
+1. Navigate to **Security Center**
+
+1. Under **Advanced cloud defense** select **Just in time VM access**
+
+1. Select **myVM** then click on the **elipsis** and select **Remove** > then **Yes**
+
+1. Navigate to **Monitor** > **Activity Log** You should see an entry showing **Delete JIT Network Access Policies** (You maye need to wait a few minutes)
+
+1. navigate to **All Services** and type in **Azure Sentinel** > Select **Azure Sentinel**
+
+1. Select the **myWorkspaceDemo(yourname)**
+
+1. you should see in the dashboard a few Alerts that have just occured.
+
+1. Click on **Threat Management** > **Incidents**
+
+1. We can see that we have multiple Incidents at Medium severity lebel.
+
+1. wait at least 5 minutes until the playbook is invoked. you can check the run status under **Configuration** > **Playbooks**
+
+1. Once a Playbook has been involed it will show the status , Runs, Suvveeded Failed attempts.
+
+1. When the runbook has completed go back to **Incidents** and we can see that our incidents have been escalated to a **High** Severity
+
+1. If we want to manually change the severity or Status of an incident we can simply select the incident and click on **Actions**.
+
+1. Then we can choose the Severity level and the Status of the Incodent.
 
 **Results**: You have now completed this lab.
+
+### Remove resources.
+
+1. Open Cloud Shell in Powershell
+
+1.  Remove the resource group by running the following command (When prompted to confirm press Y and press enter):(Use the Resource Group names that werecreated in your lab)
+    ```powershell
+    Remove-AzResourceGroup -Name "myResourceGroup"
+    ```
+
+1. Close the **Cloud Shell** prompt at the bottom of the portal.
+
+> **Result**: In this exercise, you removed the resources used in this lab.

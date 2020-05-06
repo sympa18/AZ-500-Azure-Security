@@ -267,9 +267,9 @@ In this lab, you will:
 1. Open the file and when prompted click **Connect** 
 
 1. When prompted put in the following.
-Username : student
-Password : Pa55w.rd1234
 
+   |Setting  |Value  |
+   |---------|---------|
    |Username  | student |
    |Password  | Pa55w.rd1234 |
 
