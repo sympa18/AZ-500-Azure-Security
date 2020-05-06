@@ -1,16 +1,12 @@
 ---
 lab:
-    title: 'Implement Directory Synchronization'
+    title: '06 - Implement Directory Synchronization'
     module: 'Module 01 - Manage Identity and access'
 ---
 
 # Lab 06: Implement Directory Synchronization
 
-All tasks in this lab are performed from the Azure portal (including a PowerShell Cloud Shell session) except for Exercise 3 Task 1, Exercise 3 Task 2, and Exercise 3 Task 3, which include steps performed from a Remote Desktop session to an Azure VM
-
-   > **Note**: When not using Cloud Shell, the lab virtual machine must have the Azure PowerShell 1.2.0 module (or newer) installed [https://docs.microsoft.com/en-us/powershell/azure/install-az-ps](https://docs.microsoft.com/en-us/powershell/azure/install-az-ps)
-
-Lab files: none
+# Student lab manual
 
 ### Scenario
 
@@ -50,7 +46,7 @@ The main tasks for this exercise are as follows:
 
     > **Note**: To identify Azure regions where you can provision Azure VMs, refer to [**https://azure.microsoft.com/en-us/regions/offers/**](https://azure.microsoft.com/en-us/regions/offers/)
 
-    ```powershell
+    ```
     Test-AzDnsAvailability -DomainNameLabel <custom-label> -Location '<location>'
     ```
 
@@ -80,7 +76,7 @@ The main tasks for this exercise are as follows:
 
     - Subscription: the name of the subscription you are using in this lab
 
-    - Resource group: the name of a new resource group **az1000501-RG**
+    - Resource group: the name of a new resource group **AZ500LAB06**
 
     - Location: the name of the Azure region which you used in the previous task
 
@@ -301,7 +297,7 @@ The main tasks for this exercise are as follows:
 
 1. From the Windows PowerShell prompt, start Azure AD Connect delta synchronization by running the following:
 
-   ```powershell
+   ```
    Import-Module -Name 'C:\Program Files\Microsoft Azure AD Sync\Bin\ADSync\ADSync.psd1'
 
    Start-ADSyncSyncCycle -PolicyType Delta
@@ -325,7 +321,7 @@ The main tasks for this exercise are as follows:
 
 1. From the Windows PowerShell console, install the MsOnline PowerShell module by running the following (when prompted, in the NuGet provider is required to continue dialog box, type **Yes** and hit Enter.):
 
-   ```powershell
+   ```
    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
    Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
    Install-Module MsOnline -Force
@@ -333,19 +329,19 @@ The main tasks for this exercise are as follows:
 
 1. From the Windows PowerShell console, connect to the AdatumSync Azure AD tenant by running the following (when prompted, sign in with the SyncAdmin credentials):
 
-   ```powershell
+   ```
    Connect-MsolService
    ```
 
 1. From the Windows PowerShell console, disable the Azure AD Connect synchronization by running the following:
 
-   ```powershell
+   ```
    Set-MsolDirSyncEnabled -EnableDirSync $false -Force
    ```
 
 1. From the Windows PowerShell console, verify that the operation was successful by running the following:
 
-   ```powershell
+   ```
    (Get-MSOLCompanyInformation).DirectorySynchronizationEnabled
    ```
 
@@ -358,7 +354,7 @@ The main tasks for this exercise are as follows:
 1. In the Azure portal, navigate to the **Users - All users** blade of the AdatumSync Azure AD tenant and delete all users with the exception of the SyncAdmin account.
 
     > **Note**: You might need to wait a few hours before you can complete this task in the portal. If the Delete user option is not avalable, switch back to the PowerShell window and run the following command:
-    >```powershell
+    >```
     >Get-MsolUser | where DisplayName -NE "syncadmin" | Remove-MsolUser -Force
     >```
     >Then retun to the portal and **Refresh** the Users list.
@@ -387,8 +383,8 @@ The main tasks for this exercise are as follows:
 1. Open Cloud Shell in Powershell
 
 1.  Remove the resource group by running the following command (When prompted to confirm press Y and press enter):
-    ```powershell
-    Remove-AzResourceGroup -Name "az1000501-RG"
+    ```
+    Remove-AzResourceGroup -Name "AZ500LAB06"
     ```
 
 1. Close the **Cloud Shell** prompt at the bottom of the portal.
