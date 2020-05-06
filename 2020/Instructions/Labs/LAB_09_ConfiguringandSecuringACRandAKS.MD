@@ -37,12 +37,12 @@ In this lab, you will:
 
 1. Run the following command to create a new resource group
 
-    ```bash
+    ```
     az group create --name myResourceGroup --location eastus
     ```
 1. Now we need to create a brand new Azure Container Registry. Type in the following command into Cloud Shell replacing  with a globally unique name.(Take note of this for use later in the lab)
 
-    ```bash
+    ```
     az acr create --resource-group myResourceGroup --name <ACRuniquename> --sku Basic
     ```
 1. Once that has completed, in the portal navigate to **Resource Groups** > **myResourceGroup**. You should see the new container registry that you created. (It may take a minute or two to appear. Refresh your window)
@@ -115,20 +115,20 @@ In this lab, you will:
 
 1. Once the deployment is complete navigate to **Resource Groups**. Notice that you will have a new resource group that holds components of the AKS Nodes named similar to this format dependig on the location **MC_myResourceGroup_MyKubernetesCluster_eastus**. You will also find your AKS Cluster in the myResourceGroup along with the new VNET.
 
-1. Lets now connect to our Kubernetes cluster. Open **Cloud Shell** and select **Bash**. Type in the following command
+1. Lets now connect to our Kubernetes cluster. Open **Cloud Shell** and select ****. Type in the following command
 
-    ```bash
+    ```
     az aks get-credentials --resource-group myResourceGroup --name MyKubernetesCluster
     ```
 1. now type in the following command to ensure you can see your nodes.
 
-    ```bash
+    ```
     kubectl get nodes
     ```
 
 ### Task 4: Give AKS permission to access ACR
 1. We now need to give AKS permission to access our container registry. Run the following command to do that. (Note this may take between 10 and 15 minutes to complete. You will also notice the the AKS cluster is in an updating state during the update)
-    ```bash
+    ```
     az aks update -n MyKubernetesCluster -g myResourceGroup --attach-acr <ACRuniquename> 
     ```
     > Note this may take up to 10 minutes
@@ -282,7 +282,7 @@ Password : Pa55w.rd1234
 
 1. Open Cloud Shell in Powershell
 
-1.  Remove the resource group by running the following command (When prompted to confirm press Y and press enter):
+1.  Remove the resource group by running the following command (When prompted to confirm press Y and press enter):(Use the Resource Group names that werecreated in your lab)
     ```powershell
     Remove-AzResourceGroup -Name "myResourceGroup"
     Remove-AzResourceGroup -Name "MC_myResourceGroup_MyKubernetesCluster_eastus"
