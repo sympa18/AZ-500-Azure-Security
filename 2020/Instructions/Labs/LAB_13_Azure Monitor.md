@@ -1,16 +1,32 @@
-# Module 4: Lab 1 - Azure Monitor
+---
+lab:
+    title: '01 - Azure Monitor'
+    module: 'Module 04 - Manage security operations'
+---
+
+# Lab 01 - Azure Monitor
+
+# Student lab manual
+
+## Lab scenario
 
 
 Azure Monitor maximizes the availability and performance of your applications and services by delivering a comprehensive solution for collecting, analyzing, and acting on telemetry from your cloud and on-premises environments. It helps you understand how your applications are performing and proactively identifies issues affecting them and the resources they depend on.
 
-In this lab you will configure Azure Monitor to:
+Contoso would like to see a proof of concept for their secuirity team. They would like to see Monitoring, Security Posture of the subscription and what Azure has to offer in terms of a SIEM and a SOAR. They initially want to start with monitoring capabilities of Azure.
 
-- Collect data from an Azure virtual machine.
-- Use Application Insights to monitor your website.
+## Objectives
 
+Contoso would like to see the capabilities of Azure Monitor and would like the following tasks completed.
+- 
++ Task 1: Deploy an Azure VM to monitor
++ Task 2: Create a workspace
++ Task 3: Enable the Log Analytics VM Extension
++ Task 4: Collect event and performance of a Windows VM
++ Task 5: View data collected
 
+## Instructions
 
- 
 ## Exercise 1: Collect data from an Azure virtual machine with Azure Monitor
 
 
@@ -22,11 +38,11 @@ Azure Monitor can collect data directly from your Azure virtual machines into a 
 1.  Open the Azure Cloud Shell and run the following two commands to create a Resource Group and Azure VM that you will use to monitor:
 
     ```
-    New-AzResourceGroup -Name myResourceGroup -Location EastUS
+    New-AzResourceGroup -Name AZ500LAB131415 -Location EastUS
     ```
 
     ```
-    New-AzVm -ResourceGroupName "myResourceGroup" -Name "myVM" -Location "East  US" -VirtualNetworkName "myVnet" -SubnetName "mySubnet" -SecurityGroupName   "myNetworkSecurityGroup" -PublicIpAddressName "myPublicIpAddress"     -OpenPorts 80,3389
+    New-AzVm -ResourceGroupName "AZ500LAB131415" -Name "myVM" -Location "East  US" -VirtualNetworkName "myVnet" -SubnetName "mySubnet" -SecurityGroupName   "myNetworkSecurityGroup" -PublicIpAddressName "myPublicIpAddress"     -OpenPorts 80,3389
     ```
 
 1.  When prompted for credentials enter **LocalAdmin** as the User and use the password **Pa55w.rd1234**
@@ -39,7 +55,7 @@ Azure Monitor can collect data directly from your Azure virtual machines into a 
 2.  Select **Add**, and then select choices for the following items:
 
        * Select a **Subscription** to link to by selecting from the drop-down list if the default selected is not appropriate.
-       * For **Resource Group**, select **myResourceGroup** which is the Resource Group that contains the VM you created in Task 1.
+       * For **Resource Group**, select **AZ500LAB131415** which is the Resource Group that contains the VM you created in Task 1.
        * Provide a unique name for the new **Log Analytics workspace**, such as *myWorkspaceDemoyourname*.  
        * Select the **EastUS** as the location. 
        * Leave the pricing Tier as **Per Gb (2018)**
@@ -47,7 +63,7 @@ Azure Monitor can collect data directly from your Azure virtual machines into a 
 3.  Click **Review + Create** > **Create**
 
 
-### Task 2: Enable the Log Analytics VM Extension
+### Task 3: Enable the Log Analytics VM Extension
 
 
 For Windows and Linux virtual machines already deployed in Azure, you install the Log Analytics agent with the Log Analytics VM Extension. Using the extension simplifies the installation process and automatically configures the agent to send data to the Log Analytics workspace that you specify. The agent is also upgraded automatically when a newer version is released, ensuring that you have the latest features and fixes. Before proceeding, verify the VM is running otherwise the process will fail to complete successfully. 
@@ -68,7 +84,7 @@ For Windows and Linux virtual machines already deployed in Azure, you install th
 
 6.  After you install and connect the agent, the **Log Analytics connection status** will be updated with **This workspace**.
 
-### Task 3: Collect event and performance of a Windows VM.
+### Task 4: Collect event and performance of a Windows VM.
 
 
 Azure Monitor can collect events from the Windows event logs or Linux Syslog and performance counters that you specify for longer term analysis and reporting, and take action when a particular condition is detected. Follow these steps to configure collection of events from the Windows system log and Linux Syslog, and several common performance counters to start with.  
@@ -93,7 +109,7 @@ Azure Monitor can collect events from the Windows event logs or Linux Syslog and
 1.  Select **Save** at the top of the page to save the configuration. Click **OK**
 
 
-### Task 4: View data collected
+### Task 5: View data collected
 
 
 Now that you have enabled data collection, lets run a simple log search example to see some data from the target VMs.  
@@ -110,5 +126,5 @@ Now that you have enabled data collection, lets run a simple log search example 
 
        > Please leave the resources in this lab for the following labs on Azure Security Center and Azure Sentinel
 
-**Results**: In this lab, you learned how to monitor resources with Azure Monitor.
+**Results**: In this lab, you learned how to monitor resources with Azure Monitor. Do not remove the resources from this lab as they are needed for both the Azure Security Center lab and the Azure Sentinel lab.
 

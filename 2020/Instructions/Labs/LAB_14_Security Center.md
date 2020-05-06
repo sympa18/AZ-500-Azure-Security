@@ -1,10 +1,33 @@
-# Module 4: Lab 14 -Security Center
+---
+lab:
+    title: '14 - Azure Security Center'
+    module: 'Module 04 - Manage security operations'
+---
 
+# Lab 014 - Azure Security Center
 
+# Student lab manual
+
+## Lab scenario
 Azure Security Center is a unified infrastructure security management system that strengthens the security posture of your data centers, and provides advanced threat protection across your hybrid workloads in the cloud - whether they're in Azure or not - as well as on premises.
 
 Keeping your resources safe is a joint effort between your cloud provider, Azure, and you, the customer. You have to make sure your workloads are secure as you move to the cloud, and at the same time, when you move to IaaS (infrastructure as a service) there is more customer responsibility than there was in PaaS (platform as a service), and SaaS (software as a service). Azure Security Center provides you the tools needed to harden your network, secure your services and make sure you're on top of your security posture.
 
+Contoso would now like to look at the security posture of their proof of concept staring with the VM deployed as part of the Azure Monitor lab. They are also very interested to see how we can further protect our public facing and internal servers.
+
+## Objectives
+
+Contoso would like you to see the following acheived
+- Onboard Azure Secuerity Center to the existing subscription so we can see our Security postire
+- Apply endpoint protection to any hosts
+- Apply Just in time VM access to any public facing hosts
+
++ Task 1: Onboard Security Center
++ Task 2: Review a host computer
++ Task 3: Configure endpoint security on a VM
++ Task 4: Enable Just in time VM Access
+
+## Instructions
 
 ## Exercise 1: Onboard your Azure subscription to Security Center Standard
 
@@ -14,7 +37,7 @@ Azure Security Center provides unified security management and threat protection
 In this Exercise, you upgrade to the Standard tier for added security and install the Microsoft Monitoring Agent on your virtual machines to monitor for security vulnerabilities and threats.
 
 
-### Task 1: Automate data collection
+### Task 1: Onboard Security Center
 
 
 Security Center collects data from your Azure VMs and non-Azure computers to monitor for security vulnerabilities and threats. Data is collected using the Microsoft Monitoring Agent, which reads various security-related configurations and event logs from the machine and copies the data to your workspace for analysis. By default, Security Center will create a new workspace for you.
@@ -43,7 +66,7 @@ To enable automatic provisioning of the Microsoft Monitoring Agent:
  With this new insight into your Azure VMs, Security Center can provide additional Recommendations related to system update status, OS security configurations, endpoint protection, as well as generate additional Security alerts.
 
 
-### Task 1: Review a Windows computer
+### Task 2: Review a host computer
 
 1.  In the previous lab we added a VM to a log analytics workspace which we have now configured to Security Center.
 
@@ -121,7 +144,7 @@ To enable automatic provisioning of the Microsoft Monitoring Agent:
 
 1. You should be able to connect to the VM suuccessfully.
 
-1. Back in the Azure portal navigate to **Resource Groups** > **myResourceGroup** > **myNetworkSecurityGroup**.
+1. Back in the Azure portal navigate to **Resource Groups** > **AZ500LAB131415** > **myNetworkSecurityGroup**.
 1. Take not of the rules that have been created by Security Center.
 
 1. Navigate to **Security Center**
@@ -130,5 +153,5 @@ To enable automatic provisioning of the Microsoft Monitoring Agent:
 
 1. To view all activity for this VM click on the **elipsis** to the right of **myVM** and select **View Activity Log**
 
-**Results**: You have now completed this lab and can move onto the next lab in the series
+**Results**: You have now completed this lab and can move onto the next lab in the series. Do not remove the resources from this lab as they are needed for the Azure Sentinel Lab.
 
