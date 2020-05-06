@@ -17,12 +17,15 @@ Virtual network service endpoints enable you to limit network access to some Azu
 
 In this tutorial, you learn how to:
 
-- Create a virtual network with one subnet
-- Add a subnet and enable a service endpoint
-- Create an Azure resource and allow network access to it from only a subnet
-- Deploy a virtual machine (VM) to each subnet
-- Confirm access to a resource from a subnet
-- Confirm access is denied to a resource from a subnet and the internet
++ Task 1: Create a virtual network
++ Task 2: Enable a service endpoint
++ Task 3: Restrict network access for a subnet
++ Task 4: Restrict network access to a resource
++ Task 5: Create a file share in the storage account
++ Task 6: Restrict network access to a subnet
++ Task 7: Create Virtual Machines
++ Task 8: Confirm access to storage account
++ Task 9: Confirm access is denied to storage account
 
 ## Instructions
 
@@ -39,7 +42,7 @@ In this tutorial, you learn how to:
    |Name| myVirtualNetwork |
    |Address space| 10.0.0.0/16|
    |Subscription| Select your subscription|
-   |Resource group | Select **Create new** and enter *myResourceGroup*.|
+   |Resource group | Select **Create new** and enter *AZ500LAB12*.|
    |Location| Select **East US** |
    |Subnet Name| Public|
    |Subnet Address range| 10.0.0.0/24|
@@ -56,9 +59,7 @@ Service endpoints are enabled per service, per subnet. Create a subnet and enabl
 
 
 1.  In the **Search resources, services, and docs** box at the top of the portal, enter *myVirtualNetwork.* When **myVirtualNetwork** appears in the search results, select it.
-2.  Add a subnet to the virtual network. Under **SETTINGS**, select **Subnets**, and then select **+ Subnet**, as shown in the following picture:
-
-       ![Screenshot](../Media/Module-2/af845703-779b-4a61-9a04-61f1e6ed07d9.png)
+2.  Add a subnet to the virtual network. Under **SETTINGS**, select **Subnets**, and then select **+ Subnet**
 
 3.  Under **Add subnet**, select or enter the following information, and then select **OK**:
 
@@ -82,7 +83,7 @@ By default, all VMs in a subnet can communicate with all resources. You can limi
     |----|----|
     |Name| myNsgPrivate |
     |Subscription| Select your subscription|
-    |Resource group | Select **Use existing** and select *myResourceGroup*.|
+    |Resource group | Select **Use existing** and select *AZ500LAB12*.|
     |Location| Select **East US** |
 
 4.  After the network security group is created, enter *myNsgPrivate* in the **Search resources, services, and docs** box at the top of the portal. When **myNsgPrivate** appears in the search results, select it.
@@ -154,14 +155,12 @@ The steps necessary to restrict network access to resources created through Azur
     |Location| Select **East US** |
     |Replication| Locally-redundant storage (LRS)|
     |Subscription| Select your subscription|
-    |Resource group | Select **Use existing** and select *myResourceGroup*.|
+    |Resource group | Select **Use existing** and select *AZ500LAB12*.|
 
 ### Task 5: Create a file share in the storage account
 
 1.  After the storage account is created, enter the name of the storage account in the **Search resources, services, and docs** box, at the top of the portal. When the name of your storage account appears in the search results, select it.
 2.  Select **File shares**, as shown in the following picture:
-
-       ![Screenshot](../Media/Module-2/4d7a1be1-752e-4f18-8ccb-e9ce37240ed4.png)
 
 3.  Select **+ File share**.
 4.  Enter *my-file-share* under **Name**, and then select **Create**.
@@ -207,7 +206,7 @@ To test network access to a storage account, deploy a VM to each subnet.
    |User name|Enter a user name of your choosing.|
    |Password| Pa55w.rd1234 |
    |Subscription| Select your subscription.|
-   |Resource group| Select **Use existing** and select **myResourceGroup**.|
+   |Resource group| Select **Use existing** and select **AZ500LAB12**.|
    |Location| Select **East US**.|
    |Image| Select **Windows Server 2019 Datacenter**.|
 
@@ -228,9 +227,7 @@ The VM takes a few minutes to deploy. Do not continue to the next step until it 
 
 ### Task 8: Confirm access to storage account
 
-1.  Once the *myVmPrivate* VM finishes creating, Azure opens the settings for it. Connect to the VM by selecting the **Connect** button, as shown in the following screenshot:
-
-       ![Screenshot](../Media/Module-2/b85b2600-29cf-42b6-862e-4ea3f575991d.png)
+1.  Once the *myVmPrivate* VM finishes creating, Azure opens the settings for it. Connect to the VM by selecting the **Connect** button
 
 2.  After selecting the **Connect** button, a Remote Desktop Protocol (.rdp) file is created and downloaded to your computer.  
 3.  Open the downloaded rdp file. If prompted, select **Connect**. Enter the user name and password you specified when creating the VM. You may need to select **More choices**, then **Use a different account**, to specify the credentials you entered when you created the VM. 
@@ -238,7 +235,7 @@ The VM takes a few minutes to deploy. Do not continue to the next step until it 
 5.  You may receive a certificate warning during the sign-in process. If you receive the warning, select **Yes** or **Continue** to proceed with the connection.
 6.  On the *myVmPrivate* VM, map the Azure file share to drive Z using PowerShell. Before running the commands that follow, replace `<storage-account-key>` and `<storage-account-name>` with values you supplied and retrieved in the **Create a storage account** task.
 
-       ```powershell
+       ```
        $acctKey = ConvertTo-SecureString -String "<storage-account-key>" -AsPlainText -Force
        $credential = New-Object System.Management.Automation.PSCredential -ArgumentList "Azure\<storage-account-name>", $acctKey
        New-PSDrive -Name Z -PSProvider FileSystem -Root "\\<storage-account-name>.file.core.windows.net\my-file-share"  -Credential $credential
@@ -269,14 +266,23 @@ The VM takes a few minutes to deploy. Do not continue to the next step until it 
 5.  From your computer, browse to the Azure portal.
 6.  Enter the name of the storage account you created in the **Search resources, services, and docs** box. When the name of your storage account appears in the search results, select it.
 7.  Select **File shares** then select *my-file-share*.
-8.  You receive the error shown in the following screenshot:
+8.  You should receive an error showning **Access denied**.
 
-      ![Screenshot](../Media/Module-2/0a8b2a45-0da2-44f0-96eb-9c7ca02b3ee9.png)
 
       Access is denied, because your computer is not in the *Private* subnet of the *MyVirtualNetwork* virtual network.
 
 
-| WARNING: Prior to continuing you should remove all resources used for this lab.  To do this in the **Azure Portal** click **Resource groups**.  Select any resources groups you have created.  On the resource group blade click **Delete Resource group**, enter the Resource Group Name and click **Delete**.  Repeat the process for any additional Resource Groups you may have created. **Failure to do this may cause issues with other labs.** |
-| --- |
+### Task 10: Remove resources.
+
+1. Open Cloud Shell in Powershell
+
+1.  Remove the resource group by running the following command (When prompted to confirm press Y and press enter):(Use the Resource Group names that werecreated in your lab)
+    ```
+    Remove-AzResourceGroup -Name "AZ500LAB12"
+    ```
+
+1. Close the **Cloud Shell** prompt at the bottom of the portal.
+
+> **Result**: In this exercise, you removed the resources used in this lab.
 
 **Results** : You have now completed this lab.
