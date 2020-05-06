@@ -1,19 +1,27 @@
-# Module 1: Lab 1 - Azure AD Privileged Identity Management
+---
+lab:
+    title: '05 - Azure AD Privileged Identity Management'
+    module: 'Module 01 - Manage Identity and access'
+---
 
+# Lab 05 - Azure AD Privileged Identity Management
 
-**Scenario**
+# Student lab manual
 
-In this lab, you'll learn how to use Azure Privileged Identity Management (PIM) to enable just-in-time administration and control the number of users who can perform privileged operations. You'll also learn about the different directory roles available as well as newer functionality that includes PIM being expanded to role assignments at the resource level. Lessons include:
+## Lab scenario
+
+In this lab, you'll learn how to use Azure Privileged Identity Management (PIM) to enable just-in-time administration and control the number of users who can perform privileged operations. You'll also learn about the different directory roles available as well as newer functionality that includes PIM being expanded to role assignments at the resource level. 
+
+## Objectives
+
+In this lab, you will:
 
 - Getting Started with PIM
 - PIM Security Wizard
 - PIM for Directory Roles
 - PIM for Role Resources
 
-The Managing Identities course also covers Azure RBAC and Azure Active Directory. This content has been included here also to provide more context and foundation for the remainder of the course.
-
-
-## Azure AD Privileged Identity Management
+## Instructions
 
 ## Prerequisites
 
@@ -343,17 +351,14 @@ Follow these steps to view the audit history for Azure AD roles.
     | Expiration | When an activated role expires. Applies only to eligible role assignments. |
 
 
-### Add Lab Cleanup
-
 ### Remove lab resources
-
-1. Switch back to your default directory.
 
 1. Open Cloud Shell in Powershell
 
-1.  Remove the resource group by running the following command (When prompted to confirm press Y and press enter):
-    ```powershell
-    Remove-AzResourceGroup -Name "az500-04-RG"
+1.  Remove the resource group by running the following command (When prompted to confirm press Y and press enter)
+
+    ```
+    Remove-AzResourceGroup -Name "AZ500LAB04"
     ```
 
 1. Close the **Cloud Shell** prompt at the bottom of the portal.

@@ -8,9 +8,7 @@ lab:
 
 # Student lab manual
 
-# Module 1: Lab 03: Protecting Azure Resources with Resource Manager Locks 
-
-
+## Lab scenario
 Resource Manager Locks provide a way for administrators to lock down Azure resources to prevent deletion or changing of a resource. These locks sit outside of the Role Based Access Controls (RBAC) hierarchy and when applied will place the restriction on the resource for all users. These are very useful when you have an important resource in your subscription which users should not be able to delete or change and can help prevent accidental and malicious changes or deletion.
 
 There are two types of resource locks that can be applied:
@@ -32,7 +30,6 @@ Locks can be created both at the time of creation of a resource inside an ARM te
 
 The best way to ensure that locks are in place and protecting your resources is to create them at run time and configure them in your ARM templates. Locks are top level ARM resources; they do not sit underneath the resource being locked. They refer to the resource being locked, so this must exist first. 
 
-## Lab scenario
 Contoso has identified multiple resources in production that need protection from either accidental deletion or configuration changes. 
 
 Contoso have asked if you can create a prrof of concept in Developent that will prove that you can do two thing. 
@@ -53,19 +50,19 @@ Create a resource and test out the impact of both a ReadOnly lock and a Delete l
 
 1.  Open the Cloud Shell (PowerShell) and run the following commands to create a Resource Group and Storage Account.
 
-     ```powershell
-    New-AzResourceGroup -Name LockRG -Location EastUS
+     ```
+    New-AzResourceGroup -Name AZ500LAB03 -Location EastUS
      ```
     
-     ```powershell
-    New-AzStorageAccount -ResourceGroupName LockRG -Name (Get-Random -Maximum 999999999999999) -Location  EastUS -SkuName Standard_LRS -Kind StorageV2 
+     ```
+    New-AzStorageAccount -ResourceGroupName AZ500LAB03 -Name (Get-Random -Maximum 999999999999999) -Location  EastUS -SkuName Standard_LRS -Kind StorageV2 
      ```
 
 1.  Once the Storage account has been created close the **Cloud Shell**
 
 1. click on the **portal menu** in the top left corner
 
-1. Select **Resource Groups** then the **LockRG** resource group
+1. Select **Resource Groups** then the **AZ500LAB03** resource group
 
 1. Select the Storage Account. 
 
@@ -91,7 +88,7 @@ Create a resource and test out the impact of both a ReadOnly lock and a Delete l
 
 1. You should also have received an error under the **bell notification icon** in the top right hand corner stating something similar to the following which tells you the spcific lock and the locks scope
 
-**"Failed to update storage account 'xxxxxxxx'. Error: The scope 'xxxxxxxx' cannot perform write operation because following scope(s) are locked: '/subscriptions/xxxxx-xxx-xxxx-xxxx-xxxxxxxx/resourceGroups/LockRG/providers/Microsoft.Storage/storageAccounts/xxxxxxx'. Please remove the lock and try again"**
+**"Failed to update storage account 'xxxxxxxx'. Error: The scope 'xxxxxxxx' cannot perform write operation because following scope(s) are locked: '/subscriptions/xxxxx-xxx-xxxx-xxxx-xxxxxxxx/resourceGroups/AZ500LAB03/providers/Microsoft.Storage/storageAccounts/xxxxxxx'. Please remove the lock and try again"**
 
 1. Click the **Overview** icon. (Discard any changes from the configuration blade)
 
@@ -99,7 +96,7 @@ Create a resource and test out the impact of both a ReadOnly lock and a Delete l
 
 1. You should have received an error under the **bell notification icon** in the top right hand corner stating something similar to the following which tells you the spcific lock and the locks scope
 
-**"Failed to delete storage account 'xxxxxxx'. Error: The scope 'xxxxxxx' cannot perform delete operation because following scope(s) are locked: '/subscriptions/xxxx-xxxx-xxxx-xxxx-xxxxxx/resourceGroups/LockRG/providers/Microsoft.Storage/storageAccounts/xxxxxxx'. Please remove the lock and try again."**
+**"Failed to delete storage account 'xxxxxxx'. Error: The scope 'xxxxxxx' cannot perform delete operation because following scope(s) are locked: '/subscriptions/xxxx-xxxx-xxxx-xxxx-xxxxxx/resourceGroups/AZ500LAB03/providers/Microsoft.Storage/storageAccounts/xxxxxxx'. Please remove the lock and try again."**
 
 1. We have noew verfied that a ReadOnly lock will stop accidental deletion and modification of a resource.
 
@@ -146,14 +143,14 @@ By using Resource Locks you can put in place an extra line of defense against ac
   
   1.  To remove the lock use the following 3 commands. After the 3rd command appears you may need to press **enter** .(When prompted to confirm press Y and press enter):
 
-     ```powershell
-    $Storageaccountname = (get-azstorageaccount -ResourceGroupName LockRG).StorageAccountName
-    $LockName = (Get-AzResourceLock -ResourceGroupName LockRG -ResourceName $Storageaccountname -ResourceType Microsoft.Storage/storageAccounts).Name
-    Remove-AzResourceLock -LockName $LockName -ResourceName $Storageaccountname  -ResourceGroupName LockRG -ResourceType Microsoft.Storage/storageAccounts
+     ```
+    $Storageaccountname = (get-azstorageaccount -ResourceGroupName AZ500LAB03).StorageAccountName
+    $LockName = (Get-AzResourceLock -ResourceGroupName AZ500LAB03 -ResourceName $Storageaccountname -ResourceType Microsoft.Storage/storageAccounts).Name
+    Remove-AzResourceLock -LockName $LockName -ResourceName $Storageaccountname  -ResourceGroupName AZ500LAB03 -ResourceType Microsoft.Storage/storageAccounts
      ```
 1.  Remove the resource group by running the following command (When prompted to confirm press Y and press enter):
-    ```powershell
-    Remove-AzResourceGroup -Name "LockRG"
+    ```
+    Remove-AzResourceGroup -Name "AZ500LAB03"
     ```
 
 1.  Close the **Cloud Shell**. 

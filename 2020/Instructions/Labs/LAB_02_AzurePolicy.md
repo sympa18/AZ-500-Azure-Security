@@ -10,8 +10,6 @@ lab:
 
 ## Lab scenario
 
-# Module 1: Lab 02: Azure Policy 
-
 In this lab, you will learn to use Azure Policy to do some of the more common tasks related to creating, assigning, and managing policies across your organization, such as:
 
 
@@ -32,8 +30,8 @@ In this task, you will first browse the built-in policy definitions using the Az
 
 1.  Open the Cloud Shell in PowerShell Mode and run the following command to create a Resource Group in the UK South region.
 
-    ```powershell
-    New-AzResourceGroup -Name myResourceGroup -Location UKSouth
+    ```
+    New-AzResourceGroup -Name AZ500LAB02 -Location East US
     ```
 1. Close **Cloud Shell**
 
@@ -57,14 +55,14 @@ In this task, you will first browse the built-in policy definitions using the Az
 1.  Click **Assign**.
 
  
-1.  Undr **Scope** Click the Elipsis (...) button and assign the policy to **your Subscription** and then **myResourceGroup** resource group then click **Select**.
+1.  Undr **Scope** Click the Elipsis (...) button and assign the policy to **your Subscription** and then **AZ500LAB02** resource group then click **Select**.
 
  
 1.  Complete the remainder of the policy assignment **Basics** tab with the following settings:
 
     -   Exclusions: **Leave blank**
-    -   Assignment name: **Allow UK South for myResourceGroup**
-    -   Description: **Allow resources to be created in UK South Only for myResourceGroup**
+    -   Assignment name: **Allow UK South for AZ500LAB02**
+    -   Description: **Allow resources to be created in UK South Only for AZ500LAB02**
     -   Policy enforcement: **Enabled**
     -   Assigned by: **Your name**
 
@@ -85,7 +83,7 @@ In this task, you will verify that the policy assignment created in the previous
 1.  On the **Virtual Networks** blade, click **+ Add**
 1.  First, you will try to create a virtual network in East US. Since this is not an allowed location, the request should be blocked. Complete in the **Create virtual network** blade as follows:
 
-    -   Resource group: **myResourceGroup**
+    -   Resource group: **AZ500LAB02**
     -   Name: **myVnet**
     -   Location: **East US**
 
@@ -107,8 +105,8 @@ In this exercise, you learned to use Azure policy by browsing the built-in polic
 
 1.  Remove the resource group by running the following command (When prompted to confirm press Y and press enter):
   
-    ```powershell
-    Remove-AzResourceGroup -Name "myResourceGroup"
+    ```
+    Remove-AzResourceGroup -Name "AZ500LAB02"
     ```
 
 1.  Close the **Cloud Shell**. 

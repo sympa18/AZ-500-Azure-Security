@@ -70,7 +70,7 @@ The main tasks for this exercise are as follows:
 
     - Subscription: the name of the subscription you are using in this lab
 
-    - Resource group: the name of a new resource group **az500-04-RG**
+    - Resource group: the name of a new resource group **AZ500LAB04**
 
     - Location: the name of the Azure region which is closest to the lab location and where you can provision Azure VMs
 
@@ -498,3 +498,4 @@ To avoid isues with the next lab lets remove the Identity protection policies an
 
 1. Set **Enforce policy** to **off** > Click **Save**
 
+1. NOTE Do not remove any of the resources from this lab as Lab 05 PIM has a dependancy on it. 
