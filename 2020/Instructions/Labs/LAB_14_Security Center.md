@@ -1,4 +1,4 @@
-# Module 4: Lab 2 -Security Center
+# Module 4: Lab 14 -Security Center
 
 
 Azure Security Center is a unified infrastructure security management system that strengthens the security posture of your data centers, and provides advanced threat protection across your hybrid workloads in the cloud - whether they're in Azure or not - as well as on premises.
@@ -24,96 +24,111 @@ When automatic provisioning is enabled, Security Center installs the Microsoft M
 
 To enable automatic provisioning of the Microsoft Monitoring Agent:
 
-1.  In the Azure Portal, select the **Security Center** from the Hub menu.
-
-     ![Screenshot](../Media/Module-4/2019-12-30_17-22-08.png)
+1.  In the Azure Portal, select **Security Center** from the Hub menu.
 
 1.  On the **Getting started** blade click **Upgrade**.
      
 1.  Under the Security Center main menu, select **Pricing & settings**.
 
-2.  On the row of the subscription, click on the subscription on which you'd like to change the settings.
-3.  In the **Data Collection** tab, set **Auto provisioning** to **On**.
-4.  Exit the blade **without** saving.
+1.  Click on the row of your subscription. Ensure **Standard** is selected and that all Resource types are **Enabled**. Click **Save** if it is not greyed out
 
-    **Note**: Ensure you do not click save otherwise the following exercises will function as expected.
+1.  In the **Data Collection** tab, set **Auto provisioning** to **On**. Click **Save**
 
- 
-     ![Screenshot](../Media/Module-4/9818a400-e8c9-46cd-8c83-df666f4a31c1.png)
+1.  Under **Workspace configuration** select **Use another workspace** and choose the Log Analytics workspace the you created from Lab 13. Click **Save**, Click **Yes**
+
+1. Click **Workflow Automation** > **+ Add Workflow automation**
+
+1. Look through these settings. We can see that we can automate a response using Logic Apps for threat detecion alerts and for security center recomendations.
 
  With this new insight into your Azure VMs, Security Center can provide additional Recommendations related to system update status, OS security configurations, endpoint protection, as well as generate additional Security alerts.
 
-## Exercise 2: Onboard Windows computers to Azure Security Center
 
+### Task 1: Review a Windows computer
 
-After you onboard your Azure subscriptions, you can enable Security Center for resources running outside of Azure, for example on-premises or in other clouds, by provisioning the Microsoft Monitoring Agent.
+1.  In the previous lab we added a VM to a log analytics workspace which we have now configured to Security Center.
 
-This exercise shows you how to install the Microsoft Monitoring Agent on a Windows computer.
+1.  Under **Resourece Security and Hygiene** click **Compute & apps**
 
+1. Click on **VMs and Servers**. You should see the VM from the previous lab **myVM**.
+       > Note it may take a few minutes before the vm appears
 
-### Task 1: Add new Windows computer
+1. We can also add other VMs into Security Center using the same process.
 
-1.  In the Azure Portal, select **Security Center**. **Security Center - Overview** opens.
+### Task 3: Configure endpoint security on a VM
 
-       ![Screenshot](../Media/Module-4/be0ace9a-784d-4f1f-91de-594e18cc6f13.png)
+1. Before we start lets look at our Secure Score.
 
-3.  Under the Security Center main menu, select **Getting started**.
-4.  Select the **Install Agents** tab.
+1. Under **Policy & Compliance** Click on **Secure Score**. Take note of your current secure score.
 
-       ![Screenshot](../Media/Module-4/1260c976-62a4-446b-a6af-b0576aef7492.png)
+1.  Under **Resourece Security and Hygiene** click **Compute & apps**
 
-5.  Scroll down to the Install agents automatically section and click **Install agents**.
+1. Click on **Install endpoint protection solution on virtual machines**
 
-     ![Screenshot](../Media/Module-4/a0ad1076-7ccd-4747-a63c-1abb2ba09cf3.png)
+1. **myVM** should be selected. Click on **Install on 1 VMs**
 
-1.  Wait until the agent is install by monitoring the deployment.
+1. Select **Microsoft Antimalware** > Click **Create**
 
-     ![Screenshot](../Media/Module-4/279abdec-9785-434c-bb0e-c90400f26a64.png)
- 
-1.  Open the **Security Center** and click on **Compute & apps** then click on **VMs and Computers**.
+1. Accept the defaults and click **OK**. Wait for the Installation to complete. The **State** will show **In progress**. **Note** it should take only a few minutes to install the exrension. To verify you can Navigate to **Virtual Machines** click on **myVM** under **settings** > **Extensions** you should see IAASAntimalware with a ststus of Provisioning succeeded.
 
-     ![Screenshot](../Media/Module-4/bbf6255b-0f13-4190-ac21-59f28e062d5e.png)
- 
-1.  Notice your Virtual Machine is now monitored.
+1. Once the Antimalware hass been provisioned successfully Security Center will rescan the VM ad we should see that issue disapear from our list or marked as green resolved and our secure score increase. (Note this may take some time to complete, you may want to wait till the end of the lab to double check)
 
-## Exercise 3: Manage and respond to alerts in Azure Security Center
+### Task 4: Enable Just in time VM Access
 
+1. Under **Advanced Cloud Defense** click **Just in time VM access**
 
-Security Center automatically collects, analyzes, and integrates log data from your Azure resources, the network, and connected partner solutions, like firewall and endpoint protection solutions, to detect real threats and reduce false positives. A list of prioritized security alerts is shown in Security Center along with the information you need to quickly investigate the problem and recommendations for how to remediate an attack.
+1. You should find myVM under either **Recommended** or **No recommendation**. Again it may take some time for the scan to finish and the VM appear in **Recommended**. In the interest of time we will configure JIT from the VM pane.
 
+1. Under **Virtual Machines** click on **myVM**
 
-### Task 1: Manage your alerts
- 
-1.  From the Security Center dashboard, see the  **Threat protection** tile to view and overview of the alerts.
+1. Click **Connect** > **RDP**
 
-    **Note**: If the tile displays **No security alerts**, you may have to wait some time for the evaluation to run.
+1. You should now notice a yellow bar at the top of the blade that says **To improve security, enable just-in-time access on this VM** click on the yellow bar.
 
-       ![Screenshot](../Media/Module-4/8d976460-01b6-4266-91ed-d77760b063d4.png)
+1. Select **Enable just-in-time** and you should see that JIT has been enabled in Security Center.
 
-1.  To see more details about the alerts, click the tile.  The screenshot belown shows potential alerts you would see in the real world:
+1. Click on **Open Azure Security Center**
 
-       ![Screenshot](../Media/Module-4/24e22242-7273-4d84-819b-501a8d6cf0e4.png)
+1. click on the **elipsis** to the right of **myVM** and select **edit**
 
-1.  To filter the alerts shown, click **Filter**, and from the **Filter** blade that opens, select the filter options that you want to apply. The list updates according to the selected filter. Filtering can be very helpful. For example, you might you want to address security alerts that occurred in the last 24 hours because you are investigating a potential breach in the system.
+1. You can see that we have 3389 access for RDP, lets also provide extra ports for WinRM 5985 and 5986.
 
-       ![Screenshot](../Media/Module-4/f486410b-6664-48dd-b3ed-5a5b4e7bcbdb.png)
+1. Click on **+ Add**
 
-### Task 2: Respond to recommendations
+1. In port type **5985** leave the rest as default and click **OK**
 
-1.  In the Azure Security Center click **Overview**.
+1. Click on **+ Add**
 
-1.  From the **Resource secuity hygiene** list, in the **Resource health by severity** section select **Compute & apps resources**
+1. In port type **5986** leave the rest as default and click **OK**
 
-     ![Screenshot](../Media/Module-4/163f286f-740d-48a6-901b-e6693bec8f89.png)
+1. Click **save**
 
-1.  Review the recommendations.
+1. Lets now reuest access which will add a rule in our Network Security Group for us to be able to RDP to the VM.
 
-       ![Screenshot](../Media/Module-4/686a999a-0ab5-4449-8087-a6cf16a455b4.png)
+1. Select the **myVM** and click **request access**
 
+1. We can see multiple options here including choosing which ports to open the IP Range we want to allow and the Time Range.
 
-| WARNING: Prior to continuing you should remove all resources used for this lab.  To do this in the **Azure Portal** click **Resource groups**.  Select any resources groups you have created.  On the resource group blade click **Delete Resource group**, enter the Resource Group Name and click **Delete**.  Repeat the process for any additional Resource Groups you may have created. **Failure to do this may cause issues with other labs.** |
-| --- |
+1. Toggle 3389 to **On**. Type in **RDP access** into justification Leave the other settings at default and click **Open ports**
 
+1. Under **Virtual Machines** click on **myVM**
+
+1. Click **Connect** > **RDP**
+
+1. We have already opened the ports do select **Public IP** address and click **Dowload RDP file anyway** 
+
+1. Open the file and Connect
+1.  When prompted for credentials enter **LocalAdmin** as the User and use the password **Pa55w.rd1234**
+
+1. You should be able to connect to the VM suuccessfully.
+
+1. Back in the Azure portal navigate to **Resource Groups** > **myResourceGroup** > **myNetworkSecurityGroup**.
+1. Take not of the rules that have been created by Security Center.
+
+1. Navigate to **Security Center**
+
+1. Under **Advanced Cloud Defense** click **Just in time VM access**
+
+1. To view all activity for this VM click on the **elipsis** to the right of **myVM** and select **View Activity Log**
 
 **Results**: You have now completed this lab and can move onto the next lab in the series
 
