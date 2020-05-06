@@ -10,9 +10,9 @@ lab:
 
 ## Lab scenario
 
-blah .
-blah 
-blah
+Contoso are looking at using containers as a technology. What they are unsure of is how they can store container images and how they can restrict access to those images. They would also like to look at a solution that can orchestrate many application deployments with the ability to produce both internal and external facing solutions. In addition they would like a solution that can be integrated into Azure Active Directory for access to applications.
+
+Contoso will be deploying a proof of concept with  Azure container Registry to store their container images and they want to deply AKS as their managed orchstration service. 
 
 ## Objectives
 
@@ -38,14 +38,14 @@ In this lab, you will:
 1. Run the following command to create a new resource group
 
     ```
-    az group create --name myResourceGroup --location eastus
+    az group create --name AZ500LAB09 --location eastus
     ```
 1. Now we need to create a brand new Azure Container Registry. Type in the following command into Cloud Shell replacing  with a globally unique name.(Take note of this for use later in the lab)
 
     ```
-    az acr create --resource-group myResourceGroup --name <ACRuniquename> --sku Basic
+    az acr create --resource-group AZ500LAB09 --name <ACRuniquename> --sku Basic
     ```
-1. Once that has completed, in the portal navigate to **Resource Groups** > **myResourceGroup**. You should see the new container registry that you created. (It may take a minute or two to appear. Refresh your window)
+1. Once that has completed, in the portal navigate to **Resource Groups** > **AZ500LAB09**. You should see the new container registry that you created. (It may take a minute or two to appear. Refresh your window)
 
 ### Task 2: Build a container and push it to Azure Container Registry
 
@@ -60,7 +60,7 @@ In this lab, you will:
     ```
     az acr build --image sample/nginx:v1 --registry <ACRuniquename> --file Dockerfile .
     ```
-1. Once the build completes successfully navigate back to **Resource Groups** > **myResourceGroup** > Click on your container registry
+1. Once the build completes successfully navigate back to **Resource Groups** > **AZ500LAB09** > Click on your container registry
 1. Under **Services** select **Repositories**. You should now see a new container image named sample/nginx.
 
 1. Click on the image and you will see we have a **v1** tag on the image to identify the version. 
@@ -76,7 +76,7 @@ In this lab, you will:
    |Setting  |Value  |
    |---------|---------|
    |Subscription     |_your subscription_|
-   |Resource group     |**Use existing**: myResourceGroup |
+   |Resource group     |**Use existing**: AZ500LAB09 |
    |Kubernetes cluster name     |MyKubernetesCluster|
    |Region     |East US|
    |Kubernetes version | leave at default |
@@ -113,12 +113,12 @@ In this lab, you will:
 1. Click **Create**
     > Note: It may take up to 15 minutes for AKS to deploy
 
-1. Once the deployment is complete navigate to **Resource Groups**. Notice that you will have a new resource group that holds components of the AKS Nodes named similar to this format dependig on the location **MC_myResourceGroup_MyKubernetesCluster_eastus**. You will also find your AKS Cluster in the myResourceGroup along with the new VNET.
+1. Once the deployment is complete navigate to **Resource Groups**. Notice that you will have a new resource group that holds components of the AKS Nodes named similar to this format dependig on the location **MC_AZ500LAB09_MyKubernetesCluster_eastus**. You will also find your AKS Cluster in the AZ500LAB09 along with the new VNET.
 
 1. Lets now connect to our Kubernetes cluster. Open **Cloud Shell** and select ****. Type in the following command
 
     ```
-    az aks get-credentials --resource-group myResourceGroup --name MyKubernetesCluster
+    az aks get-credentials --resource-group AZ500LAB09 --name MyKubernetesCluster
     ```
 1. now type in the following command to ensure you can see your nodes.
 
@@ -129,7 +129,7 @@ In this lab, you will:
 ### Task 4: Give AKS permission to access ACR
 1. We now need to give AKS permission to access our container registry. Run the following command to do that. (Note this may take between 10 and 15 minutes to complete. You will also notice the the AKS cluster is in an updating state during the update)
     ```
-    az aks update -n MyKubernetesCluster -g myResourceGroup --attach-acr <ACRuniquename> 
+    az aks update -n MyKubernetesCluster -g AZ500LAB09 --attach-acr <ACRuniquename> 
     ```
     > Note this may take up to 10 minutes
 
@@ -223,7 +223,7 @@ In this lab, you will:
     ```
 1. To be able to access this we need to deploy a server within the same VNET. 
 
-1. Navigate to **Resource Groups** > **myResourceGroup** Select **myResourceGroup-vnet**
+1. Navigate to **Resource Groups** > **AZ500LAB09** Select **AZ500LAB09-vnet**
 
 1. Under **Settings** Select **Subnets**. Click **+ Subnet**
 
@@ -238,7 +238,7 @@ In this lab, you will:
    |Setting  |Value  |
    |---------|---------|
    |Subscription     |_your subscription_|
-   |Resource group     |**Use existing**: myResourceGroup |
+   |Resource group     |**Use existing**: AZ500LAB09 |
    |Virtual Machine name     |AKSJumpBox|
    |Region     |East US|
    |Administrator account | student |
@@ -251,14 +251,14 @@ In this lab, you will:
 
    |Setting  |Value  |
    |---------|---------|
-   |Virtual network     |myResourceGroup-vnet|
+   |Virtual network     |AZ500LAB09-vnet|
    |subnet     |JumpBox (10.0.0.0/24|
    |Virtual Machine name     |AKSJumpBox|
 1. Leave everything else as default.
 1. Click **Next: Management**
 1. Set **Boot Diagnostics** to **Off**
 1. Click **Review + Create** then **Create**
-1. Once the VM has deployed click **Resource Groups** > **myResourceGroup**.
+1. Once the VM has deployed click **Resource Groups** > **AZ500LAB09**.
 
 1. You will notice that the AKSJumpBox and its resources now reside in the Resource group. You will also notice that we have Network security groups that we can control network flow within the Virtual network to the AKS Cluster.
 1. Click on the VM **AKSJumpBox**
@@ -282,10 +282,10 @@ In this lab, you will:
 
 1. Open Cloud Shell in Powershell
 
-1.  Remove the resource group by running the following command (When prompted to confirm press Y and press enter):(Use the Resource Group names that werecreated in your lab)
-    ```powershell
-    Remove-AzResourceGroup -Name "myResourceGroup"
-    Remove-AzResourceGroup -Name "MC_myResourceGroup_MyKubernetesCluster_eastus"
+1.  Remove the resource group by running the following command (When prompted to confirm press Y and press enter):(Use the Resource Group names that we created in your lab)
+    ```
+    Remove-AzResourceGroup -Name "AZ500LAB09"
+    Remove-AzResourceGroup -Name "MC_AZ500LAB09_MyKubernetesCluster_eastus"
     ```
 
 1. Close the **Cloud Shell** prompt at the bottom of the portal.
