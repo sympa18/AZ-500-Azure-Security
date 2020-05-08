@@ -1,10 +1,10 @@
 ---
 lab:
-    title: '01 - Azure Monitor'
+    title: '13 - Azure Monitor'
     module: 'Module 04 - Manage security operations'
 ---
 
-# Lab 01 - Azure Monitor
+# Lab 13 - Azure Monitor
 
 # Student lab manual
 

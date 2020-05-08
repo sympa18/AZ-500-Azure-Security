@@ -4,7 +4,7 @@ lab:
     module: 'Module 04 - Manage security operations'
 ---
 
-# Lab 014 - Azure Security Center
+# Lab 14 - Azure Security Center
 
 # Student lab manual
 

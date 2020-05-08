@@ -34,14 +34,14 @@ In this lab, you will:
    |---------|---------|
    |Username  | student |
 
-   ### Remove resources.
+### Task x: Remove resources.
 
 1. Open Cloud Shell in Powershell
 
-1.  Remove the resource group by running the following command (When prompted to confirm press Y and press enter):(Use the Resource Group names that werecreated in your lab)
-    ```powershell
+1.  Remove the resource group by running the following command (When prompted to confirm press Y and press enter)
+
+    ```
     Remove-AzResourceGroup -Name "myResourceGroup"
-    Remove-AzResourceGroup -Name "MC_myResourceGroup_MyKubernetesCluster_eastus"
     ```
 
 1. Close the **Cloud Shell** prompt at the bottom of the portal.

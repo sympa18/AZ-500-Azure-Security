@@ -1,6 +1,6 @@
 ---
 lab:
-    title: ' L12 - Service Endpoints and Securing Storage'
+    title: ' 12 - Service Endpoints and Securing Storage'
     module: 'Module 03 - xxx'
 ---
 
