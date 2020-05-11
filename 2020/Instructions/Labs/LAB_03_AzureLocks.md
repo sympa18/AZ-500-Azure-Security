@@ -51,7 +51,7 @@ Create a resource and test out the impact of both a ReadOnly lock and a Delete l
 1.  Open the Cloud Shell (PowerShell) and run the following commands to create a Resource Group and Storage Account.
 
      ```
-    New-AzResourceGroup -Name AZ500LAB03 -Location EastUS
+    New-AzResourceGroup -Name AZ500LAB03 -Location 'EastUS'
      ```
     
      ```
