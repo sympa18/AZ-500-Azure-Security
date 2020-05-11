@@ -74,17 +74,17 @@ Create a resource and test out the impact of both a ReadOnly lock and a Delete l
 
 1. Under Lock type choose **Read-only** then select **OK**
 
-1.  The resource is now protected from acidental deleation and modification.
+1.  The resource is now protected from accidental deletion and modification.
 
 ### Task 2: Verify that you cannot make changes to/delete the resource
 
 1. Under **Settings** in the main stoarge account blade choose **Configuration**
 
-1. We want to chane secure transfer to support Https for custom domain names
+1. We want to change secure transfer to support Https for custom domain names
 
 1. Under **Secure transfer required** click **Disabled** then **Save**
 
-1. You should have receoved an error in the blad that says **Update failed**
+1. You should have received an error in the blad that says **Update failed**
 
 1. You should also have received an error under the **bell notification icon** in the top right hand corner stating something similar to the following which tells you the spcific lock and the locks scope
 
@@ -102,7 +102,7 @@ Create a resource and test out the impact of both a ReadOnly lock and a Delete l
 
 ### Task 3: Change the lock to Delete
 
-1. If you are not already there go back to your Storage account then from under **settings**select the **locks** icon. 
+1. If you are not already there go back to your Storage account then from under **settings** select the **locks** icon. 
 
 1. Click on the **Delete** icon from the **ReadOnly Lock** you created earlier
 

@@ -314,7 +314,7 @@ The main tasks for this exercise are as follows:
 
 In this task we will review conditional access policy settings and create a policy that requires MFA when signing in to the Portal. 
 
-
+1. In the Azure portal, either manage your new directory or set the Directory + subscription filter to AdatumLab500-04 (the newly created Azure AD tenant.)
 1. In the **Portal** search for and select **Azure Active Directory**.
 1. Under **Manage** select **Security**.
 1. Under **Protect** select **Conditional access**.
