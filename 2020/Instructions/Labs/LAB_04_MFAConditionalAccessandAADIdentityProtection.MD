@@ -332,6 +332,8 @@ In this task we will review conditional access policy settings and create a poli
 	* For **Enable policy** select **On**. > 
 1. Click **Create**. 
 
+    > NOTE If you get an error stating that "Security defaults must be disabled to enable Conditional access policy". you will need to do the following step. From **Azure Active Directory** > **Properties**  > **Manage Security defaults** > Change to **No** > **My Organization is using Conditional Access** > Click **Save**. You can change this back after the lab ends.
+
 # Task 2 - Test the policy
 
 
