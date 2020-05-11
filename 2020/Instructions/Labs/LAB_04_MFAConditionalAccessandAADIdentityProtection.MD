@@ -10,9 +10,9 @@ All tasks in this lab are performed from the Azure portal, except for steps in E
 
 Lab files:
 
--  **Labfiles\\Module_10\\Azure_AD_Identity_Protection\\az-101-04b_azuredeploy.json**
+-  **2020\\Allfiles\\Labs\\LAB_04\\az-101-04b_azuredeploy.json**
 
--  **Labfiles\\Module_10\\Azure_AD_Identity_Protection\\az-101-04b_azuredeploy.parameters.json**
+-  **2020\\Allfiles\\Labs\\LAB_04\\az-101-04b_azuredeploy.parameters.json**
 
 ### Scenario
 
@@ -70,7 +70,7 @@ The main tasks for this exercise are as follows:
 
     - Subscription: the name of the subscription you are using in this lab
 
-    - Resource group: the name of a new resource group **AZ500LAB04**
+    - Resource group: **Create new** and name it **AZ500LAB04**
 
     - Location: the name of the Azure region which is closest to the lab location and where you can provision Azure VMs
 
