@@ -31,7 +31,7 @@ In this task, you will first browse the built-in policy definitions using the Az
 1.  Open the Cloud Shell in PowerShell Mode and run the following command to create a Resource Group in the UK South region.
 
     ```
-    New-AzResourceGroup -Name AZ500LAB02 -Location East US
+    New-AzResourceGroup -Name AZ500LAB02 -Location 'East US'
     ```
 1. Close **Cloud Shell**
 
