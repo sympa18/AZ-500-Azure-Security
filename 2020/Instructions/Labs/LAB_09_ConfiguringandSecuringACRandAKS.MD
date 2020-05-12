@@ -264,7 +264,7 @@ In this lab, you will:
    |---------|---------|
    |Virtual network     |AZ500LAB09-vnet|
    |subnet     |JumpBox (10.0.0.0/24|
-   |Virtual Machine name     |AKSJumpBox|
+
 1. Leave everything else as default.
 1. Click **Next: Management**
 1. Set **Boot Diagnostics** to **Off**
