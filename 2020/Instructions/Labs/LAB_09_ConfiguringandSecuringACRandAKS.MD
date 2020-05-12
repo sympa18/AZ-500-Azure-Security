@@ -143,6 +143,11 @@ In this lab, you will:
     ```
     wget https://raw.githubusercontent.com/sympa18/AZ-500-Azure-Security/master/2020/Allfiles/Labs/LAB_09/nginxexternal.yaml && wget https://raw.githubusercontent.com/sympa18/AZ-500-Azure-Security/master/2020/Allfiles/Labs/LAB_09/nginxinternal.yaml
     ```
+1. Type the following to open the nginxexternal.yaml 
+
+    ```
+    code ./nginxexternal.yaml
+    ```
 
 1. Click on the **Open Editor** the icon with the curly brackets.
 
@@ -186,10 +191,11 @@ In this lab, you will:
 
 1. From **Cloud Shell** select **Bash** if you are not still in it
 
-1. Click on the **Open Editor** the icon with the curly brackets.
+1. Type the following to open the nginxexternal.yaml 
 
-1. From **files** scroll down until you see the file you just uploaded **nginxinternal.yaml** and click on it.
-
+    ```
+    code ./nginxinternal.yaml
+    ```
 1. You will now see the YAML file to your right.
 1. On **line 21** replace **ACRUniquename** with your ACR name
 
