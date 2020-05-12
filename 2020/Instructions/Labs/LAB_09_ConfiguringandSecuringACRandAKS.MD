@@ -243,6 +243,7 @@ In this lab, you will:
    |Region     |East US|
    |Administrator account | student |
    |Password     | Pa55w.rd1234 |
+   |Size       | DS3_v2 |
    |Public inbound ports     |Allow selected ports: RDP(3389)|
 
 1. Click **Next: Disks**
