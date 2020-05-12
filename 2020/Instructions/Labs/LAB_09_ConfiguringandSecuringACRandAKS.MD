@@ -58,6 +58,7 @@ In this lab, you will:
     ```
 1. Now let's build an image off that docker file and push the image to our container registry
 
+    > NOTE the fullstop at the end of the line below is required. It means the current directory.
     ```
     az acr build --image sample/nginx:v1 --registry <ACRuniquename> --file Dockerfile .
     ```
