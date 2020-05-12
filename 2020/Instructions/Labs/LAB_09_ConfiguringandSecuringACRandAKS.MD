@@ -51,6 +51,7 @@ In this lab, you will:
 
 1. Let's now build and deploy an image to ACR. 
 1. First lets create a Dockerfile to deploy Nginx.
+1. Open **Command Shell** in **Bash**
 
     ```
     echo FROM nginx > Dockerfile
