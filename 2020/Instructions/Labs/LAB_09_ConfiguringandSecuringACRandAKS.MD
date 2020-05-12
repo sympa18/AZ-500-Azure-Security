@@ -138,7 +138,11 @@ In this lab, you will:
 
 1. From **Cloud Shell** select **Bash** if you are not still in it
 
-1. Click on the **upoad/download files** icon which is to the right of the cog wheel. Select Upload and select the file in the following location **2020\Allfiles\Labs\LAB_09\nginxexternal.yaml**, Click **Open**
+1. type in the following command to download our Manifest files
+
+    ```
+    wget https://raw.githubusercontent.com/sympa18/AZ-500-Azure-Security/master/2020/Allfiles/Labs/LAB_09/nginxexternal.yaml && wget https://raw.githubusercontent.com/sympa18/AZ-500-Azure-Security/master/2020/Allfiles/Labs/LAB_09/nginxinternal.yaml
+    ```
 
 1. Click on the **Open Editor** the icon with the curly brackets.
 
@@ -181,8 +185,6 @@ In this lab, you will:
 ### Task 7: Deploy an internal facing container from ACR to AKS
 
 1. From **Cloud Shell** select **Bash** if you are not still in it
-
-1. Click on the **upoad/download files** icon which is to the right of the cog wheel. Select Upload and select the file in the following location **2020\Allfiles\Labs\LAB_09\nginxinternal.yaml**, Click **Open**
 
 1. Click on the **Open Editor** the icon with the curly brackets.
 
@@ -282,7 +284,7 @@ In this lab, you will:
 
 ### Remove resources.
 
-1. Open Cloud Shell in Powershell
+1. Open **Cloud Shell** in **PowerShell**
 
 1.  Remove the resource group by running the following command (When prompted to confirm press Y and press enter):(Use the Resource Group names that we created in your lab)
     ```
