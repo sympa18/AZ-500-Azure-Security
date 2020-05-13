@@ -188,7 +188,9 @@ You will enable your client application to access the Azure SQL Database service
 
 ### Task 6: Add a Key Vault Policy allowing the application access to the Key Vault.
 
-1.  In the **Azure portal** open your **Resource Group** created at the beginning of the lab
+1. Just in case the appropriate permissions were not set in the intital tasks, let's make sure you have the required permissions to do the following task. 
+
+1. In the **Azure portal** open your **Resource Group** created at the beginning of the lab
 
 1.  Select the **Azure Key** vault
 
@@ -196,11 +198,11 @@ You will enable your client application to access the Azure SQL Database service
 
 1.  Select the account associated with your Azure subscription
 
-1.  In the **Key Permissions** drop down select **Select All** to highlight all permissions
+1.  In the **Key Permissions** drop down select **Select All** to highlight all permissions if required.
 
-1.  Select **Save**
+1.  Select **Save** if required.
 
-    **Important**! You must click save otherwise the permissions will not be committed 
+    **Important**! You must click save otherwise the permissions will not be committed.
 
 
 8.  Run the following Powershell in the **Powershell ISE** to set the sqlApp key permissions replacing the placeholder text with **your account details**
@@ -265,11 +267,12 @@ In this task, you will create a blank Azure SQL Database, connect to it with SQL
 
 ### Task 8: Create a Table in the SQL Database
 
-1.  Use the Azure portal to locate the Server name where the Medical Database is located and copy the name.
+1.  From the portal menu navigate to **Resource Groups** > Select **AZ500LAB10** Select the SQLServer name you created in the previous step where the **Medical** Database is located.
+
+1. On the **Overview** Copyt the SQL Server name from **Server name** .
 
 
-
-1.  On this same blade click Set Server firewall.
+1.  Under **Security** Click on **Firewalls and virtual networks**.
 
 
 
