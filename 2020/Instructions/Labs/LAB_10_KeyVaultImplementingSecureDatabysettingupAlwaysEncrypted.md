@@ -49,20 +49,20 @@ In this exercise, you will use PowerShell to create an Azure Key Vault.
 
 1.  Start PowerShell by clicking **Start > PowerShell**
 
-2.  Use the following command to authenticate to Azure using the account for your Azure subscription.
+1.  Use the following command to authenticate to Azure using the account for your Azure subscription.
 
     ```
     Login-AzAccount
     ```
 
-4.  Create a new Resource Group 
+1.  Create a new Resource Group 
 
     ```
     New-AzResourceGroup -Name 'AZ500LAB10' -Location 'eastus'
     ```
 
 
-5.  Create a key vault in the resource group. **The VaultName must be unique therefore change <keyvault name> to something unique.**
+1.  Create a key vault in the resource group. **The VaultName must be unique therefore change <keyvault name> to something unique.**
 
     ```
     New-AzKeyVault -VaultName '<keyvault name>' -ResourceGroupName 'AZ500LAB10' -Location 'eastus'
@@ -72,47 +72,51 @@ In this exercise, you will use PowerShell to create an Azure Key Vault.
 
 
 
-6.  In the Azure Portal open the **AZ500LAB10** Resource Group.
+1.  In the Azure Portal open the **AZ500LAB10** Resource Group.
 
-7.  Click on the KeyVaultPS to examine what you have created.
+1.  Click on the KeyVaultPS to examine what you have created.
 
-8. Click **Access Policies** > **+ Add Access Policy**
+1. Click **Access Policies** > **+ Add Access Policy**
 
-9. Select **Key, Secret and Certificate Management** from **Configure from template (optional)**
+1. Select **Key, Secret and Certificate Management** from **Configure from template (optional)**
 
-10. Click **Select Principal** and search for and then click on your account, then click on **Select**
+1. Make sure for each of **Key, Secret and Certificate** permissions you select the dropdown box and click **Select All**
 
-11. Click **Add** and then **Save**
+1. You should have 16 selected for Key, 8 selected for Secret and 16 selected for Certificate.
+
+1. Click **Select Principal** and search for and then click on your account, then click on **Select**
+
+1. Click **Add** and then **Save**
 
 ### Task 3: Add a key and secret to Key Vault
 
 1.  Return to the PowerShell window.
 
-2.  Add a software-protected key to the Key Vault using this command. Be sure to change the placeholder text to your vault name.
+1.  Add a software-protected key to the Key Vault using this command. Be sure to change the placeholder text to your vault name.
 
     ```
     $key = Add-AZKeyVaultKey -VaultName '<YourVaultName>' -Name 'MyLabKey' -Destination 'Software'
     ```
 
-3.  Move back to **KeyVaultPS** in the Azure portal. Click **Keys** under Settings in the left navigation pane.
+1.  Move back to **KeyVaultPS** in the Azure portal. Click **Keys** under Settings in the left navigation pane.
 
-4.  Click **MyLabKey**
+1.  Click **MyLabKey**
 
-5.  Click the Current Version.
+1.  Click the Current Version.
 
-6.  Examine the information about the key you created.
+1.  Examine the information about the key you created.
 
     **Note**: You can always reference this key by using its URI. To get the most current version, just reference `https://keyvaultps.vault.azure.net/keys/MyLabKey/` or if need be the exact version: `https://keyvaultps.vault.azure.net/keys/MyLabKey/da1a3a1efa5dxxxxxxxxxxxxxd53c5959e`
 
 
-7.  Move back to the PowerShell window. To display the current version of the key, enter the following command.
+1.  Move back to the PowerShell window. To display the current version of the key, enter the following command.
 
     ```
     $Key.key.kid
     ```
 
 
-8.  To view the Key you just created you can use the Get-AzureKeyVaultKey cmdlet. Be sure to change the placeholder text to your vault name.
+1.  To view the Key you just created you can use the Get-AzureKeyVaultKey cmdlet. Be sure to change the placeholder text to your vault name.
 
     ```
     Get-AZKeyVaultKey -VaultName '<YourVaultName>'
@@ -128,26 +132,26 @@ In this exercise, you will use PowerShell to create an Azure Key Vault.
     ```
 
 
-2.  Next add the secret to the Vault with this command. Be sure to change the placeholder text to your vault name.
+1.  Next add the secret to the Vault with this command. Be sure to change the placeholder text to your vault name.
 
     ```
     $secret = Set-AZKeyVaultSecret -VaultName 'YourVaultName' -Name 'SQLPassword' -SecretValue $secretvalue
     ```
 
-3.  Move back to the Azure Portal on **KeyVaultPS** and click **Secrets**
+1.  Move back to the Azure Portal on **KeyVaultPS** and click **Secrets**
 
-4.  Click the Secret **SQLPassword**
+1.  Click the Secret **SQLPassword**
 
-5.  Click the current version
+1.  Click the current version
 
-6.  Examine the Secret that you created
+1.  Examine the Secret that you created
 
     **Note**: You can always reference this key by using its URI. To get the most current version just reference `https://keyvaultps.vault.azure.net/secrets/SQLPassword` or if need be the exact version: `https://keyvaultps.vault.azure.net/secrets/SQLPassword/c5aada85d3acxxxxxxxxxxe8701efafcf3`
 
 
-7.  Click the **Show secret value** button -- notice that the password appears.
+1.  Click the **Show secret value** button -- notice that the password appears.
 
-8.  To view the Secret, use the Get-AzureKeyVaultSecret cmdlet. Be sure to change the placeholder text to your vault name.
+1.  To view the Secret, use the Get-AzureKeyVaultSecret cmdlet. Be sure to change the placeholder text to your vault name.
 
     ```
     Get-AZKeyVaultSecret -VaultName 'YourVaultName'
@@ -161,9 +165,9 @@ You will enable your client application to access the Azure SQL Database service
 
 1.  Open the Azure portal and navigate to Azure Active Directory.
 
-2.  Click **App Registrations** under **Manage** in the left navigation pane.
+1.  Click **App Registrations** under **Manage** in the left navigation pane.
 
-3.  **Click + New registration**
+1.  **Click + New registration**
 
 1.  Provide the name **sqlApp** for your application. Under **Redirect URI (optional)**, select **Web**, and for the SIGN-ON URL type **`https://sqlapp`**
 
@@ -230,7 +234,7 @@ In this task, you will create a blank Azure SQL Database, connect to it with SQL
 
 1.  From the Azure Portal click **+ Create a resource> Databases > SQL Database**
 
-2.  Provide the following details on the SQL Database blade and click **Create**.
+1.  Provide the following details on the SQL Database blade and click **Create**.
 
       - Resource Group: (use existing) **AZ500LAB10**
       
@@ -254,7 +258,7 @@ In this task, you will create a blank Azure SQL Database, connect to it with SQL
 
 1.  Once everything above is configured, select **Review + create,** then **Create**
 
-3.  Once the SQL Database is deployed, open it in the Azure Portal to locate and then copy the **ADO.NET Connection String**.
+1.  Once the SQL Database is deployed, open it in the Azure Portal to locate and then copy the **ADO.NET Connection String**.
 
 **Note**: When you save the connection string for future use, be sure to replace {your_username} with **demouser** and {your_password} with **Pa55w.rd1234**.
 
@@ -265,15 +269,15 @@ In this task, you will create a blank Azure SQL Database, connect to it with SQL
 
 
 
-2.  On this same blade click Set Server firewall.
+1.  On this same blade click Set Server firewall.
 
 
 
-3.  Next click **+ Add client IP** and then click **Save**.
+1.  Next click **+ Add client IP** and then click **Save**.
 
 
 
-4.  Open SQL Server Management Studio. Connect to the Server using these properties for the **Connect to Server** dialog.
+1.  Open SQL Server Management Studio. Connect to the Server using these properties for the **Connect to Server** dialog.
 
     - Server Type: **Database Engine**
 
@@ -290,7 +294,7 @@ In this task, you will create a blank Azure SQL Database, connect to it with SQL
 
 1.  In SQL Server Management Studio expand **Databases > Right-click medical > New Query**.
 
-2.  Paste the following code into the query window and click Execute
+1.  Paste the following code into the query window and click Execute
 
      ```
      CREATE TABLE [dbo].[Patients](
@@ -319,25 +323,25 @@ In this task, you will create a blank Azure SQL Database, connect to it with SQL
      ```
 
 
-3.  After the table is created successfully, expand **medical > tables > right-click dbo.Patients** and select **Encrypt Columns**.
+1.  After the table is created successfully, expand **medical > tables > right-click dbo.Patients** and select **Encrypt Columns**.
 
 
 
-4.  Click **Next**.
+1.  Click **Next**.
 
-5.  On the Column Selection Screen check **SSN** and **Birthdate**. Then set the Encryption Type for SSN to **Deterministic** and for Birthdate **Randomized**. Click **Next**.
-
-
-
-6.  On the Master Key Configuration page on the Select the Key store provider, click **Azure Key Vault.** Click **Sign in** and authenticate. Select your Azure Key Vault. Click **Next**.
+1.  On the Column Selection Screen check **SSN** and **Birthdate**. Then set the Encryption Type for SSN to **Deterministic** and for Birthdate **Randomized**. Click **Next**.
 
 
 
-7.  On the Run Settings screen click **Next** and then **Finish** to Proceed with the encrypting.
+1.  On the Master Key Configuration page on the Select the Key store provider, click **Azure Key Vault.** Click **Sign in** and authenticate. Select your Azure Key Vault. Click **Next**.
 
 
 
-8.  When the encryption process is complete, click **Close** and expand **medical > security > Always Encrypted Keys** and note that now there are keys found.
+1.  On the Run Settings screen click **Next** and then **Finish** to Proceed with the encrypting.
+
+
+
+1.  When the encryption process is complete, click **Close** and expand **medical > security > Always Encrypted Keys** and note that now there are keys found.
 
 
 
@@ -345,20 +349,22 @@ In this task, you will create a blank Azure SQL Database, connect to it with SQL
 
 1.  Open Visual Studio 2019 and Sign in using your Azure account.
 
-2.  Click **File > New > Project**
+1.  Click **File > New > Project**
 
-3.  Next select **Visual C# > Console App (.NET Framework)** and provide the name **OpsEncrypt** in the location **C:\\** and then click **OK**.
-
-
-4.  **Right-Click** the **OpsEncrypt** project > click **Properties**.
-
+    > NOTE in the next step **DO NOT CHOOSE** **Console App (.NET Core)**  
+ 
+1.  Next select **Visual C#** > Seach for **Console App** > Choose **Console App (.NET Framework)** and provide the name **OpsEncrypt** in the location **C:\\** and then click **OK**.
 
 
-5.  Change the **Target Framework** to **.NET Framework 4.7.2.** Click **Yes** when prompted to change the **Target Framework.**
+1.  **Right-Click** the **OpsEncrypt** project > click **Properties**.
 
 
 
-7.  Install the following **NuGet** packages by going to **Tools** > **NuGet Package Manager** > **Package Manager Console.**
+1.  Change the **Target Framework** to **.NET Framework 4.7.2.** Click **Yes** when prompted to change the **Target Framework.**
+
+
+
+1.  Install the following **NuGet** packages by going to **Tools** > **NuGet Package Manager** > **Package Manager Console.**
 
     ```
     Install-Package     Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider
@@ -370,11 +376,11 @@ In this task, you will create a blank Azure SQL Database, connect to it with SQL
 
 1.  Open the **program.cs** file in notepad from Allfiles\\Labs\\Mod1_Lab02 and copy the code.
 
-8.  Replace the code in **Program.cs** in Visual Studio with the code you just copied.
+1.  Replace the code in **Program.cs** in Visual Studio with the code you just copied.
 
-9.  Locate the **Connection string, clientId, and clientSecret** settings in the Main method and replace them with the values that you copied from the previous steps.
+1.  Locate the **Connection string, clientId, and clientSecret** settings in the Main method and replace them with the values that you copied from the previous steps.
 
-10.  **Click** the **Start Button** in **Visual Studio**.
+1.  **Click** the **Start Button** in **Visual Studio**.
 
 
 1.  **The Console Application** will **Build** and then start. First it will ask for your password, then the app will add data to the database.
