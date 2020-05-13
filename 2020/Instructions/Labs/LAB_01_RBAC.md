@@ -116,7 +116,7 @@ After completing this lab, you will be able to:
  
 1.  Exit the **Cloud Shell**.
 
-1.  In the **Active Directory blade** click **Groups** and confirm you have **3** groups
+1.  In the **Azure Active Directory blade** click **Groups** and confirm you have **3** groups
 
 1. Close the Cloud Shell session.
 
