@@ -223,4 +223,6 @@ Azure Sentinel creates connections to services and apps by connecting to the ser
 
 1. Close the **Cloud Shell** prompt at the bottom of the portal.
 
+1. Set Security Center back to a **Free** tier
+
 > **Result**: In this exercise, you removed the resources used in this lab.
