@@ -182,6 +182,7 @@ Azure Sentinel creates connections to services and apps by connecting to the ser
 
 ### Task 6 : Invoke an incident
 
+
 1. Navigate to **Security Center**
 
 1. Under **Advanced cloud defense** select **Just in time VM access**
@@ -199,6 +200,8 @@ Azure Sentinel creates connections to services and apps by connecting to the ser
 1. Click on **Threat Management** > **Incidents**
 
 1. We can see that we have multiple Incidents at Medium severity lebel.
+
+    >Note it can take up to 5 minutes for the incident to come through. If after 5 minutes nothing has occured run the KQL rule from Task 5 in Logs to ensure the activity has come through. If it has not re-enable the JIT rule and delete it again.
 
 1. wait at least 5 minutes until the playbook is invoked. you can check the run status under **Configuration** > **Playbooks**
 
