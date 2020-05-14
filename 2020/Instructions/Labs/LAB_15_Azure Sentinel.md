@@ -166,8 +166,7 @@ Azure Sentinel creates connections to services and apps by connecting to the ser
      ```
      AzureActivity
      | where ResourceProviderValue == "Microsoft.Security" 
-     | where Category == "Security" 
-     | where OperationNameValue == "Microsoft.Security/locations/jitNetworkAccessPolicies/write" 
+     | where OperationNameValue == "Microsoft.Security/locations/jitNetworkAccessPolicies/delete" 
      ```
 1. Under **Query scheduling** Change **Run query every** to **5 minutes**
 
