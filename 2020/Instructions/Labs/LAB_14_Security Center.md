@@ -111,9 +111,13 @@ To enable automatic provisioning of the Microsoft Monitoring Agent:
 
 1. Select **Enable just-in-time** and you should see that JIT has been enabled in Security Center.
 
-1. Click on **Open Azure Security Center**
+1. Navigate to **Security Center** > Under **Advanced Cloud Defense** select **Just in time VM acess**
 
-1. click on the **elipsis** to the right of **myVM** and select **edit**
+1. Select **Configured**
+
+    > NOTE the VM may take a few minutes to appear
+
+1. Click on the **elipsis** to the right of **myVM** and select **edit**
 
 1. You can see that we have 3389 access for RDP, lets also provide extra ports for WinRM 5985 and 5986.
 
@@ -127,7 +131,7 @@ To enable automatic provisioning of the Microsoft Monitoring Agent:
 
 1. Click **save**
 
-1. Lets now reuest access which will add a rule in our Network Security Group for us to be able to RDP to the VM.
+1. Lets now request access which will add a rule in our Network Security Group for us to be able to RDP to the VM.
 
 1. Select the **myVM** and click **request access**
 
@@ -147,7 +151,7 @@ To enable automatic provisioning of the Microsoft Monitoring Agent:
 1. You should be able to connect to the VM suuccessfully.
 
 1. Back in the Azure portal navigate to **Resource Groups** > **AZ500LAB131415** > **myNetworkSecurityGroup**.
-1. Take not of the rules that have been created by Security Center.
+1. Take note of the rules that have been created by Security Center.
 
 1. Navigate to **Security Center**
 
