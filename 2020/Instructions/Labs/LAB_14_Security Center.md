@@ -55,6 +55,8 @@ To enable automatic provisioning of the Microsoft Monitoring Agent:
 
 1.  Click on the row of your subscription. Ensure **Standard** is selected and that all Resource types are **Enabled**. Click **Save** if it is not greyed out
 
+1. Navigate back to **All Services** > **Security Center** > **Pricing and Settings** > Select **your subscription**
+
 1.  In the **Data Collection** tab, set **Auto provisioning** to **On**. Click **Save**
 
 1.  Under **Workspace configuration** select **Use another workspace** and choose the Log Analytics workspace the you created from Lab 13. Click **Save**, Click **Yes**
