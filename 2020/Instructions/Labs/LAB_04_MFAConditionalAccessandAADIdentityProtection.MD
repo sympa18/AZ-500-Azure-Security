@@ -4,7 +4,7 @@ lab:
     module: 'Module 01 - Manage Identity and access'
 ---
 
-# Lab 04: MFA, Conditional Acccess and AAD Identity Protection
+# Lab 04: MFA, Conditional Access and AAD Identity Protection
 
 All tasks in this lab are performed from the Azure portal, except for steps in Exercise 2 performed within a Remote Desktop session to an Azure VM.
 
