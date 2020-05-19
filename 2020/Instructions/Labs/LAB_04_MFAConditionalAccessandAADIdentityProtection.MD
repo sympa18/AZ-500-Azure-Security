@@ -1,6 +1,6 @@
 ---
 lab:
-    title: '04 - MFA, Conditional Acccess and AAD Identity Protection'
+    title: '04 - MFA, Conditional Access and AAD Identity Protection'
     module: 'Module 01 - Manage Identity and access'
 ---
 
