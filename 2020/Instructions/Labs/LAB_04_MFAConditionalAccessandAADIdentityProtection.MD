@@ -23,7 +23,7 @@ Adatum Corporation wants to take advantage of Azure AD Premium features for Iden
 
 After completing this lab, you will be able to:
 
- -  Deploy an Azure VM by using an Azure Resource Manager template
+ -  Exercise 0: Deploy an Azure VM by using an Azure Resource Manager template
 
  -  Implement Azure MFA
 
@@ -50,7 +50,7 @@ The main tasks for this exercise are as follows:
 
 1. Use the list of search results to navigate to the **Template deployment (deploy using custom templates)** blade. 
 
-1. Click **Create**
+1. Click **Create**.
 
 1. On the **Custom deployment** blade, select the **Build your own template in the editor**.
 
@@ -120,7 +120,7 @@ The main tasks for this exercise are as follows:
 
 1. From the **New** blade, search Azure Marketplace for **Azure Active Directory** and select it from the drop down menu.
 
-1. Click **Create**
+1. Click **Create**.
 
 1. From the **Create directory** blade, create a new Azure AD tenant with the following settings:
 
@@ -132,7 +132,7 @@ The main tasks for this exercise are as follows:
 
      > **Note**: Take a note of the initial domain name. You will need it later in this lab.
 
-1. Click **Create**
+1. Click **Create**.
 
 
 #### Task 2: Activate Azure AD Premium v2 trial
