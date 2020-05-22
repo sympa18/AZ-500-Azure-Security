@@ -1,40 +1,39 @@
 ---
 lab:
     title: '06 - Implement Directory Synchronization'
-    module: 'Module 01 - Manage Identity and access'
+    module: 'Module 01 - Manage Identity and Access'
 ---
 
 # Lab 06: Implement Directory Synchronization
 
 # Student lab manual
 
-### Scenario
+## Lab scenario
 
-Adatum Corporation wants to integrate its Active Directory with Azure Active Directory
-
-
-### Objectives
-
- After completing this lab, you will be able to:
-
- - Deploy an Azure VM hosting an Active Directory domain controller
-
- - Create and configure an Azure Active Directory tenant
-
- - Synchronize Active Directory forest with an Azure Active Directory tenant
+Your organization wants to integrate its Active Directory with Azure Active Directory and synchronize user accounts. 
 
 
+## Lab objectives
 
-### Exercise 1: Deploy an Azure VM hosting an Active Directory domain controller
+In this lab, you will complete:
 
-The main tasks for this exercise are as follows:
+- Exercise 1: Deploy an Azure VM hosting an Active Directory domain controller
+- Exercise 2: Create and configure an Azure Active Directory tenant
+- Exercise 3: Synchronize Active Directory forest with an Azure Active Directory tenant
 
- 1. Identify an available DNS name for an Azure VM deployment
+## Exercise 1: Deploy an Azure VM hosting an Active Directory domain controller
 
- 1. Deploy an Azure VM hosting an Active Directory domain controller by using an Azure Resource Manager template
+### Estimated timing: 10 minutes
+
+In this exercise, you will complete:
+
+- Task 1: Identify an available DNS name for an Azure VM deployment
+- Task 2: Use an ARM template to deploy an Azure VM hosting an Active Directory domain controller
 
 
-#### Task 1: Identify an available DNS name for an Azure VM deployment
+### Task 1: Identify an available DNS name for an Azure VM deployment
+
+In this task, you will identify a DNS name for your Azure VM deployment. 
 
 1. From the lab virtual machine, start Microsoft Edge, browse to the Azure portal at [**http://portal.azure.com**](http://portal.azure.com) and sign in by using a Microsoft account that has the Owner role in the Azure subscription you intend to use in this lab and is a Global Administrator of the Azure AD tenant associated with that subscription.
 
@@ -46,30 +45,31 @@ The main tasks for this exercise are as follows:
 
     > **Note**: To identify Azure regions where you can provision Azure VMs, refer to [**https://azure.microsoft.com/en-us/regions/offers/**](https://azure.microsoft.com/en-us/regions/offers/)
 
-    ```
+    ```powershell
     Test-AzDnsAvailability -DomainNameLabel <custom-label> -Location '<location>'
     ```
 
 1. Verify that the command returned **True**. If not, rerun the same command with a different value of the ***&lt;custom-label&gt;*** until the command returns **True**.
 
-1. Note the value of the ***&lt;custom-label&gt;*** that resulted in the successful outcome. You will need it in the next task
+1. Note the value of the ***&lt;custom-label&gt;*** that resulted in the successful outcome. You will need it in the next task.
 
-1. Close Cloud Shell
+1. Close the Cloud Shell.
 
-#### Task 2: Deploy an Azure VM hosting an Active Directory domain controller by using an Azure Resource Manager template
+#### Task 2: Use an ARM template to deploy an Azure VM hosting an Active Directory domain controller
 
+In this task, you will deploy an Azure VM that will host an Active Directory domain controller
 
-1. In the Azure portal select **Create a resource**.
+1. In the Azure portal, select **Create a resource**.
 
 1. From the **New** blade, search Azure Marketplace for **Template deployment (deploy using custom templates)**.
 
 1. Use the list of search results to navigate to the **Template deployment (deploy using custom templates)** blade. 
 
-1. Click **Create**
+1. Click **Create**.
 
-1. From **Load a github quickstart template**, select the **active-directory-new-domain**. Click **Select**
+1. From **Load a github quickstart template**, select the **active-directory-new-domain**. Click **Select template**.
 
-1. Yo ucan also find this template in the following location at the GitHub Azure QuickStart Templates page at  [**https://github.com/Azure/azure-quickstart-templates/tree/master/active-directory-new-domain**](https://github.com/Azure/azure-quickstart-templates/tree/master/active-directory-new-domain).
+1. You can also find this template in the following location at the GitHub Azure QuickStart Templates page at  [**https://github.com/Azure/azure-quickstart-templates/tree/master/active-directory-new-domain**](https://github.com/Azure/azure-quickstart-templates/tree/master/active-directory-new-domain).
 
 
 1. On the **Create an Azure VM with a new AD Forest** blade, initiate a template deployment with the following settings:
@@ -107,20 +107,20 @@ The main tasks for this exercise are as follows:
 
 The main tasks for this exercise are as follows:
 
- 1. Create an Azure Active Directory (AD) tenant
-
- 1. Add a custom DNS name to the new Azure AD tenant
-
- 1. Create an Azure AD user with the Global Administrator role
+- Task 1: Create an Azure Active Directory (AD) tenant
+- Task 2: Add a custom DNS name to the new Azure AD tenant
+- Task 3: Create an Azure AD user with the Global Administrator role
 
 
 #### Task 1: Create an Azure Active Directory (AD) tenant
+
+In this task, you will crate a new Azure AD tenant to use in this lab. 
 
 1. In the Azure portal, navigate to the **New** blade.
 
 1. From the **New** blade, search Azure Marketplace for **Azure Active Directory**.
 
-1. Select **Azure Active Directory**. Click **Create**
+1. Select **Azure Active Directory**. Click **Create**.
 
 1. From the **Create directory** blade, create a new Azure AD tenant with the following settings:
 
@@ -130,10 +130,13 @@ The main tasks for this exercise are as follows:
 
   - Country or region: **United States**
 
-    > **Note**: The green check mark in the **Initial domain name** text box will indicate whether the domain name you typed in is valid and unique. (Record your initial domain name for later use)
-- Click **Create**
+    > **Note**: The green check mark in the **Initial domain name** text box will indicate whether the domain name you typed in is valid and unique. (Record your initial domain name for later use).
+
+- Click **Create**.
 
 #### Task 2: Add a custom DNS name to the new Azure AD tenant
+
+In this task, you will add your custom DNS name to the new Azure AD tenant. 
 
 1. In the Azure portal, set the **Directory + subscription** filter to the newly created Azure AD tenant.
 
@@ -155,6 +158,8 @@ The main tasks for this exercise are as follows:
 
 
 #### Task 3: Create an Azure AD user with the Global Administrator role
+
+In this task, you will add a new Azure AD user and assign them to the Global Administrator role. 
 
 1. In the Azure portal, navigate to **Azure Active Directory** > **Users** blade of the **AdatumSync** Azure AD tenant.
 
@@ -190,14 +195,14 @@ The main tasks for this exercise are as follows:
 
 The main tasks for this exercise are as follows:
 
- 1. Configure Active Directory in preparation for directory synchronization
-
- 1. Install Azure AD Connect
-
- 1. Verify directory synchronization
+- Task 1: Configure Active Directory in preparation for directory synchronization
+- Task 2: Install Azure AD Connect
+- Task 3: Verify directory synchronization
 
 
 #### Task 1: Configure Active Directory in preparation for directory synchronization
+
+In this task, you will connect to the virtual machine and create a directory synchronization account. 
 
    > **Note**: Before you start this task, ensure that the template deployment you started in Exercise 1 has completed.
 
@@ -240,6 +245,8 @@ The main tasks for this exercise are as follows:
 
 #### Task 2: Install Azure AD Connect
 
+In this task, you will install AD Connect on the virtual machine. 
+
 1. Within the RDP session to **adVM**, from Server Manager, click **Local** disable temporarily **IE Enhanced Security Configuration**.
 
 1. Within the RDP session to **adVM**, start Internet Explorer and download **Azure AD Connect** from [**https://www.microsoft.com/en-us/download/details.aspx?id=47594**](https://www.microsoft.com/en-us/download/details.aspx?id=47594)
@@ -281,6 +288,8 @@ The main tasks for this exercise are as follows:
 
 #### Task 3: Verify directory synchronization
 
+In this task, you will verify that directory synchronization is working. 
+
 1. In the lab virtual machine, in the Microsoft Edge window showing the Azure portal, set the **Directory + subscription** filter back to the **AdatumSync** directory.
 
     > **Note**: The **Directory + subscription** filter appears to the left of the notification icon in the toolbar of the Azure portal
@@ -297,10 +306,12 @@ The main tasks for this exercise are as follows:
 
 1. From the Windows PowerShell prompt, start Azure AD Connect delta synchronization by running the following:
 
-   ```
-   Import-Module -Name 'C:\Program Files\Microsoft Azure AD Sync\Bin\ADSync\ADSync.psd1'
-
-   Start-ADSyncSyncCycle -PolicyType Delta
+	```
+	Import-Module -Name 'C:\Program Files\Microsoft Azure AD Sync\Bin\ADSync\ADSync.psd1'
+	```
+   
+	```
+	Start-ADSyncSyncCycle -PolicyType Delta
    ```
 
 1. From the lab virtual machine, in Microsoft Edge, refresh the **Users - All users** blade of the AdatumSync Azure AD tenant.

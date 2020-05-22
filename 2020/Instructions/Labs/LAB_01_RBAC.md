@@ -24,10 +24,11 @@ You have also been tasked to assign roles to groups.
 
 In this lab, you will use different tools to:
 
-- Exercise 1: Create the Senior Admins group with member Joseph Price. 
-- Exercise 2: Create the Junior Admins group with member Isabel Garcia.
-- Exercise 3: Create the Service Desk group with member Dylan Williams. 
+- Exercise 1: Create the Senior Admins group with member Joseph Price (Portal). 
+- Exercise 2: Create the Junior Admins group with member Isabel Garcia (PowerShell).
+- Exercise 3: Create the Service Desk group with member Dylan Williams (CLI). 
 - Exercise 4: Assign the Service Desk group Virtual Machine Contributor permissions.
+- 
 
 ## Exercise 1: Create the Senior Admins group with member Joseph Price. 
 
@@ -52,8 +53,9 @@ In this task, you will create a user account for Joseph Price.
 
 1. On the **User** page, fill out the blade with the following information:
 
-      - **User name**: Joseph
-      - **Name**: Joseph Price
+	- **User name**: Joseph
+      
+	- **Name**: Joseph Price
 
 1. Click on the copy icon next to the **User name**. 
 
@@ -73,14 +75,15 @@ In this task, you will create the *Senior Admins* group and assign Joseph as the
  
 1. Complete the group details.
   
-       - **Group Type**: Security
-       - **Group Name**: Senior Admins 
+	- **Group Type**: Security
+       
+	- **Group Name**: Senior Admins 
     
 1. Under  **Members** click **No members selected** and select **Joseph Price**, click **Select**.
 
 1. Click **Create**.
 
-> Exercise result: Used the Azure Portal to create a user and a group, and assigned the user to the group. 
+> Result: You used the Azure Portal to create a user and a group, and assigned the user to the group. 
 
 ## Exercise 2: Create the Junior Admins group with member Isabel Garcia.
 
@@ -165,7 +168,7 @@ In this task, you will create the Junior Admins group and assign Isabel to the g
 	Get-AzADGroupMember -GroupDisplayName "Junior Admins"
 	```
 
-> Exercise result: Using PowerShell you created a user and a group, and assigned the user to the group. 
+> Result: You used PowerShell to create a user and a group, and assigned the user to the group. 
 
 
 ## Exercise 3: Create the Service Desk group with member Dylan Williams. 
@@ -179,7 +182,7 @@ In this exercise, you will:
 
 #### Task 1: Use the CLI to create a user account for Dylan Williams.
 
-	> Bookmark the [CLI reference page](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest). The Reference section has a command list with usage information. 
+> Bookmark the [CLI reference page](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest). The Reference section has a command list with usage information. 
 
 In this task, you will create a user account for Dylan Williams.. 
 
@@ -229,7 +232,7 @@ In this task, you will create the Service Desk group and assign Dylan to the gro
 	az ad group member list --group -o table
 	```
 
-> Exercise result: Using the CLI you created a user and a group, and assigned the user to the group. 
+> Result: Using the CLI you created a user and a group, and assigned the user to the group. 
 
 
 ## Exercise 4: Assign the Service Desk group Virtual Machine Contributor permissions. 
@@ -295,7 +298,7 @@ In this exercise, you will:
 
 1. Check the access for **Joseph Price**. 
 
-> Exercise result: You have created a resource group and assigned Virtual Machine Contributor permissions to the resource group. 
+> Result: You have created a resource group and assigned Virtual Machine Contributor permissions to the resource group. 
 
 
 -----------------------

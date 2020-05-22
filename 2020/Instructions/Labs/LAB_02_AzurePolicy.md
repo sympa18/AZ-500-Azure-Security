@@ -14,17 +14,21 @@ Your organization's wants to ensure resources are only created in certain Azure 
 
 ## Lab objectives
 
-In this lab, you will:
+In this lab, you will complete:
 
-- Task 1: Create a resource group for the policy. 
-- Task 2: Create an Allowed Locations policy assignment.
-- Task 3: Verify the Allowed Locations policy assignment is working. 
+- Exercise 1: Implement Azure Policy. 
 
 ## Exercise 1: Implement Azure Policy
 
 ### Estimated timing: 20 minutes
 
-### Task 1: Create a resource group for the lab. 
+In this exercise, you will complete:
+
+- Task 1: Create a resource group for the policy. 
+- Task 2: Create an Allowed Locations policy assignment.
+- Task 3: Verify the Allowed Locations policy assignment is working. 
+
+#### Task 1: Create a resource group for the lab. 
 
 In this task, you will create a resource group for the lab. 
 
@@ -50,7 +54,7 @@ In this task, you will create a resource group for the lab.
 
 1. Close the **Cloud Shell**.
 
-### Task 2: Create an Allowed Locations policy assignment.
+#### Task 2: Create an Allowed Locations policy assignment.
 
 In this task, you will create an Allowed Locations policy assignment and specify which Azure regions the policy can use. 
 
@@ -77,10 +81,14 @@ In this task, you will create an Allowed Locations policy assignment and specify
 1. Complete the remainder of the policy assignment **Basics** tab.
 
 	-   Exclusions: **Leave blank**
-    -   Assignment name: **Allow UK South for AZ500LAB02**
-    -   Description: **Allow resources to be created in UK South Only for AZ500LAB02**
-    -   Policy enforcement: **Enabled**
-    -   Assigned by: **Your name**
+    
+	-   Assignment name: **Allow UK South for AZ500LAB02**
+    
+	-   Description: **Allow resources to be created in UK South Only for AZ500LAB02**
+    
+	-   Policy enforcement: **Enabled**
+    
+	-   Assigned by: **Your name**
 
 1. Click **Next** to proceed to the **Parameters** tab. 
 
@@ -92,7 +100,7 @@ In this task, you will create an Allowed Locations policy assignment and specify
 
 	> The reason the Azure policy assignment takes up to 30 minutes to be assigned is that is has to replicate globally although in the real world it generally only takes 2 - 3 minutes to be implemented.  If the next task fails, simply wait a few minutes and attempt the steps again.
 
-### Task 2: Test the Allowed Locations policy assignment
+#### Task 2: Test the Allowed Locations policy assignment
 
 In this task, you will test the Allowed Locations policy. 
 
@@ -104,8 +112,10 @@ In this task, you will test the Allowed Locations policy.
 
 1. On the **Create virtual network** blade, complete the **Basics** tab.
 
-    -   Resource group: **AZ500LAB02**
+	-   Resource group: **AZ500LAB02**
+	
     -   Name: **myVnet**
+ 
     -   Location: **East US**
 
 1. Click **Review + Create** and then **Create**. 
@@ -120,9 +130,9 @@ In this task, you will test the Allowed Locations policy.
 
 > Exercise results: In this exercise, you learned to use Azure policy by browsing the built-in policy definitions and creating a policy assignment.
 
-**Lab Clean Up**
+**Clean up resources**
 
-It is very important to remove resources you are not using. This will reduce cost. 
+> Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not incur unexpected costs.
 
 1. Access the Cloud Shell.
 

@@ -6,6 +6,8 @@ lab:
 
 # Lab 04: MFA, Conditional Access and AAD Identity Protection
 
+# Student lab manual
+
 All tasks in this lab are performed from the Azure portal, except for steps in Exercise 2 performed within a Remote Desktop session to an Azure VM.
 
 Lab files:
@@ -20,18 +22,18 @@ Your organization wants to implement Azure MFA, Azure AD Conditional Access Poli
 
 ## Lab Objectives
 
-In this lab, you will complete the following:
+In this lab, you will complete:
 
- - Exercise 0: Deploy an Azure VM by using an Azure Resource Manager template
- - Exercise 1: Implement Azure MFA
- - Exercise 2: Implement Azure AD Conditional Access Policies 
- - Exercise 3: Implement Azure AD Identity Protection
+- Exercise 0: Deploy an Azure VM by using an Azure Resource Manager template
+- Exercise 1: Implement Azure MFA
+- Exercise 2: Implement Azure AD Conditional Access Policies 
+- Exercise 3: Implement Azure AD Identity Protection
 
-### Exercise 0: Deploy an Azure VM by using an Azure Resource Manager template
+## Exercise 0: Deploy an Azure VM by using an Azure Resource Manager template
 
 ### Estimated timing: 10 minutes
 
-In this exercise, you will:
+In this exercise, you will complete:
 
 - Task 1: Deploy an Azure VM by using an Azure Resource Manager template.
 
@@ -70,13 +72,20 @@ In this task, you will create a virtual machine from an ARM template. This machi
 1. From the **Custom deployment** blade, complete the **Basics** tab information.
 
     - Subscription: <name of the subscription you are using in class>
-    - Resource group: **Create new** and name it **AZ500LAB04**
-    - Location: <ask your instructor for the Azure region closest to the lab location>
-    - Vm Size: **Standard_DS1_v2**
-    - Vm Name: **az500-04-vm1**
-    - Admin Username: **Student**
-    - Admin Password: **Pa55w.rd1234**
-    - Virtual Network Name: **az500-04-vnet1**
+    
+	- Resource group: **Create new** and name it **AZ500LAB04**
+    
+	- Location: <ask your instructor for the Azure region closest to the lab location>
+    
+	- Vm Size: **Standard_DS1_v2**
+    
+	- Vm Name: **az500-04-vm1**
+    
+	- Admin Username: **Student**
+    
+	- Admin Password: **Pa55w.rd1234**
+    
+	- Virtual Network Name: **az500-04-vnet1**
 
 	> To identify Azure regions where you can provision Azure VMs, refer to [**https://azure.microsoft.com/en-us/regions/offers/**](https://azure.microsoft.com/en-us/regions/offers/)
 
@@ -84,14 +93,14 @@ In this task, you will create a virtual machine from an ARM template. This machi
 
 	> Do not wait for the deployment to complete but proceed to the next exercise. You will use the virtual machine included in this deployment in the last exercise of this lab.
 
-> Exercise result: You have initiated a template deployment of an Azure VM **az500-04-vm1** that you will use in the next exercise of this lab.
+> Result: You have initiated a template deployment of an Azure VM **az500-04-vm1** that you will use in the next exercise of this lab.
 
 
-### Exercise 1: Implement Azure MFA
+## Exercise 1: Implement Azure MFA
 
 ### Estimated timing: 30 minutes
 
-In this exercise, you will:
+In this exercise, you will complete:
 
 - Task 1: Create a new Azure AD tenant.
 - Task 2: Activate Azure AD Premium v2 trial.
@@ -154,35 +163,56 @@ In this task, you will create three users: aaduser1 (Global Admin), aaduser2 (us
 1. Click **New User**,complete the new user configuration settings, and then click **Create**.
 
     - User name: **aaduser1** 
+	
 	> The full user principal name is the username@your_domain_name. You will need this later in this lab. 
-    - Name: **aaduser1**
-    - Password: Select the option **Auto-generate password**, select **Show Password**
+    
+	- Name: **aaduser1**
+    
+	- Password: Select the option **Auto-generate password**, select **Show Password**
+	
 	> Make a note of the user's password. You will need this later in this lab. 
-    - Groups: **0 groups selected**
-    - Roles: Select **user**, then select **Global administrator**, and **Select**. 
-    - Usage Location: **United States**  
+    
+	- Groups: **0 groups selected**
+    
+	- Roles: Select **user**, then select **Global administrator**, and **Select**. 
+    
+	- Usage Location: **United States**  
 
 1. Click **New User**,complete the new user configuration settings, and then click **Create**.
 
     - User name: **aaduser2** 
+	
 	> The full user principal name is the username@your_domain_name. You will need this later in this lab. 
-    - Name: **aaduser2**
-    - Password: Select the option **Auto-generate password**, select **Show Password**
+    
+	- Name: **aaduser2**
+    
+	- Password: Select the option **Auto-generate password**, select **Show Password**
+	
 	> Make a note of the user's password. You will need this later in this lab. 
-    - Groups: **0 groups selected**
-    - Roles: Select **User**
-    - Usage Location: **United States** 
+    
+	- Groups: **0 groups selected**
+    
+	- Roles: Select **User**
+    
+	- Usage Location: **United States** 
 
 1. Click **New User**,complete the new user configuration settings, and then click **Create**.
 
     - User name: **aaduser3** 
+	
 	> The full user principal name is the username@your_domain_name. You will need this later in this lab. 
-    - Name: **aaduser3**
-    - Password: Select the option **Auto-generate password**, select **Show Password**
+    
+	- Name: **aaduser3**
+    
+	- Password: Select the option **Auto-generate password**, select **Show Password**
+	
 	> Make a note of the user's password. You will need this later in this lab. 
-    - Groups: **0 groups selected**
-    - Roles: Select **User**
-    - Usage Location: **United States** 
+    
+	- Groups: **0 groups selected**
+    
+	- Roles: Select **User**
+    
+	- Usage Location: **United States** 
 
 	> At this point, you should have three new users on the **Users** page. 
 	
@@ -193,9 +223,13 @@ In this task, you will assign each user to the Azure Active Directory Premium P2
 1. For each user, aaduser1, adduser2, and aaduser3, do the following steps.
 
 	- Select the user. 
+	
 	- Under **Manage**, select **Licenses**.
+	
 	- Click **Assignments**, and check the box for ***Azure Active Directory Premium P2**.
+	
 	- Ensure all the licensing options are selected, including Microsoft Azure Multi-Factor Authentication.
+	
 	- Click **Save**. 
 
 1. Your account should also be listed on the **Users** page.
@@ -270,7 +304,7 @@ In this task, you will validate the MFA configuration by testing a user as they 
 
 1. Open an InPrivate Microsoft Edge window.
 
-1. Navigate to the Azure portal and sign in using the **aaduser1** user account. When prompted.
+1. Navigate to the Azure portal and sign in using the **aaduser1** user account. 
 
      > To sign in you will need to provide a fully qualified name of the **aaduser1** user account, including the Azure AD tenant DNS domain name, as noted earlier in this lab.For example, aaduser1@adatumlab50004.onmicrosoft.com where you replace **adatumlab50004** with your unique domain name. 
 
@@ -293,19 +327,19 @@ In this task, you will validate the MFA configuration by testing a user as they 
 
 1. Sign out as **aaduser1** and close the InPrivate browser window.
 
-	> Exercise result: You have created a new AD tenant, configured AD users, configured MFA, and tested the MFA experience for a user. 
+	> Result: You have created a new AD tenant, configured AD users, configured MFA, and tested the MFA experience for a user. 
 
 
-### Exercise 2: Implement Azure AD Conditional Access Policies 
+## Exercise 2: Implement Azure AD Conditional Access Policies 
 
 ### Estimated timing: 15 minutes
 
-In this exercise, you will: 
+In this exercise, you will complete: 
 
 - Task 1: Configure a conditional access policy.
 - Task 2: Test the conditional access policy.
 
-# Task 1 - Configure a conditional access policy. 
+#### Task 1 - Configure a conditional access policy. 
 
 In this task, you will review conditional access policy settings and create a policy that requires MFA when signing in to the Portal. 
 
@@ -322,15 +356,23 @@ In this task, you will review conditional access policy settings and create a po
 1. Select **New Policy** and complete the configuration settings.
 
 	- Name: **AZ500Policy1**
+	
 	- Users and groups > Select users and groups > Users and Groups > Select: **aaduser2**, **Select** > **Done**. 
-	-  ** > Select **Done**
+	
 	- Cloud apps or actions > Select apps > Select: **Microsoft Azure Management** > **Select** > Review the warning that this policy impacts Portal access > Select **Done**
+	
 	- Conditions > Sign-in risk > Review the risk levels > Do not make any changes
+	
 	- Device platforms > Review the devices that can included, such as Android and iOS.
+	
 	- Locations > Review the location selections.
+	
 	- Under **Access controls** click **Grant**.
+	
 	- Review the Grant options such as MFA. You may require one or more of the controls.
+	
 	- Select **Require multi-factor authentication** > **Select**
+	
 	- For **Enable policy** select **On**. 
 
 1. Click **Create**. 
@@ -339,7 +381,7 @@ In this task, you will review conditional access policy settings and create a po
 
 	> At this point, you have a conditional access policy that requires MFA to sign in to the Portal. 
 
-# Task 2 - Test the conditional access policy.
+#### Task 2 - Test the conditional access policy.
 
 In this task, you will sign in to the Portal as **aaduser2** and verify MFA is required. You will also delete the policy before continuing on to the next exercise. 
 
@@ -375,13 +417,13 @@ In this task, you will sign in to the Portal as **aaduser2** and verify MFA is r
 
 1. Confirm that the policy should be deleted. 
 
-	> Exercise result: In this exercise you implement a conditional access policy to require MFA when a user signs into the portal. 
+	> Result: In this exercise you implement a conditional access policy to require MFA when a user signs into the portal. 
 
-### Exercise 3: Implement Azure AD Identity Protection
+## Exercise 3: Implement Azure AD Identity Protection
 
 ### Estimated timing: 30 minutes
 
-In this exercise, you will: 
+In this exercise, you will complete: 
 
 - Task 1: View Azure AD Identity Protection options in the Portal
 - Task 2: Configure a user risk policy
@@ -418,12 +460,15 @@ In this task, you will create a user risk policy.
     - Assignments (Users)	
     	- Include tab: **All users**
 		- Exclude tab: Exclude your current admin account to avoid getting locked out of the tenant.
+	
 	- Assignment (Conditions):
 		- User risk level: **Low and above**
-    - Controls (Access):
+    
+	- Controls (Access):
 		- **Allow access**
 		- **Require password change**
-    - Enforce Policy: **On**
+    
+	- Enforce Policy: **On**
 
 1. Once your user policy is configured, click **Save**.
 
@@ -452,7 +497,7 @@ In this task, you will configure a sign-in risk policy.
 
 #### Task 4: Simulate risk events against the Azure AD Identity Protection policies 
 
-   > Before you start this task, ensure that the template deployment you started in Exercise 0 has completed. You should have a running virtual machine named **az500-04-vm1**. 
+> Before you start this task, ensure that the template deployment you started in Exercise 0 has completed. You should have a running virtual machine named **az500-04-vm1**. 
 
 1. In the Azure portal, set the **Directory + subscription** filter to the **Default Directory** (the original Azure AD tenant.)
 
@@ -529,13 +574,11 @@ In this task, you will review the Azure AD Identity Protection reports generated
 
 1. Notice any **Sign-in from anonymous IP address** entries. 
 
-	> Exercise result**: You have enabled Azure AD Identity Protection, configured user risk policy and sign-in risk policy, as well as validated Azure AD Identity Protection configuration by simulating risk events.
+	> Result: You have enabled Azure AD Identity Protection, configured user risk policy and sign-in risk policy, as well as validated Azure AD Identity Protection configuration by simulating risk events.
 
-**Lab Clean Up**
+**Clean up resources**
 
-It is very important to remove resources you are not using. This will reduce cost.  
-
-	> These steps disable the identity protection polcies in the **AdatumLab500-04** Azure AD tenant.
+> Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not incur unexpected costs. These steps disable the identity protection policies in the **AdatumLab500-04** Azure AD tenant.
 
 1. From the **Azure AD Identity Protection** blade.
 
@@ -547,7 +590,7 @@ It is very important to remove resources you are not using. This will reduce cos
 
 1. Set **Enforce policy** to **off** and then click **Save**.
 
-	> These steps stop the virtual machine in the original lab subscription Azure AD tenant. 
+> These steps stop the virtual machine in the original lab subscription Azure AD tenant. 
 
 1. From the **Virtual machine** blade.
 
@@ -555,4 +598,4 @@ It is very important to remove resources you are not using. This will reduce cos
 
 1 Click **OK** to deallocate the virtual machine. 
 
-	>  Do not remove any of the resources from this lab as Lab 05 PIM has a dependancy on it.
+>  Do not remove any of the resources from this lab as Lab 05 PIM has a dependancy on it.
