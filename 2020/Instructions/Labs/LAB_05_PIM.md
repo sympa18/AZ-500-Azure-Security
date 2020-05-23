@@ -32,6 +32,8 @@ In this lab, you will complete:
 
 ## Exercise 1 - Configure PIM users and roles
 
+> For all the resources in this lab, we are using the **East (US)** region. Verify with your instructor this is region to use for you class. 
+
 ### Estimated timing: 15 minutes
 
 In this exercise, you will complete:

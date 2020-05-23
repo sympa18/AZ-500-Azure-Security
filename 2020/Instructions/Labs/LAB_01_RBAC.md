@@ -22,7 +22,7 @@ You have also been tasked to assign roles to groups.
 
 ## Lab objectives
 
-In this lab, you will use different tools to:
+In this lab, you will complete the following:
 
 - Exercise 1: Create the Senior Admins group with member Joseph Price (Portal). 
 - Exercise 2: Create the Junior Admins group with member Isabel Garcia (PowerShell).

@@ -31,6 +31,8 @@ In this lab, you will complete:
 
 ## Exercise 0: Deploy an Azure VM by using an Azure Resource Manager template
 
+> For all the resources in this lab, we are using the **East (US)** region. Verify with your instructor this is region to use for you class. 
+
 ### Estimated timing: 10 minutes
 
 In this exercise, you will complete:

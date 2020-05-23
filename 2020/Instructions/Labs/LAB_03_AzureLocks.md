@@ -23,6 +23,8 @@ In this lab, you will complete:
 
 ### Estimated timing: 20 minutes
 
+> For all the resources in this lab, we are using the **East (US)** region. Verify with your instructor this is region to use for you class. 
+
 In this exercise, you will complete:
 
 - Task 1: Create a resource group with a storage account.
