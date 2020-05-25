@@ -1,7 +1,7 @@
 ---
 lab:
     title: '05 - Azure AD Privileged Identity Management'
-    module: 'Module 01 - Manage Identity and access'
+    module: 'Module 01 - Manage Identity and Access'
 ---
 
 # Lab 05 - Azure AD Privileged Identity Management
@@ -10,359 +10,352 @@ lab:
 
 ## Lab scenario
 
-In this lab, you'll learn how to use Azure Privileged Identity Management (PIM) to enable just-in-time administration and control the number of users who can perform privileged operations. You'll also learn about the different directory roles available as well as newer functionality that includes PIM being expanded to role assignments at the resource level. 
+Your organization wants to implement Azure Privileged Identity Management (PIM) to enable just-in-time administration and control the number of users who can perform privileged operations. The specific requirements are:
 
-## Objectives
-
-In this lab, you will:
-
-- Getting Started with PIM
-- PIM Security Wizard
-- PIM for Directory Roles
-- PIM for Role Resources
-
-## Instructions
-
-## Prerequisites
-
-Ensure you have completed Lab 04: MFA, Conditional Acccess and AAD Identity Protection before proceeding with this lab as we need both the new AAD directory AdatumLab500-04 and the three users aaduser 1 2 and 3 for this lab.
-
-## Exercise 1 - Assign Directory Roles
-
-### Task 1:  Make a user eligible for a role
+- User aaduser2 should have a permanent assignment to the Security Administrator role. 
+- User aaduser2 should be eligible for the Billing Administrator and Global Reader roles.
+- The Global Reader role must require approval from aaduser3 to activate the role.
+- Configure an Access Review for the Global Reader role and review auditing capabilities.
 
 
-In the following task you will make  a user eligible for an Azure AD directory role.
+## Lab objectives
 
-1.  Sign in to Azure portal
+In this lab, you will complete:
 
-1. In the Azure portal, set the **Directory + subscription** filter to **AdatumLab500-04** (the newly created Azure AD tenant from Lab 04.)
+- Exercise 1: Configure PIM users and roles.
+- Exercise 2: Activate PIM roles with and without approval.
+- Exercise 3: Create an Access Review and review PIM auditing features.
 
-     > **Note**: The **Directory + subscription** filter is located to the right of the Cloud Shell icon in the toolbar of the Azure portal
+## Lab prerequisites
 
-1.  In the Azure Portal, click **All services** and search for and select **Azure AD Privileged Identity Management**.
+> Before proceeding ensure you have completed Lab 04: MFA, Conditional Acccess and AAD Identity Protection . You will need both the tenant, AdatumLab500-04, and the aaduser1, aaduser2, and aaduser3 user accounts.
 
-1.  Under **Manage** Select **Azure AD Roles**.
+## Exercise 1 - Configure PIM users and roles
 
+> For all the resources in this lab, we are using the **East (US)** region. Verify with your instructor this is region to use for you class. 
 
-1.  Click **Roles**.
+### Estimated timing: 15 minutes
 
+In this exercise, you will complete:
 
+- Task 1: Make a user eligible for a role.
+- Task 2: Configure a role to require approval to activate and add an eligible member.
+- Task 3: Give a user permanent assignment to a role. 
 
-1.  Click **Add assignments** to open Add managed members.
+#### Task 1:  Make a user eligible for a role
 
+In this task, you will make  a user eligible for an Azure AD directory role.
 
-1.  Click **Select a role**, and click **Billing Administrator**.
+1. Sign-in to the Azure portal **`https://portal.azure.com/`**.
 
+	> Ensure that you are signed-in to the **AdatumLab500-04** Azure AD tenant. You can use the **Directory + subscription** filter to switch between Azure AD tenants. Ensure you are signed in as the tenant owner.
 
-1.  Under **Select member(s)**, select **No member selected** and then click **aaduser2**, then **Select**.
+1. In the Azure Portal, click **All services**,search for and select **Azure AD Privileged Identity Management**.
 
-1. Click **Next**
+1. Under **Manage**, select **Azure AD roles**.
 
-1. Untick **Permamnently eligible** and click **Assign**
+	> Most of the actions in this lab are from this page. Make a note of how to get to it. 
+
+1. Under **Manage**, select **Roles**.
+
+1. Click **Roles** and then **Add assignments**.
+
+1. In the **Select a role** drop-down, select **Billing Administrator**.
+
+1. Under **Select member(s)**, select **No member selected**, choose **aaduser2**, then **Select**.
+
+1. Click **Next**. 
+
+1. Ensure the **Assignment type** is **Eligible**. 
+
+1. Ensure the **Permanently eligible** option is not selected. Notice the eligible duration settings.
+
+1. Click **Assign**.
  
-1.  On the New assignment blade, click **Add**  to add the user to the role.
+1. Under **Manage** Select **Assignments**.
 
+1. Use **Member filter** to select **aaduser2**. 
 
-1. Select the **Billing Administrator** role.
+1. Notice the tabs for **Eligible roles**, **Active roles**, and **Expired roles**.
 
-1.  When the role is assigned, the user you selected will appear in the members list as **Eligible** for the role.
+1. Verify on the **Eligible roles** tab that **aaduser2** is shown as a **Billing administrator**. 
 
-### Task 2:  Make a user eligible for a role with approval
+	> When aaduser2 signs in they will be Eligible to use the Billing administrator role. 
 
- In the Azure Portal, click **All services** and search for and select **Azure AD Privileged Identity Management**.
+#### Task 2:  Configure a role to require approval to activate and add an eligible member
 
-1.  Under **Manage** Select **Azure AD Roles**.
+1. In the Azure Portal, continue in the PIM **Azure AD Roles** blade.
 
+1. Under **Manage**, select **Roles**, and then select the **Global reader** role. 
 
-1.  Click **Settings**.
+1. Select **Settings** (top) and notice all the configuration settings for the role, including requiring MFA. 
 
-1. Select **Global Reader** > **Edit**
+1. Click **Edit**.
 
-1. Notice all of the potential settings when activating a role including requiring MFA. 
+1. On the **Activation** tab, check the box for **Require approval to activate**. 
 
-1. Tick **Require approval to activate** 
+1. Under **Select member(s)**, select **No member selected**, choose **aaduser3**, then **Select**.
 
-1. Click **Select approvers** select **aaduser3** then click **select**
+1. Click **Next:Assignment**.
 
-1. Click **Next:Assignment**
+1. Uncheck the box **Allow permanent eligible assignment**. Leave the rest as default.
 
-1. Notice all of the options as part of an assigment including the ability to permanently assign a role and the expiry period. Untick **Allow permanent eligible assignment**. Leave the rest as default and click **Next:Notification**
+1. Click **Next:Notification**.
 
-1. Leave this as default and click **Update**
+1. Review the defaults and click **Update**.
 
-### Task 3 Add a role with Approval required
+	> Anyone trying to use the Global Reader role will now need approval from aaduser3. 
 
-1.  Under **Manage** Select **Azure AD Roles**.
+1. Continue working with the **Global Reader** role.
 
-1. Under **Manage** click **Roles**
+1. Select **Add assignments**.
 
-1. Click **Add assignments** 
+1. Under **Select member(s)**, select **No member selected**, choose **aaduser2**, then **Select**.
 
+1. Click **Next**. 
 
-1.  Click **Select a role**, and click **Global Reader**.
+1. Ensure the **Assignment type** is **Eligible**. 
 
+1. Ensure the **Permanently eligible** option is not selected. Notice the eligible duration settings.
 
-1.  Under **Select member(s)**, select **No member selected** and then click **aaduser2**, then **Select**.
+1. Click **Assign**.
 
-1. Click **Next**
-
-1. Untick **Permamnently eligible** and click **Assign**
+	> User aaduser2 is eligible for the Global Reader role. 
  
-### Task 4 Allow Permanent assignment of a role
+#### Task 3: Give a user permanent assignment to a role.
 
 In the Azure Portal, click **All services** and search for and select **Azure AD Privileged Identity Management**.
 
-1.  Under **Manage** Select **Azure AD Roles** > **Assign Eligibility**.
+1. In the Azure Portal, continue in the PIM **Azure AD Roles** blade.
 
-1. Click **Add assignments** 
+1. Under **Manage** select **Roles** and then **Add assignments**.
 
-1.  Click **Select a role**, and click **Security Administrator**.
+1. In the **Select a role** drop-down, select **Security Administrator**.
 
+1. Under **Select member(s)**, select **No member selected**, choose **aaduser2**, then **Select**.
 
-1.  Under **Select member(s)**, select **No member selected** and then click **aaduser2**, then **Select**.
+1. Click **Next**. 
 
-1. Click **Next**
+1. Ensure the **Assignment type** is **Eligible**. 
 
-1. Leave **Permamnently eligible** ticked and click **Assign**
+1. Click **Assign**.
 
+1. Under **Manage** select **Assignments**.
 
-## Exercise 3 - Activate and Deactivate PIM Roles
+1. Under **Security Administrator** locate **aaduser2** and on the far right click **Update**.
 
-### Task 1: Activate a role
+1. Click the box for **Permanently eligible** and **Save** your changes. 
 
+	> User aaduser2 is now permanently assigned the Security Administrator role.
+	
+## Exercise 2 - Activate PIM roles with and without approval
 
-When you need to take on an Azure AD directory role, you can request activation by using the **My roles** navigation option in PIM.
+### Estimated timing: 15 minutes
 
-1.  Open an **In Private** browsing session and navigate to **`https://portal.azure.com`** and login as **aaduser2** using their UPN. example aaduser2@adatumlab50004.onmicrosoft.com
+In this exercise, you will complete:
 
-1.  In the Azure Portal, click **All services** and search for and select **Azure AD Privileged Identity Management**.
+- Task 1: Activate a role that does not require approval. 
+- Task 2: Activate a role that requires approval. 
 
-1. Under **tasks** click **My roles**
+#### Task 1: Activate a role that does not require approval.
 
-1. You should see three roles as **Eligible roles** for **aaduser2**. **Global Reader**, **Billing Administrator** and **Security Administrator**. Notice that **Security Administrator** can be assigned as a **Permanenet** role
+In this task, you will activate a role that does not require approval
 
-1.  On the **Billing Administrator** role, to the right  click **Activate**.
+1. Open an InPrivate Microsoft Edge window.
 
+1. Navigate to the Azure portal and sign in using the **aaduser2** user account. You are required to use MFA. 
 
-1.  Click **Additional verification required.  Click to continue**. You only have to authenticate once per session. Run through the wizard to authenticate **aaduser2**.
+     > To sign in you will need to provide a fully qualified name of the **aaduser2** user account, including the Azure AD tenant DNS domain name, as noted earlier in this lab.For example, aaduser2@adatumlab50004.onmicrosoft.com where you replace **adatumlab50004** with your unique domain name. 
 
+1. Click **All services**, search for and select **Azure AD Privileged Identity Management**.
+
+1. Under **Tasks** click **My roles**.
+
+1. You should see three **Eligible roles** for **aaduser2**: **Global Reader**, **Billing Administrator** and **Security Administrator**. Notice that **Security Administrator** is a **Permanent** role.
+
+1. Locate the **Billing Administrator** role and click **Activate** (far right).
+
+1. Click the warning **Additional verification required.  Click to continue**. 
+
+	> You only have to authenticate once per session. 
  
-1.  Once returned to the Azure Portal, enter an activation reason and click **Activate**.
+1. Follow the instructions to verify your identity.
 
+1. Once returned to the Azure Portal, enter a **Reason** for the activation, and then click **Activate**.
 
-By default, roles do not require approval unless configured explicitly in settings. 
+	> When you activate a role in PIM, it can take up to 10 minutes before you can access the desired administrative portal or perform functions within a specific administrative workload. 	
+	
+	>  This role does not require approval, so you will be able to sign out and log back in to begin using the activated role. 
 
- If the role does not require approval, it is activated and added to the list of active roles. If you want to use the role right away, follow the steps in the next section.
+1. Click **sign out**.
 
- If the role requires approval to activate, a notification will appear in the upper right corner of your browser informing you the request is pending approval.
+1. Log back in as **aaduser2**.
 
+1. Navigate to **Azure AD Privileged Identity Management**.
 
-### Task 2: Use a role immediately after activation
+1. Under **Tasks** click **My Roles**.
 
+1. Select **Active roles**. Notice the **Billing Administrator** role is **Activated**.
 
-When you activate a role in PIM, it can take up to 10 minutes before you can access the desired administrative portal or perform functions within a specific administrative workload. 
+	>  Once a role has been activated, it automatically deactivates when its time limit under **End time**(eligible duration) is reached.
 
-1.  Click **Sign Out**.
+	> If you complete your administrator tasks early, you can deactivate a role manually.
 
-1.  Log back in as **aaduser2**.
+1.  For the Billing Administrator role, click **Deactivate** (far right).
 
-1. Navigate back to **Azure AD Privileged idnetity management** under **tasks** click **My Roles**
+1.  Click **Deactivate** again to confirm the action. 
 
-1. Select **Active roles**. You should see that **aaduser2** will have an Activated state for the **Billing Administrator** role. 
 
-### Task 3: Deactivate a role
+#### Task 2: Activate a role that requires approval. 
 
+In this task, you will activate a role that requires approval.
 
-Once a role has been activated, it automatically deactivates when its time limit under **End time**(eligible duration) is reached.
+1. Continue in the Portal as **aaduser2**.
 
-If you complete your administrator tasks early, you can also deactivate a role manually in Azure AD Privileged Identity Management.
+1. Navigate to the **Azure AD Privileged Identity Management** role.
 
-1.  From the Billing Administrator role click **Deactivate**.
+1. Under **Tasks** select **My Roles**.
 
+1. Locate the **Global Reader** role, and click **Activate** (far right). 
 
-1.  Click **Deactivate** again.
+1. Provide a **Reason** for the activation and click **Activate**. 
 
+1. Notice the message that your request is pending. This means it requires approval.
 
-### Task 4: Cancel a pending request
+	>  As the Privileged role administrator you can review and cancel requests at any time. 
 
+1. Locate the **Security Administrator** role, and click **Activate** (far right). 
 
-If you do not require activation of a role that requires approval, you can cancel a pending request at any time.
+1. If prompted for **Additional verification required**, click the message and provide the verification.
 
-1. Sign out and back in with your own account and ensure you are in the **ADATUMLAB500-04** directory
+1. Provide a **Reason** for the activation and click **Activate**. The auto approval process should complete.
 
-1.  **Open Azure AD Privileged Identity Management**.
+1. Type in a reason then click **Activate**. 
 
-1.  Click **Azure AD roles**.
+1. Click the **Active roles** tab and notice the **Security Administrator** role is available, but the **Global Reader** role is not yet available.
 
-1. Click **Activate your role** 
+	> You will now approve the Global Reader role.
 
-1. From **Global Reader** Click **Activate**  
+1. Sign out of the Portal as **aaduser2**.
 
-1. Type in a reason then click **Activate**. You should see that your request is awaiting approval
+1. Sign into the Portal as **aaduser3**.
 
-1.  Click **Pending requests**.
+	> Remember if you have a user has sign in problems, you can sign in as the subscription owner and use Azure Identity Protection to reset their password or unblock their account.
 
-1.  You should see your request in Pending Requests. To remove the request tothe right click **Cancel**.
+1. Navigate to **Azure AD Privileged Identity Management**.
 
-### Task 5 - Approve a pending request
+1. Under **Tasks**, click **Approve Requests**.
 
-Lets run through the same process except in this case we will approve the pending request
+1. Under **Requests for role activations** notice **aaduser2** has requested the **Global Reader** role.
 
-1.  **Open Azure AD Privileged Identity Management** as **aaduser2**.
+1. Click the **Global Reader** role request and provide a **Justification**. Notice the start and end times. 
 
-1.  Click **Azure AD roles**.
+1. **Approve** the request. 
 
-1. Click **Activate your role** 
+	> Notice you can also Deny a request.
 
-1. From **Global Reader** Click **Activate**  
+1. Sign into the Azure portal as **aaduser2**
 
-1. Type in a reason then click **Activate**. You should see that your request is awaiting approval
+1. Navigate to **Azure AD Privileged Identity Management**.
 
-1.  Lets also Activate our Permanent role. On **Security Administrator** click **Activate** 
+1. Under **Tasks** select **Azure AD Roles**.
 
-1. Type in a reason then click **Activate**. The auto approval process should complete.
+1. Select the **Active roles** tab. Notice the Global Reader role is now active.
 
-1. Select **Active roles**(You may need to sign out and back in). You should now have Security Administrator as a permanent Role and a pending request for the Global Reader role.
+> Result: You have practiced activating PIM roles with and without approval. 
 
-1. Click **Pending requests**.
+## Exercise 3 - Create an Access Review and review PIM auditing features
 
-1.  You should see your request in Pending Requests. 
+### Estimated timing: 10 minutes
 
+#### Task 1: Configure and conduct an access review
 
-### Task 6 - Approve Pending request
+In this task, you will reduce the risk associated with "stale" role assignments. You will do this by creating a PIM access review to ensure assigned roles are still valid. Specifically, you will review the Global Reader role. 
 
-1.  Sign into the Azure portal as **aaduser3**.(Note you may need to reset the users password. Take note of the password for later use)
+1. Sign in to the Portal with the Global Administrator Account.
 
-1.  **Open Azure AD Privileged Identity Management** 
+2. Navigate to the **Azure AD Privileged Identity Management** blade. 
 
-1.  Click **Azure AD roles**.
+1. Under **Manage** select **Azure AD Roles**.
 
-1. Under **Tasks** Click **Approve Requests**
+1. Under **Manage** select **Access reviews**.
 
-1. Under **Requests for role activations** click on the Global Reader role requests from user **aaduser2**.
-1. Type in a justification and click **Approve**
-
-1.  Sign into the Azure portal as **aaduser2**
-
-1.  **Open Azure AD Privileged Identity Management**.
-
-1.  Click **Azure AD roles**.
-
-1. Click **My roles** > **Active roles**. You should now have Global reader Activated.
-
-## Exercise 4 - Create an Access Review
-
-### Task 1: Start an access review for Azure AD directory roles in PIM
-
-
-Role assignments become "stale" when users have privileged access that they don't need anymore. In order to reduce the risk associated with these stale role assignments, privileged role administrators or global administrators should regularly create access reviews to ask admins to review the roles that users have been given. This task covers the steps for starting an access review in Azure AD Privileged Identity Management (PIM).
-
-
-1.  Return back to the browser that is logged in as your Global Admin Account.
-
-1.  From the PIM application main page click **Azure AD Roles** under the **Manage** section click **Access reviews** and click > **New**.
-
-
-1.  Enter the following details and click **Start**:
-
-      - Review name:  **Global Admin Review**
-      - Start Date:  **Today's Date** 
-      - Frequency: **One time**
-      - End Date:  **End of next month**
-      - Review role membership:  **Global Administrator**
-      - Reviewers:  **Select your account**
+1. Click **New** and configure the access review. 
+
+	- Review name:  **Global Reader Review**
+	
+	- Start Date:  **Today's Date** 
+	
+	- Frequency: **One time**
+	
+	- End Date:  **End of next month**
+	
+	- Review role membership:  **Global Reader** - Notice you could select several roles to review. 
+	
+	- Reviewers:  **Select your account** - Notice you could delegate the review to someone else. 
+
+1. Once you have configured the review, click **Start**:
  
- 
-1.  Once the review has completed and has a status of Active, click on the **Global Admin Review**.(You may need to wait a couple of minutes and refresh the browser)
+1. It will take a minute for the review to deploy and appear on the Access Reviews page. If needed, Refresh the page. The review status will be **Active**. 
 
-1.  Select **Results** and see the outcome of **Not reviewed**.
+1. Under **Global Admin Review** select **Global Reader**. 
 
+1. Notice on the **Overview** page the **Progress** charts shows 1 **Not reviewed** item. 
 
+1. Under **Manage** select **Results**. Notice aaduser2 is listed as having access to this role.
 
-### Task 2: Approve or deny access
+1. Click **aaduser2** to see a detailed audit log of when the role was used. 
 
+1. Return to the PIM **Azure AD Roles** page.
 
-When you approve or deny access, you're just telling the reviewer whether you still use this role or not. Choose Approve if you want to stay in the role, or Deny if you don't need the access anymore. Your status won't change right away, until the reviewer applies the results. Follow these steps to find and complete the access review:
+1. Under **Tasks** select **Review access** and then select the **Global Reader Review**. 
 
+1. Select **aaduser2**. 
 
-1.  In the PIM application,under **Start** select **Review access**. 
+1. Type a **Reason** and then select either **Approve** to continue access or **Deny** to remove access. 
 
-1.  Select the **Global Admin Review**.
+1. Return to the PIM **Azure AD Roles** page.
 
+1. Under **Manage** select **Access reviews**.
 
-1.  Unless you created the review, you appear as the only user in the review. Select the check mark next to your name. 
+1. Select the **Global Reader** review. Notice the **Progress** chart has been updated to show your review. 
 
-1. Type in a reason for approval then click **Approve**
+#### Task 2: Configure security alerts for Azure AD directory roles in PIM
 
-1. **aaduser1** may still have access from previous labs. If so click on **aaduser1** then type in a reason and select **Deny**.
+In this task, you will review PIM alerts, summary information, and detailed audit information. 
 
-1.  Close the **Review Azure AD roles** blade.
+1. Return to the PIM **Azure AD Roles** page.
 
+1. Under **Manage** select **Alerts** and then **Setting**.
 
-### Task 3: Configure security alerts for Azure AD directory roles in PIM
+1. Review the preconfigured alerts and risk levels, click an alert for more detailed information. 
 
+1. Return to the PIM **Azure AD Roles** page.
 
-You can customize some of the security alerts in PIM to work with your environment and security goals. Follow these steps to open the security alert settings:
+1. Select the **Overview** page. 
 
+1. Review this page for summary information about **Role activations**, **PIM activities**, **Alerts**, and **Role assignments**.
 
+1. Under **Activity** select **Resource audit**. Audit history is available for all privileged role assignments and activations within the past 30 days.
 
-1.  Open **Azure AD Privileged Identity Management**.
+1. Notice you can retrieve detailed information by **Time**, **Requestor**, **Action**, **Resource name**, **Scope** and **Subject**. 
 
-1.  Click **Azure AD roles**.
+> Result: You have configured an access review and reviewed audit information. 
 
-1.  Under Manage select **Alerts** then **Setting**.
+**Clean up resources**
 
-
-1.  Click an alert name to see the settings for the preconfigured alerts.
-
-
- 
-## Exercise 6 - View audit history for Azure AD roles in PIM
-
-
-You can use the Azure Active Directory (Azure AD) Privileged Identity Management (PIM) audit history to see all the role assignments and activations within the past 30 days for all privileged roles. If you want to see the full audit history of activity in your directory, including administrator, end user, and synchronization activity, you can use the [Azure Active Directory security and activity reports](https://docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/overview-reports).
-
-
-### Task 1: View audit history
+> Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not incur unexpected costs. While, in this case, there are no additional charges associated with Azure Active Directory tenants and their objects, you might want to consider removing the user accounts, the group accounts, and the Azure Active Directory tenant you created in this lab.
 
 
-Follow these steps to view the audit history for Azure AD roles.
+1. Access the Cloud Shell.
 
+1. Ensure **PowerShell** is selected in the upper-left drop-down menu of the Cloud Shell pane.
 
-1.  Open **Azure AD Privileged Identity Management**.
-
-1.  Click **Azure AD roles**.
-
-1.  Under **Activity** Click **Resource audit**.
-
-    Depending on your audit history, a column chart is displayed along with the total activations, max activations per day, and average activations per day.
-
-    At the bottom of the page, a table is displayed with information about each action in the available audit history. The columns have the following meanings:
-
-    | Column | Description |
-    | --- | --- |
-    | Time | When the action occurred. |
-    | Requestor | User who requested the role activation or change. If the value is **Azure System**, check the Azure audit history for more information. |
-    | Action | Actions taken by the requestor. Actions can include Assign, Unassign, Activate, Deactivate, or AddedOutsidePIM. |
-    | Member | User who is activating or assigned to a role. |
-    | Role | Role assigned or activated by the user. |
-    | Reasoning | Text that was entered into the reason field during activation. |
-    | Expiration | When an activated role expires. Applies only to eligible role assignments. |
-
-
-### Remove lab resources
-
-1. Open Cloud Shell in Powershell
-
-1.  Remove the resource group by running the following command (When prompted to confirm press Y and press enter)
+1. Remove the resource group using the Cloud Shell and PowerShell.
 
     ```
     Remove-AzResourceGroup -Name "AZ500LAB04"
     ```
 
-1. Close the **Cloud Shell** prompt at the bottom of the portal.
+> To remove the Azure AD tenant you created in this lab, follow https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/directory-delete-howto
 
-> **Note**: To remove the Azure AD tenant you created in this lab, follow https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/directory-delete-howto
-
-> **Result**: In this exercise, you removed the resources used in this lab.
