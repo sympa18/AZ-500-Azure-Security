@@ -10,7 +10,7 @@ lab:
 
 ## Lab scenario
 
-You have been asked to install Azure Firewal. This will help your organization control outbound network access which is an important part of an overall network security plan. Specifically you would like to create and test this infrastructure. 
+You have been asked to install Azure Firewall. This will help your organization control outbound network access which is an important part of an overall network security plan. Specifically, you would like to create and test this infrastructure. 
 
 - A virtual network with a workload subnet and a jump subnet.
 - A virtual machine is each subnet. 

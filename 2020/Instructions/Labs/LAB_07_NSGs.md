@@ -58,7 +58,7 @@ In this task, you will create a virtual network to use with the network and appl
 
 1. Click **Next: IP Addresses**. 
 
-1. Review the IPv4 address space (10.0.0.0/16) and the default subnet (10.0.0.0/14). 
+1. Review the IPv4 address space (10.0.0.0/16) and the default subnet (10.0.0.0/24). 
 
 1. Click **Review + Create** and then **Create**.
 
@@ -114,9 +114,9 @@ In this task, you will create a network security group.
 
 1. Monitor your deployment using the **Notification** icon, top right. 
 
-1. Once the NSG deploys, navigate to the resource.
+1. Once the NSG deploys, **Go to resource**.
 
-1. Under **Settings**, select **Subnets** and then select **Associate**. 
+1. Under **Settings**, select **Subnets** and then select **+ Associate**. 
 
 	- Virtual network: **myVirtualNetwork**
 	
@@ -148,9 +148,11 @@ In this task, you will create a network security group.
 
 1. Under **Settings**, select **Inbound security rules** and then click **Add**.
 
-3. Configure an inbound security rule to allow RDP (port 3389) to **myAsgMgmtServers** virtual machines. This port will be exposed to the internet. For production environments, instead of exposing port 3389 to the internet, it's recommended that you connect to Azure resources that you want to manage using a VPN or private network connection. Take the default value for any setting that is not specified. 
+3. Configure an inbound security rule to allow RDP (port 3389) to **myAsgMgmtServers** virtual machines. Take the default value for any setting that is not specified. 
 
-	- Destination: Select **Application security group**, and then select **myAsgMgmtServers** 
+	> This port will be exposed to the internet. For production environments, instead of exposing port 3389 to the internet, it's recommended that you connect to Azure resources that you want to manage using a VPN or private network connection. 
+
+	- Destination: **Application security group** - **myAsgMgmtServers** 
 
 	- Destination port ranges: **3389**                                                                                                      
 	
