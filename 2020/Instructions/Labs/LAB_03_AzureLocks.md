@@ -41,30 +41,14 @@ In this task, you will create a resource group and storage account for the lab.
 
 1. Open the Azure Cloud Shell by clicking the first icon in the top right of the Azure Portal. 
 
-1. Ensure **Bash** is selected in the upper-left drop-down menu of the Cloud Shell pane.
+1. Ensure **PowerShell** is selected in the upper-left drop-down menu of the Cloud Shell pane.
 
-	**Note:** Previously, you created a resource group in the Portal and with PowerShell. Now, you will use the CLI. 
-
-1. Create the AZ500LAB03 resource group. Consult your instructor for the preferred region. Wait for the resource to deploy before continuing. 
-
-     ```
-	az group create -l eastus -n AZ500LAB03
-     ```
-
-1. Verify the resource group was created. 
-	```
-	az group list -o table
-	```
-
-1. Create a storage account. Wait for the resource to deploy before continuing. 
-
-	```
-	az storage account create -n storageaz500lab03 -g AZ500LAB03 -l eastus --sku Standard_LRS
-	```
-
-1. Verify the storage account was created.
-	```
-	az storage account list -o table
+    ```
+    New-AzResourceGroup -Name AZ500LAB03 -Location 'EastUS'
+    ```
+    
+    ```
+    New-AzStorageAccount -ResourceGroupName AZ500LAB03 -Name (Get-Random -Maximum 999999999999999) -Location  EastUS -SkuName Standard_LRS -Kind StorageV2 
 	```
 
 #### Task 2: Add a ReadOnly lock on the storage account. 
@@ -75,7 +59,7 @@ In this task, you will add a read only lock to the storage account. This will pr
 
 1. Select the **AZ500LAB03** resource group.
 
-1. Select the **storageaz500lab03** storage account. 
+1. Select the new storage account. 
 
 1. Under **Settings**, click the "Locks" icon.
 
@@ -86,6 +70,8 @@ In this task, you will add a read only lock to the storage account. This will pr
 	- Lock type: **Read-only**
 
 1. Click **OK**. 
+
+1. The resource is now protected from accidental deletion and modification.
 
 #### Task 3: Test the ReadOnly lock 
 
@@ -139,7 +125,7 @@ In this task, you will test the Delete lock. You should be able to modify the st
 
 1. Under **Secure transfer required** click **Enabled** and then **Save**.
 
-1. You should be able to update the storage account with an error.
+1. You should be able to update the storage account without an error.
 
 1. Click the **Overview** blade.
 
