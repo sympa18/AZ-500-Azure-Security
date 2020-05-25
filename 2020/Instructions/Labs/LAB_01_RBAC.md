@@ -302,112 +302,22 @@ In this exercise, you will:
 
 
 -----------------------
-------------------------
-------------------------
-
-** George - I'm not sure how much more is needed for this lab. This is a lot of scripting. ** 
 
 After few moments, the user is assigned the Virtual Machine Contributor role at the AZ500LAB01 resource group scope.
 
-  
-### Task 3: Remove access
+**Results**: You have now completed this lab.
 
+**Clean up resources**
 
-In RBAC, to remove access, you remove a role assignment.
+> Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not incur unexpected costs.
 
+1. Access the Cloud Shell.
 
-1.  Click the Role Assignments tab.
+1. Ensure **PowerShell** is selected in the upper-left drop-down menu of the Cloud Shell pane.
 
-1.  In the list of role assignments, add a checkmark next to Bill Smith with the Virtual Machine Contributor role.
-  
-1.  Choose **Remove**.
-
-1.  In the remove role assignment message that appears, choose **Yes**.  
-   
-  
-## Exercise 3:  Role-based Access Control (RBAC) using PowerShell
-
-
-In this exercise you use PowerShell to :
-
--   Use the `Get-AzRoleAssignment` command to list the role assignments
--   Use the `Remove-AzResourceGroup` command to remove access
-
-
-### Task 1: Grant access
-  
-
-To grant access for the user, you use the New-AzRoleAssignment command to assign a role. You must specify the security principal, role definition, and scope.  
-
-
-1.  Launch the **Cloud Shell** and select **PowerShell**.
-  
-1.  Get the ID of your subscription using the **`Get-AzSubscription`** command and put it into a variable.
-  
-      ```
-      $subScope = "/subscriptions/"+(Get-AzSubscription).id
-      ``` 
-  
-1.  Assign the Reader role to the user at the subscription scope by using the following command (**replacing your domain with the tenant domain you noted earlier**):
-  
-      ```
-      New-AzRoleAssignment -SignInName bill@yourdomain.onmicrosoft.com -RoleDefinitionName "Reader" -Scope $subScope  
-      ```
-  
-  
-1.  Assign the Contributor role to the user at the resource group scope using the following command:
-  
-      ```
-      New-AzRoleAssignment -SignInName bill@yourdomain.onmicrosoft.com -RoleDefinitionName "Contributor" -ResourceGroupName "AZ500LAB01"
-      ```
-
-  
-### Task 2: List access  
-  
-1.  To verify the access for the subscription, use the Get-AzRoleAssignment command to list the role assignments use the following command:
-  
-      ```
-      Get-AzRoleAssignment -SignInName bill@yourdomain.onmicrosoft.com -Scope $subScope
-      ```
-
-       
-    In the output, you can see that the Reader role has been assigned to Bill Smith at the subscription scope.
-
-2.  To verify the access for the resource group, use the Get-AzRoleAssignment command to list the role assignments using the following command:
-  
-    ```
-    Get-AzRoleAssignment -SignInName bill@yourdomain.onmicrosoft.com     -ResourceGroupName "AZ500LAB01"
-    ```
-
-
- In the output, you can see that both the Contributor and Reader roles have been assigned to the Bill Smith. The Contributor role is at the AZ500LAB01 resource group scope and the Reader role is inherited at the subscription scope.
-
-### Task 3: Remove access
-  
-
-To remove access for users, groups, and applications, use `Remove-AzRoleAssignment` to remove a role assignment.
-
-
-1.  Use the following command to remove the Contributor role assignment for the user at the resource group scope.
-  
-    ```
-    Remove-AzRoleAssignment -SignInName bill@yourdomain.onmicrosoft.com -RoleDefinitionName "Contributor" -ResourceGroupName "AZ500LAB01"
-    ```
-  
-  
-1.  Use the following command to remove the Reader role assignment for the user at the subscription scope.
-
-    ```
-    Remove-AzRoleAssignment -SignInName bill@yourdomain.onmicrosoft.com -RoleDefinitionName "Reader" -Scope $subScope
-    ```
- 
-1.  Remove the resource group by running the following command (When prompted to confirm press Y and press enter):
+1. Remove the resource group by running the following command (When prompted to confirm press Y and press enter):
   
     ```
     Remove-AzResourceGroup -Name "AZ500LAB01"
     ```
 
-1.  Close the **Cloud Shell**.  
-
-
-**Results**: You have now completed this lab.
