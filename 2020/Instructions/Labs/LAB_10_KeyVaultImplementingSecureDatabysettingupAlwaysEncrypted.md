@@ -200,7 +200,7 @@ You will enable your client application to access the Azure SQL Database service
     **Important**! You must click save otherwise the permissions will not be committed.
 
 
-8.  Run the following Powershell in the **Powershell ISE** to set the sqlApp key permissions replacing the placeholder text with **your account details**
+8.  Open **Cloud Shell** and Select **PowerShell** to set the sqlApp key permissions replacing the placeholders in brackets [] with **your account details**
 
     
     ```
@@ -209,10 +209,6 @@ You will enable your client application to access the Azure SQL Database service
     $resourceGroupName = '[Resource_Group_with_KeyVault]'
     $location = '[Azure_Region_of_KeyVault]'
     $vaultName = '[KeyVault_Name]' 
-    ```
-    
-    ```
-    Login-AzAccount
     ```
     
     ```
