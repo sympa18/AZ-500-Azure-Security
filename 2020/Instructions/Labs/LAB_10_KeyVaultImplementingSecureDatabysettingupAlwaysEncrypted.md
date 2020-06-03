@@ -49,11 +49,6 @@ In this exercise, you will use PowerShell to create an Azure Key Vault.
 
 1.  Open **Cloud Shell** and select **PowerShell**
 
-1.  Use the following command to authenticate to Azure using the account for your Azure subscription.
-
-    ```
-    Login-AzAccount
-    ```
 
 1.  Create a new Resource Group 
 
