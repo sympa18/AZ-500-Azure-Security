@@ -296,7 +296,7 @@ In this task, you will create two virtual machines one in the default subnet and
 
 	- Resource group: **AZ500LAB12**
 
-	- Virtual machine name: **myVmDefault**
+	- Virtual machine name: **myVmPublic**
 	
 	- Region: **East US**
 
