@@ -60,9 +60,9 @@ In this task, you will use a template to deploy the lab infrastructure.
 
 1. On the **Custom deployment** blade, select the **Build your own template in the editor**.
 
-1. From the **Edit template** blade, click **Load file** and locate the **2020\\Allfiles\\Labs\\LAB_08\\template.json** file.
+1. From the **Edit template** blade, click **Load file** and locate the **2020\\Allfiles\\Labs\\LAB_11\\azuredeploy.json** file.
 
-1. Review the content of the template. This template will a SQL Server.
+1. Review the content of the template. This template will deploy a SQL Server.
 
 1. Click **Save**.
 
