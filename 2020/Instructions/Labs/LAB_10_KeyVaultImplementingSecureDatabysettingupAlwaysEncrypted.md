@@ -47,7 +47,7 @@ In this lab, you will:
 In this exercise, you will use PowerShell to create an Azure Key Vault.
 
 
-1.  Start PowerShell by clicking **Start > PowerShell**
+1.  Open **Cloud Shell** and select **PowerShell**
 
 1.  Use the following command to authenticate to Azure using the account for your Azure subscription.
 
