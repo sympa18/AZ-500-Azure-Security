@@ -75,7 +75,7 @@ To enable automatic provisioning of the Microsoft Monitoring Agent:
 1.  Under **Resourece Security and Hygiene** click **Compute & apps**
 
 1. Click on **VMs and Servers**. You should see the VM from the previous lab **myVM**.
-       > Note it may take a few minutes before the vm appears
+       > Note it may take a up to 15 minutes before the vm appears
 
 1. We can also add other VMs into Security Center using the same process.
 
