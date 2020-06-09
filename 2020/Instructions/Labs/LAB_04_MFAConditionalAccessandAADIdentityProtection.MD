@@ -12,8 +12,8 @@ All tasks in this lab are performed from the Azure portal, except for steps in E
 
 Lab files:
 
--  **2020\\Allfiles\\Labs\\LAB_04\\az-101-04b_azuredeploy.json**
--  **2020\\Allfiles\\Labs\\LAB_04\\az-101-04b_azuredeploy.parameters.json**
+-  **2020\\Allfiles\\Labs\\LAB_04\\az-500-04_azuredeploy.json**
+-  **2020\\Allfiles\\Labs\\LAB_04\\az-500-04_azuredeploy.parameters.json**
 
 
 ## Lab scenario
