@@ -145,6 +145,8 @@ In this task, you will sign up for the Azure AD Premium P2 free trial.
 
 	> You may need to refresh the browser window if the **AdatumLab500-04** entry does not appear in the **Directory + subscription** filter list.
 
+1. Go to **Azure Active Directory**
+
 1. Under **Manage**, select **Licenses**.
 
 1. Under **Manage** select **All products**.
