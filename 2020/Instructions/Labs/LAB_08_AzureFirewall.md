@@ -20,7 +20,7 @@ You have been asked to install Azure Firewall. This will help your organization 
 
 The finished architecture should look like this:
 
-![Diagram of the finished architecture](../images/Lab08.svg)
+![Diagram of the finished architecture](./images/Lab08.svg)
 
 Lab files:
 
