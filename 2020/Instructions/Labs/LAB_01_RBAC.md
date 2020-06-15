@@ -229,7 +229,7 @@ In this task, you will create the Service Desk group and assign Dylan to the gro
 1. Check the Service Desk group membership and ensure Dylan is a member.
 
 	```
-	az ad group member list --group -o table
+	az ad group member list --group "Service Desk" -o table
 	```
 
 > Result: Using the CLI you created a user and a group, and assigned the user to the group. 
