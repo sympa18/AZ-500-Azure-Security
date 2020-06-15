@@ -124,7 +124,7 @@ In this task, you will create a new Azure AD tenant.
 1. From the **Create tenant** blade, complete the configuration settings.
 
   - Organization name: **AdatumLab500-04**
-  - Initial domain name: <a unique name consisting of a combination of letters and digits>
+  - Initial domain name: **a unique name consisting of a combination of letters and digits**
   - Country or region: **United States**
 
 	> Make a note of the initial domain name. You will need it later in this lab.
