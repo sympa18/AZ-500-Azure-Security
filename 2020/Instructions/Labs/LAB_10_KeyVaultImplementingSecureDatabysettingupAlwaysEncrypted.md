@@ -347,7 +347,7 @@ In this task, you will create a blank Azure SQL Database, connect to it with SQL
 
     > NOTE in the next step **DO NOT CHOOSE** **Console App (.NET Core)**  
  
-1.  Next select **Visual C#** > Seach for **Console App** > Choose **Console App (.NET Framework)** and provide the name **OpsEncrypt** in the location **C:\\** and then click **OK**.
+1.  Next select **C#** > Seach for **Console App** > Choose **Console App (.NET Framework)** and provide the name **OpsEncrypt** in the location **C:\\** and then click **OK**.
 
 
 1.  **Right-Click** the **OpsEncrypt** project > click **Properties**.
