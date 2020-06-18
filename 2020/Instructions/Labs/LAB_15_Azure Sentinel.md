@@ -168,6 +168,8 @@ Azure Sentinel creates connections to services and apps by connecting to the ser
      | where ResourceProviderValue == "Microsoft.Security" 
      | where OperationNameValue == "Microsoft.Security/locations/jitNetworkAccessPolicies/delete" 
      ```
+    >Note if you receive a parse error, intellisense may have added values to your query. Ensure the query matches otherwise paste the query into notepad and then from notepad to the rule query. 
+
 1. Under **Query scheduling** Change **Run query every** to **5 minutes**
 
 1. Click **Next:Incident Settings**
