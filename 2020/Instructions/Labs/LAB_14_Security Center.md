@@ -17,8 +17,8 @@ Contoso would now like to look at the security posture of their proof of concept
 
 ## Objectives
 
-Contoso would like you to see the following acheived
-- Onboard Azure Secuerity Center to the existing subscription so we can see our Security postire
+Contoso would like you to see the following achieved:
+- Onboard Azure Security Center to the existing subscription so we can see our Security posture
 - Apply endpoint protection to any hosts
 - Apply Just in time VM access to any public facing hosts
 
@@ -63,7 +63,7 @@ To enable automatic provisioning of the Microsoft Monitoring Agent:
 
 1. Click **Workflow Automation** > **+ Add Workflow automation**
 
-1. Look through these settings. We can see that we can automate a response using Logic Apps for threat detecion alerts and for security center recomendations.
+1. Look through these settings. We can see that we can automate a response using Logic Apps for threat detecion alerts and for security center recommendations.
 
  With this new insight into your Azure VMs, Security Center can provide additional Recommendations related to system update status, OS security configurations, endpoint protection, as well as generate additional Security alerts.
 
@@ -72,7 +72,7 @@ To enable automatic provisioning of the Microsoft Monitoring Agent:
 
 1.  In the previous lab we added a VM to a log analytics workspace which we have now configured to Security Center.
 
-1.  Under **Resourece Security and Hygiene** click **Compute & apps**
+1.  Under **Resource Security Hygiene** click **Compute & apps**
 
 1. Click on **VMs and Servers**. You should see the VM from the previous lab **myVM**.
        > Note it may take a up to 15 minutes before the vm appears
@@ -85,7 +85,7 @@ To enable automatic provisioning of the Microsoft Monitoring Agent:
 
 1. Under **Policy & Compliance** Click on **Secure Score**. Take note of your current secure score.
 
-1.  Under **Resourece Security and Hygiene** click **Compute & apps**
+1.  Under **Resource Security Hygiene** click **Compute & apps**
 
 1. Click on **Install endpoint protection solution on virtual machines**
 
